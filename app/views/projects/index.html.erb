@@ -1,0 +1,38 @@
+<h1><%= pluralize(@projects.size, 'Project') %></h1>
+
+<% @projects.each do |project| %>
+  <article>
+    <header>
+      <h2><%= project.name %></h2>
+    </header>
+    <p>
+      <%= truncate(project.description, length: 40, separator: ' ') %>
+    </p>
+    <table>
+      <tr>
+        <th>Looking for:</th>
+        <td><%= project.looking_for %></td>
+      </tr>
+      <tr>
+        <th>Github:</th>
+        <td><%= project.github_link %></td>
+      </tr>
+      <tr>
+        <th>WebSite:</th>
+        <td><%= project.web_url %></td>
+      </tr>
+      <tr>
+        <th>Team Members:</th>
+        <td><%= project.teams %></td>
+      </tr>
+      <tr>
+        <th>Target Amount:</th>
+        <td><%= project.target_amount %></td>
+      </tr>
+      <tr>
+        <th>Image:</th>
+        <td><%= project.image_file %></td>
+      </tr>
+    </table>
+  </article>
+<% end %>

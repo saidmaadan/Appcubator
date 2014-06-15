@@ -1,0 +1,33 @@
+<article>
+  <header>
+    <h1><%= @project.name %></h1>
+  </header>
+  <h2>Description</h2>
+  <p>
+    <%= @project.description %>
+  </p>
+  <h3>Team Members</h3>
+  <p>
+    <%= @project.teams %>
+  </p>
+  <h3>Looking For</h3>
+  <p>
+    <%= @project.looking_for %>
+  </p>
+  <h3>Target Amount</h3>
+  <p>
+    <%= number_to_currency(@project.target_amount) %>
+  </p>
+  <h3>GitHub</h3>
+  <p>
+    <%= @project.github_link %>
+  </p>
+  <h3>Website</h3>
+  <p>
+    <%= @project.web_url %>
+  </p>
+  <h3>ScreenShot</h3>
+  <p>
+    <%= @project.image_file %>
+  </p>
+</article>
