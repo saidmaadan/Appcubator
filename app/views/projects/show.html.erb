@@ -1,4 +1,5 @@
 <article>
+<%= link_to "All Projects", projects_path %>
   <header>
     <h1><%= @project.name %></h1>
   </header>
@@ -30,4 +31,9 @@
   <p>
     <%= @project.image_file %>
   </p>
+
+  <nav>
+  <%= link_to "All Projects", projects_path %> |
+  <%= link_to "Edit", edit_project_path(@project) %>
+</nav>
 </article>
