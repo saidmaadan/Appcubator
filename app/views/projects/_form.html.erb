@@ -1,0 +1,38 @@
+
+<%= form_for(@project) do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description, cols: 40, rows: 7 %>
+  </p>
+  <p>
+    <%= f.label :looking_for %><br/>
+    <%= f.text_field :looking_for %>
+  </p>
+  <p>
+    <%= f.label :teams %><br/>
+    <%= f.text_field :teams %>
+  </p>
+  <p>
+    <%= f.label :target_amount %><br/>
+    <%= f.number_field :target_amount %>
+  </p>
+  <p>
+    <%= f.label :github_link %><br/>
+    <%= f.text_field :github_link %>
+  </p>
+  <p>
+    <%= f.label :web_url %><br/>
+    <%= f.text_field :web_url %>
+  </p>
+  <p>
+    <%= f.label :image_file %><br/>
+    <%= f.text_field :image_file %>
+  </p>
+  <p>
+    <%= f.submit %> | <%= link_to "Cancel", projects_path %>
+  </p>
+<% end %>
