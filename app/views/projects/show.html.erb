@@ -1,5 +1,6 @@
 <div class="container">
 <article>
+
 <%= link_to "All Projects", projects_path %>
   <header>
     <h1><%= @project.name %></h1>
@@ -29,15 +30,50 @@
   <p>
     <%= @project.web_url %>
   </p>
+   <h3>Average Review</h3>
   <p>
-
+    <%= format_average_stars(@project) %>
   </p>
+
+
+
 
   <nav>
   <%= link_to "All Projects", projects_path %> |
   <%= link_to "Edit", edit_project_path(@project) %> |
-  <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' } %>
+  <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' } %> |
 
 </nav>
 </article>
+
+
+ <% if @project.reviews.any? %>
+    <h3>Reviews</h3>
+    <ol id="reviews">
+      <% @project.recent_reviews.each do |review| %>
+        <li>
+          <span class="review"><%= pluralize(review.stars, 'star') %></span>
+          <span class="user">by <%= review.name %></span>
+          <span class="date">
+            <%= time_ago_in_words(review.created_at) %> ago
+          </span>
+          <p>
+            &quot;<%= review.remark %>&quot;
+          </p>
+        </li>
+      <% end %>
+    </ol>
+    <% end %>
+<p>
+  Read More Review: &nbsp <%= link_to pluralize(@project.reviews.size, "review"),
+            project_reviews_path(@project) %> |
+<%= link_to "Review this Project", new_project_review_path(@project), class: 'button ok review' %>
+</p>
+
 </div>
+
+
+
+
+
+

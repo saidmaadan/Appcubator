@@ -1,0 +1,32 @@
+<div class="container">
+<header id="content-header">
+  <h1>New Review for <%= link_to(@project.name, @project) %></h1>
+</header>
+
+<%= form_for([@project, @review]) do |f| %>
+<%= render "shared/errors", object: @review %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :name %>:&nbsp &nbsp
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li><br>
+      <li class="required stars">
+        <%= f.label :stars, 'Rating: '%>&nbsp
+        <% Review::STARS.each do |star| %>
+        <span class="star">
+        <%= f.radio_button :stars, star %> <% star %>&nbsp
+        </span>
+        <% end %>      </li><br>
+      <li class="required">
+        <%= f.label :remark %>
+        <%= f.text_area :remark, cols: 50, rows: 4, placeholder: "Tell us your honest opinion about this project" %>
+      </li>
+    </ol><br>
+    <p>
+      <%= f.submit 'Post Review' %>
+      <%= link_to "Cancel", @project, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>
+</div>

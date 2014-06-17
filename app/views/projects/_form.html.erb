@@ -1,6 +1,6 @@
 
 <%= form_for @project, :html => { :multipart => true } do |f| %>
-<%= render "shared/errors" %>
+<%= render "shared/errors", object: @project %>
   <p>
     <%= f.label :name %><br/>
     <%= f.text_field :name, autofocus: true %>
@@ -11,7 +11,8 @@
   </p>
   <p>
     <%= f.label :looking_for %><br/>
-    <%= f.text_field :looking_for %>
+    <%= f.select :looking_for, Project::LOOKING_FOR, prompt: "Select one" %>
+
   </p>
   <p>
     <%= f.label :teams %><br/>
