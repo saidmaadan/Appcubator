@@ -1,0 +1,32 @@
+<%= form_for(@idea) do |f| %>
+  <%= render "shared/errors", object: @idea %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :title %>
+        <%= f.text_field :title, autofocus: true %>
+      </li>
+      <li class="required">
+        <%= f.label :description %>
+        <%= f.text_area :description, cols: 40, rows: 7 %>
+      </li>
+      <li class="required">
+        <%= f.label :goal %>
+        <%= f.text_field :goal, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :market, 'Market Potential' %>
+        <%= f.text_field :market, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :category %>
+        <%= f.text_field :category %>
+      </li>
+
+    </ol>
+    <p>
+      <%= f.submit %>
+      <%= link_to "Cancel", ideas_path, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

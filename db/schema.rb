@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617151128) do
+ActiveRecord::Schema.define(version: 20140617195207) do
+
+  create_table "checkins", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "skills"
+    t.integer  "experience"
+    t.string   "position"
+    t.integer  "idea_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "comment"
+  end
+
+  add_index "checkins", ["idea_id"], name: "index_checkins_on_idea_id"
 
   create_table "ideas", force: true do |t|
     t.string   "title"

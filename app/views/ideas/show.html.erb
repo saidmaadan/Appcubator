@@ -1,0 +1,33 @@
+<article id="idea" class="idea">
+  <header>
+    <h1><%= @idea.title %></h1>
+  </header>
+
+  <p>
+    <%= @idea.description %>
+  </p>
+
+  <h3>Market Potential</h3>
+  <p>
+    <%= @idea.market %>
+  </p>
+
+  <h3>Goal</h3>
+  <p>
+    <%= @idea.goal %>
+  </p>
+
+  <h3>Category</h3>
+  <p>
+    <%= @idea.category %>
+  </p>
+
+
+    <nav>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: 'button' %>
+      <%= link_to 'Delete', @idea,
+                  class: 'button',
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+    </nav>
+
+</article>

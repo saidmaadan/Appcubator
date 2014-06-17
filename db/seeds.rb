@@ -30,3 +30,6 @@ Project.create!([
      }
 
      ])
+
+idea = Idea.first
+idea.checkins.create(name: "Bobby S", email: "bobby@bobby.com", skills: "Backend", experience: 3, position: 'Part time', comment: "Tell me more about the project")

@@ -1,0 +1,30 @@
+<ul id="ideas">
+  <% @ideas.each do |idea| %>
+    <li>
+      <article class="idea">
+        <header>
+          <h2><%= link_to(idea.title, idea) %></h2>
+        </header>
+        <p>
+          <%= truncate(idea.description, length: 150, separator: ' ') %>
+        </p>
+        <table>
+          <tr>
+            <th>Goal</th>
+            <td><%= idea.goal %></td>
+          </tr>
+          <tr>
+            <th>Market Potential</th>
+            <td><%= idea.market %></td>
+          </tr>
+          <tr>
+            <th>category</th>
+            <td><%= idea.category %></td>
+          </tr>
+        </table>
+        <footer>
+        </footer>
+      </article>
+    </li>
+  <% end %>
+</ul>
