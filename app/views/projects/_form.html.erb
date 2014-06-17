@@ -1,5 +1,6 @@
 
-<%= form_for(@project) do |f| %>
+<%= form_for @project, :html => { :multipart => true } do |f| %>
+<%= render "shared/errors" %>
   <p>
     <%= f.label :name %><br/>
     <%= f.text_field :name, autofocus: true %>
@@ -29,9 +30,10 @@
     <%= f.text_field :web_url %>
   </p>
   <p>
-    <%= f.label :image_file %><br/>
-    <%= f.text_field :image_file %>
+    <%= f.label :screenshot %><br/>
+    <%= f.file_field :screenshot %>
   </p>
+
   <p>
     <%= f.submit %> | <%= link_to "Cancel", projects_path %>
   </p>

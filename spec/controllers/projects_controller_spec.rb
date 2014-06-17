@@ -113,6 +113,105 @@ describe "Deleting a project" do
   end
 end
 
+describe 'validation' do
+  it "requires a name" do
+    project = Project.new(name: "")
+
+    project.valid?  # populates errors
+
+    expect(project.errors[:name].any?).to be_true
+  end
+
+  it "requires a description" do
+    project = Project.new(description: "")
+
+    project.valid?
+
+    expect(project.errors[:description].any?).to be_true
+  end
+
+  it "requires a released on date" do
+    project = Project.new(looking_for: "")
+
+    project.valid?
+
+    expect(project.errors[:looking_for].any?).to be_true
+  end
+
+  it "requires a duration" do
+    project = Project.new(target_amount: "")
+
+    project.valid?
+
+    expect(project.errors[:target_amount].any?).to be_true
+  end
+
+  it "requires a description over 24 characters" do
+    project = Project.new(description: "X" * 24)
+
+    project.valid?
+
+    expect(project.errors[:description].any?).to be_true
+  end
+
+  it "is valid with example attributes" do
+    project = Project.new(project_attributes)
+
+    expect(project.valid?).to be_true
+  end
+end
+
+describe 'create project' do
+
+  it "does not save the project if it's invalid" do
+  visit new_project_url
+
+  expect {
+    click_button 'Create Project'
+  }.not_to change(Project, :count)
+
+  expect(current_path).to eq(projects_path)
+  expect(page).to have_text('error')
+end
+end
+
+describe 'edit project' do
+
+  it "does not update the project if it's invalid" do
+  project = Project.create(project_attributes)
+
+  visit edit_project_url(project)
+
+  fill_in 'Name', with: " "
+
+  click_button 'Update Project'
+
+  expect(page).to have_text('error')
+end
+end
+
+describe 'project review' do
+  it "has many reviews" do
+  project = Project.new(project_attributes)
+
+  review1 = project.reviews.new(review_attributes)
+  review2 = project.reviews.new(review_attributes)
+
+  expect(project.reviews).to include(review1)
+  expect(project.reviews).to include(review2)
+end
+
+  it "deletes associated reviews" do
+    project = Project.create(project_attributes)
+
+    project.reviews.create(review_attributes)
+
+    expect {
+      project.destroy
+    }.to change(Review, :count).by(-1)
+  end
+end
+
 
 
 end

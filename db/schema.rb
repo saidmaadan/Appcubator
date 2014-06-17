@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615225345) do
+ActiveRecord::Schema.define(version: 20140616221337) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -23,7 +23,21 @@ ActiveRecord::Schema.define(version: 20140615225345) do
     t.datetime "updated_at"
     t.string   "teams"
     t.decimal  "target_amount"
-    t.string   "image_file"
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.string   "name"
+    t.integer  "stars"
+    t.text     "remark"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["project_id"], name: "index_reviews_on_project_id"
 
 end

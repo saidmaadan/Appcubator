@@ -3,6 +3,7 @@
 <%= link_to "All Projects", projects_path %>
   <header>
     <h1><%= @project.name %></h1>
+    <%= image_tag @project.screenshot.url(:medium) %>
   </header>
   <h2>Description</h2>
   <p>
@@ -28,9 +29,8 @@
   <p>
     <%= @project.web_url %>
   </p>
-  <h3>ScreenShot</h3>
   <p>
-    <%= image_tag(@project.image_file) %>
+
   </p>
 
   <nav>

@@ -14,8 +14,12 @@ class ProjectsController < ApplicationController
 
   def update
   @project = Project.find(params[:id])
-  @project.update(project_params)
-  redirect_to @project
+  if @project.update(project_params)
+    flash[:notice] = "Project successfully updated!"
+    redirect_to @project
+  else
+    render :edit
+  end
 end
 
 def new
@@ -24,20 +28,23 @@ end
 
 def create
   @project = Project.new(project_params)
-  @project.save
-  redirect_to @project
+  if @project.save
+    redirect_to @project, notice: "Project successfully created!"
+  else
+    render :new
+  end
 end
 
 def destroy
   @project = Project.find(params[:id])
   @project.destroy
-  redirect_to projects_url
+  redirect_to project_url, alert: "Project successfully deleted!"
 end
 
 private
 
 def project_params
-  project_params = params.require(:project).permit(:name, :description, :looking_for, :teams, :target_amount, :github_link, :web_url, :image_file)
+  project_params = params.require(:project).permit(:name, :description, :looking_for, :teams, :target_amount, :github_link, :web_url, :screenshot)
 end
 
 end
