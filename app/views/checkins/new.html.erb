@@ -1,0 +1,40 @@
+<header id="content-header">
+  <h1>Check-In for <%= link_to(@idea.title, @idea) %></h1>
+</header>
+
+<%= form_for([@idea, @checkin]) do |f| %>
+<%= render "shared/errors", object: @checkin %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :name %>
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li>
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </li>
+      <li class="required">
+        <%= f.label :skills %>
+        <%= f.select :skills, Checkin::SKILLS, prompt: "Select one" %>
+      </li>
+      <li class="required">
+        <%= f.label :position %>
+        <%= f.select :position, Checkin::POSITION, prompt: "Select one" %>
+      </li>
+      <li class="required">
+        <%= f.label :experience %>
+        <%= f.select :experience, Checkin::EXPERIENCE, prompt: "Select one" %>
+      </li>
+
+      <li class="required">
+        <%= f.label :comment %>
+        <%= f.text_area :comment, cols: 80, placeholder: "You wanna check-in for this project?" %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit 'Check-In' %>
+      <%= link_to "Cancel", @idea, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

@@ -1,16 +1,35 @@
 class Checkin < ActiveRecord::Base
   belongs_to :idea
 
-  validates :name, :skills, :position, presence: true
+  validates :name, presence: true
   # validates :email
 
   validates :comment, length: { minimum: 10 }
+  validates :email, format: { with: /(\S+)@(\S+)/ }
 
-  EXPERIENCE = ['1 - 2 years', '3 - 5 years', '6 - 8  years', '8 - 12 years' ]
+  SKILLS = [
+    'Full Stack Developer',
+    'Front End Developer',
+    'BackEnd Developer',
+    'Ruby on Rails Developer',
+    'Javascript Developer',
+    'Java Developer',
+    'Python Developer',
+    'PHP Developer',
+    'UI Developer',
+    'Web Designer',
+    'Other'
+  ]
+  validates :skills, inclusion: {in: SKILLS}
+
+  POSITION = ['Full Time', 'Part Time']
+  validates :position, inclusion: {in: POSITION}
+
+  validates :skills, inclusion: {in: SKILLS}
+
+  EXPERIENCE = [1, 2, 3,4,5,6,7,8,9]
 
   validates :experience, inclusion: {
-    in: EXPERIENCE,
-    message: "Select your year(s) of experience"
-  }
+    in: EXPERIENCE, message: "Select your year(s) of experience"}
 
 end

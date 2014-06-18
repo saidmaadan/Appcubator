@@ -1,0 +1,16 @@
+<header id="content-header">
+  <h1>Checkins for <%= link_to(@idea.title, @idea) %></h1>
+</header>
+
+<ol>
+  <% @checkins.each do |checkin| %>
+    <li>
+      <p>
+         by <%= checkin.name %>:
+      </p>
+      <p>
+        <%= checkin.comment %>
+      </p>
+    </li>
+  <% end %>
+</ol>

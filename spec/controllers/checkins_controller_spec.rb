@@ -21,4 +21,39 @@ RSpec.describe CheckinsController, :type => :controller do
   end
 end
 
+describe "Creating a checkin" do
+  it "saves the checkin" do
+    idea = Idea.create(idea_attributes)
+
+    visit idea_url(idea)
+
+    click_link 'Apply to Check-In'
+
+    expect(current_path).to eq(new_idea_checkin_path(idea))
+
+    fill_in "Name", with: "Akeem M"
+    fill_in "Email", with: "akeem@akeem.com"
+
+    fill_in "Comment", with: "Wish to learn more!"
+
+    click_button 'Check-In'
+
+    expect(current_path).to eq(idea_checkins_path(idea))
+
+    expect(page).to have_text("You are successfully check-in!")
+  end
+
+  it "does not save the check-in if it's invalid" do
+    idea = Idea.create(idea_attributes)
+
+    visit new_idea_checkin_url(idea)
+
+    expect {
+      click_button 'Check-In'
+    }.not_to change(Checkin, :count)
+
+    expect(page).to have_text('error')
+  end
+end
+
 end

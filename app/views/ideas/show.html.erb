@@ -29,5 +29,10 @@
                   class: 'button',
                   method: :delete, data: { confirm: 'Are you sure?' } %>
     </nav>
+    <%= link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea) %> |
+<%= link_to "Apply to Check-In", new_idea_checkin_path(@idea),
+             class: 'button ok checkin' %>
+
+
 
 </article>

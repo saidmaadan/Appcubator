@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+.navbar{
+  background: #46B9DB;
+}
+.navbar-collapse:hover{
+  background: red;
+}
+footer{
+  width: 100%;
+  height: 200px;
+  background: #4192AB;
+}
