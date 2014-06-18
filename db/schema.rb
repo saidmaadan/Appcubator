@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618021139) do
+ActiveRecord::Schema.define(version: 20140618204754) do
 
   create_table "checkins", force: true do |t|
-    t.string   "name"
-    t.string   "email"
     t.string   "skills"
     t.integer  "experience"
     t.string   "position"
@@ -23,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140618021139) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "comment"
+    t.integer  "user_id"
   end
 
   add_index "checkins", ["idea_id"], name: "index_checkins_on_idea_id"
@@ -54,12 +53,12 @@ ActiveRecord::Schema.define(version: 20140618021139) do
   end
 
   create_table "reviews", force: true do |t|
-    t.string   "name"
     t.integer  "stars"
     t.text     "remark"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "reviews", ["project_id"], name: "index_reviews_on_project_id"
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140618021139) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.boolean  "admin",           default: false
   end
 
 end

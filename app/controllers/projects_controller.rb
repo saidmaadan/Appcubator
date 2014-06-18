@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :require_signin, except: [:index, :show]
+  #before_action :correct_user, except: [:index, :show, :edit]
+  before_action :require_admin, only: [:delete]
 
   def index
     @projects = Project.recent
@@ -38,7 +41,7 @@ end
 def destroy
   @project = Project.find(params[:id])
   @project.destroy
-  redirect_to project_url, alert: "Project successfully deleted!"
+  redirect_to projects_url, alert: "Project successfully deleted!"
 end
 
 private

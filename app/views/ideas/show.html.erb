@@ -24,10 +24,14 @@
 
 
     <nav>
-      <%= link_to 'Edit', edit_idea_path(@idea), class: 'button' %>
+
+      <%= link_to 'Edit', edit_idea_path(@idea), class: 'button' %> |
+      <% if current_user_admin? %>
       <%= link_to 'Delete', @idea,
                   class: 'button',
-                  method: :delete, data: { confirm: 'Are you sure?' } %>
+                 method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <% end %>
     </nav>
     <%= link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea) %> |
 <%= link_to "Apply to Check-In", new_idea_checkin_path(@idea),

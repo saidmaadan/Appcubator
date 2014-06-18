@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :require_signin
   before_action :set_project
 
   def index
@@ -11,7 +12,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @project.reviews.new(review_params)
-    if @review.save
+    @review.user = current_user
+      if @review.save
       redirect_to project_reviews_path(@project),
                     notice: "Thanks for your review!"
     else

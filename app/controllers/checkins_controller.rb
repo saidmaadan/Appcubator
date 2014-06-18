@@ -1,4 +1,5 @@
 class CheckinsController < ApplicationController
+  before_action :require_signin
   before_action :set_idea
 
   def index
@@ -11,6 +12,7 @@ class CheckinsController < ApplicationController
 
   def create
     @checkin = @idea.checkins.new(checkin_params)
+    @checkin.user = current_user
     if @checkin.save
       redirect_to idea_checkins_path(@idea),
                     notice: "You are successfull check-in for this project!"
@@ -22,7 +24,7 @@ class CheckinsController < ApplicationController
   private
 
   def checkin_params
-    params.require(:checkin).permit(:name, :email, :skills, :experience, :position, :comment)
+    params.require(:checkin).permit(:skills, :experience, :position, :comment)
   end
 
   def set_idea

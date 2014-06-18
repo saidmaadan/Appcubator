@@ -4,9 +4,39 @@
   <div class='col-md-2'>
   <p><%= profile_image_for(@user) %></p>
   <h3>Member Since</h3>
-<p>
+  <p>
   <%= @user.created_at.strftime("%B %Y") %>
 </p>
+
+<% if @checkins.any? %>
+  <h3>Checkins for</h3>
+  <ol id="reviews">
+   <% @checkins.each do |checkin| %>
+     <li>
+       <%= link_to checkin.idea.title, checkin.idea %>
+       <span class="date"><%= time_ago_in_words(checkin.created_at) %> ago</span>
+
+     </li>
+   <% end %>
+  </ol>
+<% end %>
+
+  <% if @reviews.any? %>
+  <h3>Reviews</h3>
+  <ol id="reviews">
+   <% @reviews.each do |review| %>
+     <li>
+       <%= link_to review.project.name, review.project %>
+       <span class="review"><%= pluralize(review.stars, 'star') %></span>
+       <span class="date"><%= time_ago_in_words(review.created_at) %> ago</span>
+       <p>
+         &quot;<%= review.remark %>&quot;
+       </p>
+     </li>
+   <% end %>
+  </ol>
+<% end %>
+
 
   </div>
     <div class='col-md-6'><h1><%= @user.name %></h1>

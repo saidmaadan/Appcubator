@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   get 'signup' => 'users#new'
 
-  root "projects#index"
+  root "users#new"
 
   resources :projects do
     resources :reviews

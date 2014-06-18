@@ -7,14 +7,6 @@
   <fieldset>
     <ol>
       <li class="required">
-        <%= f.label :name %>
-        <%= f.text_field :name, size: 40, autofocus: true %>
-      </li>
-      <li class="required">
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-      </li>
-      <li class="required">
         <%= f.label :skills %>
         <%= f.select :skills, Checkin::SKILLS, prompt: "Select one" %>
       </li>

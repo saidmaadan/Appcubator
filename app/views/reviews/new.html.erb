@@ -7,10 +7,7 @@
 <%= render "shared/errors", object: @review %>
   <fieldset>
     <ol>
-      <li class="required">
-        <%= f.label :name %>:&nbsp &nbsp
-        <%= f.text_field :name, size: 40, autofocus: true %>
-      </li><br>
+
       <li class="required stars">
         <%= f.label :stars, 'Rating: '%>&nbsp
         <% Review::STARS.each do |star| %>

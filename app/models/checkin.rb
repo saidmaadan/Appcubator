@@ -1,11 +1,9 @@
 class Checkin < ActiveRecord::Base
   belongs_to :idea
-
-  validates :name, presence: true
-  # validates :email
+  belongs_to :user
 
   validates :comment, length: { minimum: 10 }
-  validates :email, format: { with: /(\S+)@(\S+)/ }
+
 
   SKILLS = [
     'Full Stack Developer',
