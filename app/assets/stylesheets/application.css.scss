@@ -13,14 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ body{
+  margin: 0;
+ }
 .navbar{
   background: #46B9DB;
 }
-.navbar-collapse:hover{
-  background: red;
-}
+// .navbar-collapse:hover{
+//   background: red;
+// }
 footer{
   width: 100%;
-  height: 200px;
+  min-height: 200px;
   background: #4192AB;
+  margin-bottom: 0;
 }
