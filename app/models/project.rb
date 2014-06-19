@@ -1,5 +1,4 @@
 class Project < ActiveRecord::Base
-  has_many :reviews, dependent: :destroy
 
   has_attached_file :screenshot, styles: {
     :small => "200x200>", :medium => "300x300>",
@@ -12,6 +11,13 @@ class Project < ActiveRecord::Base
   validates :target_amount, numericality: { greater_than_or_equal_to: 0 }
 
   LOOKING_FOR = ['Partnership', 'Investor', 'Buyer']
+
+  has_many :reviews, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :followers, through: :follows, source: :user
+
+
+
 
 
 

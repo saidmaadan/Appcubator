@@ -35,11 +35,7 @@
     <%= format_average_stars(@project) %>
   </p>
 
-
-
-
   <nav>
-
 
   <%= link_to "All Projects", projects_path %> |
   <%= link_to "Edit", edit_project_path(@project) %> |
@@ -47,7 +43,32 @@
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' } %> |
 <% end %>
 </nav>
+<p>
+    <%= pluralize(@followers.count, 'follow') %>
+  </p>
+
+<% if current_user %>
+  <% if @current_follow %>
+    <%= button_to "Unfollow", project_follow_path(@project, @current_project), method: :delete %>
+  <% else %>
+  <%= button_to "Follow", project_follows_path(@project) %>
+  <% end %>
+  <% end %>
+  <% if @followers.any? %>
+  <h3>Followers</h3>
+  <ul>
+    <% @followers.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+
 </article>
+
+
+
 
 
  <% if @project.reviews.any? %>

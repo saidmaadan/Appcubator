@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :checkins, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :followed_projects, through: :follows, source: :project
+
   has_secure_password
   validates :password, length: { minimum: 8, allow_blank: true }
 

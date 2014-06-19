@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   resource :session
   get "signin" => "sessions#new"
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :reviews
+    resources :follows
   end
 
   resources :ideas do

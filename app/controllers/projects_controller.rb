@@ -9,6 +9,10 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @followers = @project.followers
+    if current_user
+      @current_follow = current_user.follows.find_by(project_id: @project.id)
+    end
   end
 
   def edit

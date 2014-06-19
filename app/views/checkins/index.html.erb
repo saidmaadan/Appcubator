@@ -6,6 +6,7 @@
   <% @checkins.each do |checkin| %>
     <li>
       <p>
+      <%= profile_image_for(checkin.user, size: 35) %>
       <%= checkin.skills %>
 
       </p>
