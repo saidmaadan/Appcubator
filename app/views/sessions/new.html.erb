@@ -1,19 +1,26 @@
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8'>
+
+</div>
+<div class='col-md-4'>
 <header id="content-header">
   <h1>Sign In</h1>
 </header>
 
 <%= form_tag(session_path) do %>
   <fieldset>
-    <ol>
-      <li class="required">
-        <%= label_tag :email, 'Email/Username' %>
-        <%= text_field_tag :email, nil, required: true, autofocus: true, size: 40 %>
-      </li>
-      <li class="required">
-        <%= label_tag :password %>
-        <%= password_field_tag :password, nil, required: true, size: 40 %>
-      </li>
-    </ol>
+
+      <p class="required">
+
+        <%= text_field_tag :email, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
+      </p>
+      <p class="required">
+
+        <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password" %>
+      </p>
+
     <p>
       <%= submit_tag 'Sign In' %>
     </p>
@@ -22,3 +29,6 @@
 <p>
   No account yet? <%= link_to 'Sign up!', signup_path %>
 </p>
+</div>
+</div>
+</div>

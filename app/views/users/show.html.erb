@@ -7,17 +7,6 @@
   <p>
   <%= @user.created_at.strftime("%B %Y") %>
 </p>
-<% if @followed_projects.any? %>
-<h3>Followed Projects</h3>
-<ul>
-  <%= @followed_projects.each do |project| %>
-  <li>
-    <%= link_to project.name, project %>
-  </li>
-  <% end %>
-</ul>
-<% end %>
-
 
 <% if @checkins.any? %>
   <h3>Checkins for</h3>
@@ -47,6 +36,18 @@
    <% end %>
   </ol>
 <% end %>
+<p>
+<% if @followed_projects.any? %>
+<h3>Followed Projects</h3>
+<ul>
+  <% @followed_projects.each do |project| %>
+  <li>
+    <%= link_to project.name, project %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+</p>
 
 
   </div>

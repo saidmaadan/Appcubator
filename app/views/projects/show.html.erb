@@ -48,11 +48,8 @@
   </p>
 
 <% if current_user %>
-  <% if @current_follow %>
-    <%= button_to "Unfollow", project_follow_path(@project, @current_project), method: :delete %>
-  <% else %>
+
   <%= button_to "Follow", project_follows_path(@project) %>
-  <% end %>
   <% end %>
   <% if @followers.any? %>
   <h3>Followers</h3>
@@ -64,11 +61,6 @@
     <% end %>
   </ul>
   <% end %>
-
-</article>
-
-
-
 
 
  <% if @project.reviews.any? %>
@@ -93,7 +85,7 @@
             project_reviews_path(@project) %> |
 <%= link_to "Review this Project", new_project_review_path(@project), class: 'button ok review' %>
 </p>
-
+</article>
 </div>
 
 
