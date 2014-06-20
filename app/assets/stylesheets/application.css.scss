@@ -20,10 +20,25 @@
  body{
   margin: 0;
  }
+ .error_message{
+   ul li{
+    color: red;
+   }
+   header h3{
+    color: #BA0B0B;
+   }
+   header h4{
+    color: green;
+   }
+ }
  main{
   margin-top: 75px;
  }
-
+ol li{
+  list-style-type: square;
+  font-weight: bolder;
+  color: #005500;
+}
 .fa-fa-cubes{
   color: green;
 }

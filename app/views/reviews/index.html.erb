@@ -1,20 +1,28 @@
+<div class='container'>
+<div class='row'>
+<div class='col-md-2'></div>
+<div class='col-md-7'>
+
 <header id="content-header">
   <h1>Reviews for <%= link_to(@project.name, @project) %></h1>
-</header>
-<ol id="reviews">
+</header><br>
 
   <% @reviews.each do |review| %>
-    <li>
-
-      <span class="review"><%= pluralize(review.stars, 'star') %></span>
-      <span class="date"><%= time_ago_in_words(review.created_at) %> ago</span>
+<ol>
+<li>
+      <h4>
+        &quot;<%= review.remark %>&quot;
+      </h4>
+      <%= pluralize(review.stars, 'star') %><br>
+      <%= time_ago_in_words(review.created_at) %> ago
       <%= link_to delete_review_image, [@project, review],
                   id: "#{dom_id(review)}_delete",
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>
-      <p>
-        &quot;<%= review.remark %>&quot;
-      </p>
+
     </li>
+    </ol>
   <% end %>
-</ol>
+</div>
+</div>
+</div>

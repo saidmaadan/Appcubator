@@ -1,20 +1,32 @@
 <div class='container'>
-<article id="user">
   <div class='row'>
   <br><br>
-  <div class='col-md-2'>
+  <div class='col-md-3'>
+<br>
   <p><%= profile_image_for(@user) %></p>
+  <h2><%= @user.name %></h2>
+    <h4><%= mail_to(@user.email) %></h4>
   <h3>Member Since</h3>
   <p>
   <%= @user.created_at.strftime("%B %Y") %>
 </p>
+
+  <% if current_user?(@user) %>
+    <%= link_to 'Setting', edit_user_path(@user), class: 'btn btn-info' %>
+    <%= link_to 'Delete Account', @user,
+                method: :delete,
+                data: { confirm: 'Are you sure you want to permanently delete your account?' },
+                class: 'btn btn-danger' %>
+    <% end %>
+
+  </nav>
 
 <% if @checkins.any? %>
   <h3>Checkins for</h3>
   <ol id="reviews">
    <% @checkins.each do |checkin| %>
      <li>
-       <%= link_to checkin.idea.title, checkin.idea %>
+       <%= link_to checkin.idea.title, checkin.idea %><br>
        <span class="date"><%= time_ago_in_words(checkin.created_at) %> ago</span>
 
      </li>
@@ -22,22 +34,43 @@
   </ol>
 <% end %>
 
-  <% if @reviews.any? %>
-  <h3>Reviews</h3>
-  <ol id="reviews">
-   <% @reviews.each do |review| %>
-     <li>
-       <%= link_to review.project.name, review.project %>
-       <span class="review"><%= pluralize(review.stars, 'star') %></span>
-       <span class="date"><%= time_ago_in_words(review.created_at) %> ago</span>
+  </div>
+    <div class='col-md-6'>
+
+    <% if @reviews.any? %>
+    <h3>My Reviews on Startup Project</h3><br>
+    <% @reviews.in_groups_of(2) do |group| %>
+    <div class="row">
+        <% group.each do |review| %>
+          <% if review %>
+            <div class="col-md-6">
+
+            <%= link_to review.project.name, review.project %><br>
+       <%= pluralize(review.stars, 'star') %><br>
+       <%= time_ago_in_words(review.created_at) %> ago
        <p>
          &quot;<%= review.remark %>&quot;
        </p>
-     </li>
-   <% end %>
-  </ol>
-<% end %>
-<p>
+       </div>
+       <% end %>
+       <% end %>
+       </div>
+       <% end %>
+       <% end %>
+       </div>
+
+
+
+<div class='col-md-3'>
+  <br><br>
+  <%= link_to "View Projects", projects_path, class: 'btn btn-warning' %>
+  <%= link_to "Startup Idea", ideas_path, class: 'btn btn-primary' %><br><br>
+<% if current_user?(@user) %>
+<p><%= link_to 'Add Your Startup Project', new_project_path, class: 'btn btn-success' %></p>
+  <p> <%= link_to 'Post Your Startup Idea Project', new_idea_path, class: 'btn btn-info' %></p>
+
+  <% end %>
+  <p>
 <% if @followed_projects.any? %>
 <h3>Followed Projects</h3>
 <ul>
@@ -50,26 +83,7 @@
 <% end %>
 </p>
 
-
-  </div>
-    <div class='col-md-6'><h1><%= @user.name %></h1>
-    <h2><%= mail_to(@user.email) %></h2>
-
-
-  <nav>
-  <% if current_user?(@user) %>
-    <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
-    <%= link_to 'Delete Account', @user,
-                method: :delete,
-                data: { confirm: 'Are you sure you want to permanently delete your account?' },
-                class: 'button' %>
-    <% end %>
-
-  </nav>
-
-
 </div>
 </div>
-</article>
 
 </div>

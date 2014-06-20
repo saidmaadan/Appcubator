@@ -1,29 +1,40 @@
 <div class="container">
+<div class='row'>
+<div class='col-md-2'></div>
+<div class='col-md-8'>
 <header id="content-header">
-  <h1>New Review for <%= link_to(@project.name, @project) %></h1>
+  <h2>Post Your Review for <%= link_to(@project.name, @project) %></h2><br>
 </header>
 
 <%= form_for([@project, @review]) do |f| %>
 <%= render "shared/errors", object: @review %>
-  <fieldset>
-    <ol>
+<div class='form-horizontal' role='form'>
+  <div class="form-group">
+  <div class='row'>
+  <div class='col-md-2'>
 
-      <li class="required stars">
-        <%= f.label :stars, 'Rating: '%>&nbsp
+        <%= f.label :stars, 'Rating:' %>&nbsp</div>
+        <div class='col-md-6'>
         <% Review::STARS.each do |star| %>
-        <span class="star">
+
         <%= f.radio_button :stars, star %> <% star %>&nbsp
-        </span>
-        <% end %>      </li><br>
-      <li class="required">
-        <%= f.label :remark %>
-        <%= f.text_area :remark, cols: 50, rows: 4, placeholder: "Tell us your honest opinion about this project" %>
-      </li>
-    </ol><br>
-    <p>
-      <%= f.submit 'Post Review' %>
-      <%= link_to "Cancel", @project, class: 'button' %>
-    </p>
-  </fieldset>
+
+        <% end %> </div></div><br>
+        <div class='row'>
+  <div class='col-md-2'>
+        <%= f.label :remark, class: 'control-label' %></div>
+        <div class='col-md-6'>
+
+        <%= f.text_area :remark, cols: 50, rows: 4, placeholder: "Tell us your honest opinion about this project", class: "form-control" %></div></div><br>
+
+    <div class='row'>
+    <div class='col-md-2'></div>
+
+  <div class='col-md-6'>
+      <%= f.submit 'Post Review', class: "btn btn-success" %>
+      <%= link_to "Cancel", @project, class: 'btn btn-warning' %></div></div>
+
 <% end %>
+</div>
+</div>
 </div>

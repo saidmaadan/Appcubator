@@ -1,17 +1,22 @@
+<div class='container'>
+<div class='row'>
+<div class='error_message'>
 <% if object.errors.any? %>
-<section id="errors">
   <header>
-    <h2>
-      Oops! The <%= object.class.name.humanize.downcase %> could not be saved.
-    </h2>
     <h3>
-      Please correct the following <%= pluralize(object.errors.count, "error") %>:
+      Oops! The <%= object.class.name.humanize.downcase %> could not be saved.
     </h3>
+    <h4>
+      Please correct the following <%= pluralize(object.errors.count, "error") %>:
+    </h4>
   </header>
   <ul>
     <% object.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
-</section>
 <% end %>
+</div>
+</div>
+</div>
+
