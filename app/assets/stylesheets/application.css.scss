@@ -20,12 +20,18 @@
  body{
   margin: 0;
  }
+ main{
+  margin-top: 75px;
+ }
+
+.fa-fa-cubes{
+  color: green;
+}
 .navbar{
   background: #eee;
+  border-bottom: 3px solid #E0DEDE;
 }
-.navbar-brand{
-  color: white;
-}
+
 // .navbar-collapse:hover{
 //   background: red;
 // }

@@ -1,18 +1,17 @@
+<div class='container'>
+<div class='row'>
 <header id="content-header">
   <h1>Checkins for <%= link_to(@idea.title, @idea) %></h1>
 </header>
-
-<ol>
   <% @checkins.each do |checkin| %>
-    <li>
-      <p>
+  <div class='col-md-1'>
       <%= profile_image_for(checkin.user, size: 35) %>
-      <%= checkin.skills %>
+      </div>
+    <div class='col-md-6'>
+    <%= checkin.skills %><br>
+        <%= checkin.comment %></div>
 
-      </p>
-      <p>
-        <%= checkin.comment %>
-      </p>
-    </li>
+
   <% end %>
-</ol>
+</div>
+</div>

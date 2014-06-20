@@ -1,24 +1,23 @@
 <div class="container">
-<%= link_to("Add New Project", new_project_path) %>
-<%= link_to("Add New Post", new_idea_path) %>
+<div class='row'>
+<div class='col-md-8'></div>
+<div class='col-md-4'>
+<h1><%= pluralize(@projects.size, 'Project') %></h1></div>
+<% if @projects.any? %>
+<% @projects.in_groups_of(2) do |group| %>
+<div class='row'>
+<% group.each do |project| %>
+<% if project %>
+<div class='col-md-6'>
+<div class='row'>
+<div class='col-md-4'>
+<br><br>
+<%= image_tag project.screenshot.url(:thumb) %></div>
+<div class='col-md-8'>
+<h3><%= link_to project.name, project %></h3>
 
-<h1><%= pluralize(@projects.size, 'Project') %></h1>
-
-<% @projects.each do |project| %>
-  <article>
-
-    <div class="row">
-    <div class="col-md-3">
-    <%= image_tag project.screenshot.url(:small) %>
-    </div>
-    <div class="col-md-8">
-    <header>
-      <h2><%= link_to project.name, project %></h2>
-    </header>
-    <p>
-      <%= truncate(project.description, length: 40, separator: ' ') %>
-    </p>
-    <table>
+<p><%= truncate(project.description, length: 40, separator: ' ') %></p>
+<table>
       <tr>
         <th>Looking for:</th>
         <td><%= project.looking_for %></td>
@@ -43,6 +42,11 @@
     </table>
     </div>
     </div>
-  </article>
-<% end %>
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+    <% end %>
+    <% end %>
 </div>
+

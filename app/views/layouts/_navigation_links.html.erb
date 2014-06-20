@@ -4,6 +4,17 @@
 
       <%= link_to 'Sign Out', session_path, method: :delete, class: 'navbar-brand' %>
     <% else %>
-      <%= link_to 'Sign Up', signup_path, class: 'navbar-brand' %>
-      <%= link_to 'Sign In', new_session_path, class: 'navbar-brand' %>
+
+<%= form_tag(session_path) do %>
+
+         <%= label_tag :email, 'Email/Username' %><br>
+
+        <%= text_field_tag :email, nil, required: true, autofocus: true, size: 25, placeholder: "Email/Username" %>
+
+        <%= password_field_tag :password, nil, required: true, size: 25, placeholder: "Password" %>
+
+      <%= submit_tag 'Sign In', size: 10 %><% end %>
+
+<br>
+
     <% end %>

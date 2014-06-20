@@ -1,4 +1,8 @@
-<article id="idea" class="idea">
+<div class="container">
+<div class='row'>
+<article>
+<div class='col-md-8'>
+<div id="idea" class="idea">
   <header>
     <h1><%= @idea.title %></h1>
   </header>
@@ -21,22 +25,29 @@
   <p>
     <%= @idea.category %>
   </p>
-
-
+</div>
+</div>
+<div class='col-md-4'>
+<br>
     <nav>
 
-      <%= link_to 'Edit', edit_idea_path(@idea), class: 'button' %> |
+     <% if current_user %>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>&nbsp
+      <%= link_to 'Post New Startup Idea', new_idea_path, class: 'btn btn-success' %>
+      <% end %>
       <% if current_user_admin? %>
       <%= link_to 'Delete', @idea,
-                  class: 'button',
+                  class: 'btn btn-danger',
                  method: :delete, data: { confirm: 'Are you sure?' } %>
 
       <% end %>
-    </nav>
-    <%= link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea) %> |
-<%= link_to "Apply to Check-In", new_idea_checkin_path(@idea),
-             class: 'button ok checkin' %>
+    </nav><br>
+    <p><%= link_to "Apply to Check-In", new_idea_checkin_path(@idea),
+             class: "btn btn-primary btn-lg" %></p>
+    <%= link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea), class: "btn btn-info btn-lg" %>
 
-
-
+</div>
 </article>
+</div>
+</div>
+

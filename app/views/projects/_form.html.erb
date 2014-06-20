@@ -1,41 +1,74 @@
-
+<div class='container'>
+<div class='row'>
+<br>
+<div class='col-md-7'>
 <%= form_for @project, :html => { :multipart => true } do |f| %>
 <%= render "shared/errors", object: @project %>
-  <p>
-    <%= f.label :name %><br/>
-    <%= f.text_field :name, autofocus: true %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description, cols: 40, rows: 7 %>
-  </p>
-  <p>
-    <%= f.label :looking_for %><br/>
-    <%= f.select :looking_for, Project::LOOKING_FOR, prompt: "Select one" %>
+<div class='form-horizontal' role='form'>
+  <div class="form-group">
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :name, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_field :name, autofocus: true, placeholder: "Project title", class: "form-control" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :description, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_area :description, cols: 40, rows: 7, placeholder: "Your project description",class: "form-control" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :looking_for, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.select :looking_for, Project::LOOKING_FOR, prompt: "Select one", class: "form-control" %>
 
-  </p>
-  <p>
-    <%= f.label :teams %><br/>
-    <%= f.text_field :teams %>
-  </p>
-  <p>
-    <%= f.label :target_amount %><br/>
-    <%= f.number_field :target_amount %>
-  </p>
-  <p>
-    <%= f.label :github_link %><br/>
-    <%= f.text_field :github_link %>
-  </p>
-  <p>
-    <%= f.label :web_url %><br/>
-    <%= f.text_field :web_url %>
-  </p>
-  <p>
-    <%= f.label :screenshot %><br/>
-    <%= f.file_field :screenshot %>
-  </p>
+  </div></div>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :teams, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_field :teams, class: "form-control", placeholder: "Team members" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :target_amount, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.number_field :target_amount, class: "form-control" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :github_link, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_field :github_link, class: "form-control", placeholder: "Github url" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :web_url, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_field :web_url, class: "form-control", placeholder: "Project web link, if any" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :screenshot, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.file_field :screenshot, class: "form-control" %>
+  </div></div><br>
 
-  <p>
-    <%= f.submit %> | <%= link_to "Cancel", projects_path %>
-  </p>
+  <div class='row'>
+  <div class='col-md-3'></div>
+  <div class='col-md-8'>
+    <%= f.submit class: 'btn btn-success' %> <%= link_to "Cancel", projects_path, class: 'btn btn-warning' %>
+  </div></div>
+</div></div>
 <% end %>
+</div>
+<div class='col-md-4 ico'>
+<br><br>
+
+<%= image_tag("phone.ico", :alt => "Caressa") %>
+</div>
+</div>
+</div>
+</div>

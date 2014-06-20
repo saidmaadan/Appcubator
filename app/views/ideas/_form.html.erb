@@ -1,32 +1,41 @@
+<div class='container'>
+<div class='row'>
+<div class='col-md-6'>
+
 <%= form_for(@idea) do |f| %>
   <%= render "shared/errors", object: @idea %>
-  <fieldset>
-    <ol>
-      <li class="required">
-        <%= f.label :title %>
-        <%= f.text_field :title, autofocus: true %>
-      </li>
-      <li class="required">
-        <%= f.label :description %>
-        <%= f.text_area :description, cols: 40, rows: 7 %>
-      </li>
-      <li class="required">
-        <%= f.label :goal %>
-        <%= f.text_field :goal, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :market, 'Market Potential' %>
-        <%= f.text_field :market, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :category %>
-        <%= f.text_field :category %>
-      </li>
+  <div class='form-horizontal' role='form'>
+  <div class="form-group">
 
-    </ol>
-    <p>
-      <%= f.submit %>
-      <%= link_to "Cancel", ideas_path, class: 'button' %>
-    </p>
-  </fieldset>
+  <div class='row'>
+        <%= f.label :title, "Project Title:", class: 'col-md-3 control-label' %>
+        <%= f.text_field :title, autofocus: true, class: "col-md-8 form-control" %>
+      </div>
+      <div class='row'>
+        <%= f.label :description, class: 'col-md-2 control-label' %>
+        <%= f.text_area :description, cols: 40, rows: 7, class: "col-md-10 form-control" %>
+      </div>
+      <div class='row'>
+        <%= f.label :goal, class: 'col-md-1 control-label' %>
+        <%= f.text_field :goal, size: 30, class: "col-md-10 form-control" %>
+      </div>
+      <div class='row'>
+        <%= f.label :market, 'Market Potential', class: 'col-md-3 control-label' %>
+        <%= f.text_field :market, size: 30, class: "col-md-10 form-control" %>
+      </div>
+      <div class='row'>
+        <%= f.label :category, class: 'col-md-1 control-label' %>
+        <%= f.text_field :category, class: "col-md-10 form-control" %>
+      </div>
+
+
+    <div class='row'><br>
+      <%= f.submit class: "btn btn-success" %>
+      <%= link_to "Cancel", ideas_path, class: "btn btn-warning" %>
+    </div>
+
 <% end %>
+<div class='col-md-3'></div>
+</div>
+</div>
+</div>

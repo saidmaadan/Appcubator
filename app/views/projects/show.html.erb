@@ -1,11 +1,29 @@
 <div class="container">
-<article>
+<div class="row">
 
-<%= link_to "All Projects", projects_path %>
-  <header>
+<article>
+ <header>
     <h1><%= @project.name %></h1>
-    <%= image_tag @project.screenshot.url(:medium) %>
+
   </header>
+
+<div class='col-md-3'><br><br>
+<%= image_tag @project.screenshot.url(:medium) %>
+<p>
+
+<h3>Average Review</h3>
+  <h4>
+    <%= format_average_stars(@project) %>
+  </h4>
+<h2><%= pluralize(@project.reviews.size, "Review") %></h2>
+<%= link_to "Read More Review...",
+            project_reviews_path(@project), class: "btn btn-info btn-lg" %>
+
+<h3><%= link_to "Review this Project", new_project_review_path(@project), class: 'button ok review' %></h3>
+</p>
+</div>
+<div class='col-md-6'>
+
   <h2>Description</h2>
   <p>
     <%= @project.description %>
@@ -30,26 +48,26 @@
   <p>
     <%= @project.web_url %>
   </p>
-   <h3>Average Review</h3>
-  <p>
-    <%= format_average_stars(@project) %>
-  </p>
-
+</div>
+<div class='col-md-3'><br>
   <nav>
+<%= link_to "All Projects", projects_path, class: 'btn btn-warning' %>
+<% if current_user %>
 
-  <%= link_to "All Projects", projects_path %> |
-  <%= link_to "Edit", edit_project_path(@project) %> |
+  <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %><br>
+<br>  <%= link_to 'Add Your Startup Project', new_project_path, class: 'btn btn-success' %>
+  <% end %>
   <% if current_user_admin? %>
-  <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' } %> |
+  <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>
 </nav>
 <p>
-    <%= pluralize(@followers.count, 'follow') %>
+    <h2><%= pluralize(@followers.count, 'follow') %></h2>
   </p>
 
 <% if current_user %>
 
-  <%= button_to "Follow", project_follows_path(@project) %>
+  <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-primary btn-lg' %>
   <% end %>
   <% if @followers.any? %>
   <h3>Followers</h3>
@@ -80,13 +98,10 @@
       <% end %>
     </ol>
     <% end %>
-<p>
-  Read More Review: &nbsp <%= link_to pluralize(@project.reviews.size, "review"),
-            project_reviews_path(@project) %> |
-<%= link_to "Review this Project", new_project_review_path(@project), class: 'button ok review' %>
-</p>
-</article>
+
 </div>
+</article>
+</div></div>
 
 
 
