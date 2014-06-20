@@ -8,8 +8,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-      <%= link_to ' AppCubator', root_path, class: 'navbar-brand fa fa-cubes fa-2x' %>
+    <% if current_user %>
+    <%= link_to ' AppCubator', current_user, class: 'navbar-brand fa fa-cubes fa-2x' %>
+    <% else %>
+      <%= link_to ' AppCubator', root_path, class: 'navbar-brand fa fa-cubes fa-2x' %><% end %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
