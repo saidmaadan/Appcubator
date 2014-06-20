@@ -33,6 +33,7 @@
 
      <% if current_user %>
       <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>&nbsp
+      <%= link_to "All Startup Idea", ideas_path, class: 'btn btn-primary' %>
       <%= link_to 'Post New Startup Idea', new_idea_path, class: 'btn btn-success' %>
       <% end %>
       <% if current_user_admin? %>

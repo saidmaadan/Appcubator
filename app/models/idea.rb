@@ -5,7 +5,9 @@ class Idea < ActiveRecord::Base
 
   validates :description, length: { minimum: 25 }
 
-
+def self.recent
+    order("created_at desc")
+  end
 
 end
 

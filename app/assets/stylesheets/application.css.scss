@@ -52,8 +52,20 @@ ol li{
 // }
 footer{
   width: 100%;
-  min-height: 200px;
-  // background: #eee;
+  height: 250px;
+  background: #eee;
   margin-bottom: 0;
   border-top: 3px solid #eee;
+}
+footer a:link{
+  color: #77B5A8;
+}
+footer a:visited {
+  color: #77B5A8;
+}
+footer a:hover{
+  color: #807A7E;
+}
+footer a:active {
+  color: #BF526A;
 }

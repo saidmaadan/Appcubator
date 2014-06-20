@@ -1,3 +1,46 @@
 <footer>
+<div class='container'>
+<br><br>
+<div class='bottom'>
+<div class='row'>
+<div class='col-md-2'>
+<br><br>
+	<p><% if current_user %>
+    <%= link_to ' ', current_user, class: 'navbar-brand fa fa-cubes fa-4x' %>
+    <% else %>
+      <%= link_to ' ', root_path, class: 'navbar-brand fa fa-cubes fa-4x' %><% end %></p>
+</div>
+<div class='col-md-3'>
+<br>
+	<h4>
+	<%= link_to '   About', '#', class: 'fa fa-info' %><br>
+	<% if current_user %>
+	 <%= link_to ' Add Project', new_project_path, class: 'fa fa-folder-open' %><br>
+      <%= link_to ' Post Startup Idea', new_idea_path, class: 'fa fa-folder-open-o' %><br>
+      <%= link_to " View Projects", projects_path, class: 'fa fa-database' %>
+      <%= link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %>
+      <% else %>
+    
+      <%= link_to ' Sign In', new_session_path, class: 'fa fa-unlock-alt' %><br>
+      <%= link_to ' Sign Up', root_path, class: 'fa fa-lock' %><br></h4><% end %>
+</div>
+<div class='col-md-3'>
+	<h3>Connect with us!</h3>
+					<p>Don't hesitate to connect with us<br> on your favourite social networks...</p>
+					<a href = "https://facebook.com/saidmaadan"><i class="fa fa-facebook fa-2x"></i></a>
+					<a href = "https://github.com/saidmaadan"><i class="fa fa-github fa-2x"></i></a>
+					<a href = "https://twitter.com/saidmaadan"><i class="fa fa-twitter fa-2x"></i></a>
+					<a href = "https://youtube.com/saidmaadan"><i class="fa fa-youtube fa-2x"></i></a>
+					<a href = "https://dribbble.com/saidmaadan"><i class="fa fa-dribbble fa-2x"></i></a>
+					<a href = "https://google.com/saidmaadan"><i class="fa fa-google-plus-square fa-2x"></i></a>
+
+</div>
+<div class='col-md-4'>
+	<h3>Get in touch...</h3>
+				<p>Have a question about a particular startup project or idea, just curious to know our process, or how the whole system work generally? Drop us a note or give us a call; we’re happy to answer all your questions --></p></div>
+</div>
+</div>
+</div>
+</div>
 
 </footer>
