@@ -72,11 +72,11 @@
 
 <div class='col-md-3'>
   <br><br>
-  <p><%= link_to "View Projects", projects_path, class: 'btn btn-warning' %></p>
-  <p><%= link_to "View Startup Idea", ideas_path, class: 'btn btn-primary' %></p>
+  <p><%= link_to "View Projects", projects_path, class: 'btn btn-warning' %>
+  <%= link_to "View Ideas", ideas_path, class: 'btn btn-primary' %></p>
 <% if current_user?(@user) %>
-<p><%= link_to 'Add Your Startup Project', new_project_path, class: 'btn btn-success' %></p>
-  <p> <%= link_to 'Post Your Startup Idea Project', new_idea_path, class: 'btn btn-info' %></p>
+<p><%= link_to ' Add Project ', new_project_path, class: 'btn btn-success' %>
+   <%= link_to ' Post Idea ', new_idea_path, class: 'btn btn-info' %></p>
 
   <% end %>
   <p>

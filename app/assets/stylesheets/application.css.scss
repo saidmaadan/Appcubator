@@ -17,9 +17,18 @@
 
  @import "bootstrap";
 
- body{
+ * {
   margin: 0;
- }
+}
+html, body {
+  height: 100%;
+}
+// main{
+//   min-height: 100%;
+//   height: auto !important;
+//   height: 100%;
+//   margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+// }
  .error_message{
    ul li{
     color: red;
@@ -32,6 +41,7 @@
    }
  }
  main{
+  min-height: 100%;
   margin-top: 75px;
  }
 ol li{
@@ -50,12 +60,17 @@ ol li{
 // .navbar-collapse:hover{
 //   background: red;
 // }
+footer, .push {
+clear: both;
+}
+
 footer{
   width: 100%;
   height: 250px;
   background: #eee;
   margin-bottom: 0;
   border-top: 3px solid #eee;
+  clear: both;
 }
 footer a:link{
   color: #77B5A8;
