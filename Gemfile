@@ -1,10 +1,16 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# group :development, :test do
+#   gem 'sqlite3'
+# end
+
+
+gem 'pg'
+# end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
@@ -23,8 +29,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
+gem "rmagick", :require => 'RMagick'
+#gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'aws-sdk'
+gem 'figaro'
+
 
 group :development do
   gem 'rails_layout'
@@ -36,6 +46,12 @@ end
 group :test, :development do
   gem "rspec-rails"
 end
+
+group :production do
+  gem 'rails_12factor'
+end
+
+gem 'nifty-generators'
 
 group :test do
   gem "capybara"

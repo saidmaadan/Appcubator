@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140618224349) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "checkins", force: true do |t|
     t.string   "skills"
     t.integer  "experience"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140618224349) do
     t.integer  "user_id"
   end
 
-  add_index "checkins", ["idea_id"], name: "index_checkins_on_idea_id"
+  add_index "checkins", ["idea_id"], name: "index_checkins_on_idea_id", using: :btree
 
   create_table "follows", force: true do |t|
     t.integer  "project_id"
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140618224349) do
     t.datetime "updated_at"
   end
 
-  add_index "follows", ["project_id"], name: "index_follows_on_project_id"
-  add_index "follows", ["user_id"], name: "index_follows_on_user_id"
+  add_index "follows", ["project_id"], name: "index_follows_on_project_id", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "ideas", force: true do |t|
     t.string   "title"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140618224349) do
     t.integer  "user_id"
   end
 
-  add_index "reviews", ["project_id"], name: "index_reviews_on_project_id"
+  add_index "reviews", ["project_id"], name: "index_reviews_on_project_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
