@@ -23,15 +23,15 @@
   
  
   <div class="form-group">   
-        <%# f.label :sex, class: 'col-sm-2 control-label' %>
-         <%# f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
+        <%= f.label :sex, class: 'col-sm-2' %>
+         <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
       </div>
      <div class="form-group">
-          <%= f.label :birthdate, class: 'col-sm-2 control-label' %>
-          <%= f.datetime_select :birthdate, class: 'col-sm-10 form-control' %>
+          <%= f.label :birthdate, class: 'col-sm-2' %>
+          <%= f.datetime_select :birthdate, class: 'col-sm-10' %>
      </div>
     <div class="form-group">
-        <%= f.label :marital, class: 'col-sm-2 control-label' %>
+        <%= f.label :marital, class: 'col-sm-2' %>
         <%= f.select :marital, User::MARITAL, prompt: "Select One", class: 'col-sm-10' %>
       </div>
       <div class="form-group">
