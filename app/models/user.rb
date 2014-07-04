@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   SEX = ['Male', 'Female', "I'll rather not say"]
   #validates :sex, inclusion: { in: SEX }
 
-  MARITAL_STATUS = ['Single', 'Married', 'Divorced', "I'll rather not say"]
+  MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
   #validates :marital_status, inclusion: { in: MARITAL_STATUS }
 
 
