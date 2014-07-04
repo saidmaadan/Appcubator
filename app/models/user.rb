@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
                      format: /\A[A-Z0-9]+\z/i,
                      uniqueness: { case_sensitive: false }
 
-  SEX = ['Male', 'Female', "I'll rather not say"]
-  #validates :sex, inclusion: { in: SEX }
+  # SEX = ['Male', 'Female', "I'll rather not say"]
+  # #validates :sex, inclusion: { in: SEX }
 
-  MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
-  #validates :marital_status, inclusion: { in: MARITAL_STATUS }
+  # MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
+  # #validates :marital_status, inclusion: { in: MARITAL_STATUS }
 
 
   def gravatar_id
