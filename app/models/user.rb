@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                      format: /\A[A-Z0-9]+\z/i,
                      uniqueness: { case_sensitive: false }
 
-  SEX = ['Male', 'Female', "I'll rather not say"]
+  # SEX = ['Male', 'Female', "I'll rather not say"]
   #validates :sex, inclusion: { in: SEX }
 
   MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
