@@ -20,7 +20,7 @@
    <fieldset>
 
    <form class="form-horizontal" role="form">
-  <div class="form-group">
+  
  
   <div class="form-group">   
         <%= f.label :sex, class: 'col-sm-2 control-label' %>
@@ -129,7 +129,7 @@
       <p>
       <div class="form-group">
       <div class='col-sm-5'></div>
-        <%= f.submit "Update Profile", class: 'col-sm-3 btn btn-default' %></div></div></p>
+        <%= f.submit "Update Profile", class: 'col-sm-3 btn btn-default' %></div></p>
   </fieldset>
 <% end %></p><% end %>
   </div>
@@ -140,12 +140,8 @@
   <%= render "shared/errors", object: @user %>
   <fieldset>
 
-   <form class="form-horizontal" role="form">
-  <div class="form-group">
- 
-  <div class="form-group">   
-      
-      </div>
+   <form class="form-horizontal" role="form">  
+    
 
       <div class="form-group">
       <%= f.label :name, class: 'col-sm-2 control-label' %>
@@ -187,7 +183,6 @@
         <%= f.submit "Update Account" %>
       <% end %></div>
     </p>
-    </div>
   </fieldset>
 <% end %>
 <% end %>
