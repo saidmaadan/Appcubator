@@ -42,11 +42,11 @@
   </p>
   <h3>GitHub</h3>
   <p>
-    <%= @project.github_link %>
+    <%= link_to @project.github_link, 'GitHub ' %>
   </p>
   <h3>Website</h3>
   <p>
-    <%= link_to @project.web_url %>
+    <%= link_to @project.web_url, 'Website' %>
   </p>
 </div>
 <div class='col-md-3'><br>

@@ -1,22 +1,215 @@
 <div class='container'>
-  <div class='row'>
-  <br><br>
-  <div class='col-md-3'>
-<br>
-  <p><%= profile_image_for(@user) %></p>
+  <div class='row user_main'>
+<br><br>
+
+  <div class="col-xs-12 col-md-8 user_main_left">
+  
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
+  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
+  <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="dash"></div>
+  <div class="tab-pane" id="profile">
+ <% if current_user?(@user) %>
+     <p><%= form_for(@user) do |f| %>
+   <fieldset>
+
+   <form class="form-horizontal" role="form">
+  <div class="form-group">
+ 
+  <div class="form-group">   
+        <%= f.label :sex, class: 'col-sm-2 control-label' %>
+         <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
+      </div>
+     <div class="form-group">
+          <%= f.label :birthdate, class: 'col-sm-2 control-label' %>
+          <%= f.datetime_select :birthdate, class: 'col-sm-10 form-control' %>
+     </div>
+    <div class="form-group">
+        <%= f.label :marital, class: 'col-sm-2 control-label' %>
+        <%= f.select :marital, User::MARITAL_STATUS, prompt: "Select One", class: 'col-sm-10' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number: 234-9999-0000' %>
+      </div></div><br/>
+      <div class="form-group">
+        <%= f.label :location, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :location, class: 'form-control', placeholder: 'Your Address' %>
+      </div></div><br/>
+      
+      <div class="form-group">
+        <%= f.label :school, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <div class='row'>
+        <div class="col-sm-12">
+        <%= f.text_field :school, class: 'col-sm-10 form-control', placeholder: "School*" %></div>
+        </div>
+        <div class='row'>
+        <div class="col-sm-6">
+        <%= f.text_field :degree, class: 'col-sm-10 form-control', placeholder: "Degree(eg BSC)" %></div>
+        <div class="col-sm-3">
+        <%= f.text_field :start_year, class: 'col-sm-10 form-control', placeholder: "Start Year" %></div>
+        <div class="col-sm-3">
+        <%= f.text_field :grad_year, class: 'col-sm-10 form-control', placeholder: "Grad Year" %></div>
+
+     </div></div></div><br>
+     <div class="form-group">
+        <%= f.label :work, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_field :work, class: 'col-sm-10 form-control', placeholder: "Job Title" %>
+     </div></div><br>
+     <div class="form-group">
+        <%= f.label :about, 'Describe Yourself', cols: 50, rows: 8, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_area :about, class: 'col-sm-10 form-control', placeholder: 'Tell us about yourself. What you are working on or your dream startup project' %>
+      </div></div>
+      <div class="form-group">
+        <%= f.label :achievements, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_field :achievements, class: 'col-sm-10 form-control', placeholder: 'Show off what you have accomplished in the past' %>
+      </div></div>
+      <div class="form-group">
+        <%= f.label :specialization, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_field :specialization, class: 'col-sm-10 form-control', placeholder: 'Backend, FrontEnd, Ruby on Rails, Javascript Developer' %>
+      </div></div>
+      <div class="form-group">
+        <%= f.label :powerpoint, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_field :powerpoint, size: 40, class: 'col-sm-10 form-control', placeholder: 'What is your inspiration' %>
+      </div></div>
+      <div class="form-group">
+        <%= f.label :github, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <div class="input-group">
+      <div class="input-group-addon">https://github.com/</div>
+        <%= f.text_field :github, size: 40, class: 'col-sm-10 form-control', placeholder: 'Your username' %>
+      </div></div></div>
+      <div class="form-group">
+        <%= f.label :linkedin, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <div class="input-group">
+      <div class="input-group-addon">https://linkedin.com/in/</div>
+        <%= f.text_field :linkedin, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+      </div></div></div>
+      <div class="form-group">
+        <%= f.label :twitter, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <div class="input-group">
+      <div class="input-group-addon">https://twitter.com/</div>
+        <%= f.text_field :twitter, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+      </div></div></div>
+      <div class="form-group">
+        <%= f.label :dribbble, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <div class="input-group">
+      <div class="input-group-addon">https://dribbble.com/</div>
+        <%= f.text_field :dribbble, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+      </div></div></div>
+      <div class="form-group">
+        <%= f.label :codeeval, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <div class="input-group">
+      <div class="input-group-addon">https://codeeval.com/public/</div>
+        <%= f.text_field :codeeval, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+      </div></div></div>
+      <div class="form-group">
+        <%= f.label :video, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= f.text_field :video, size: 40, placeholder: 'Enter Youtube video id e.g "BxRQNO8vg2Y"', class: 'col-sm-10 form-control' %>
+      </div></div>
+      <p>
+      <div class="form-group">
+      <div class='col-sm-5'></div>
+        <%= f.submit "Update Profile", class: 'col-sm-3 btn btn-default' %></div></div></p>
+  </fieldset>
+<% end %></p><% end %>
+  </div>
+  <div class="tab-pane" id="settings">
+  <br>
+  <% if current_user?(@user) %>
+    <%= form_for(@user) do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset>
+
+   <form class="form-horizontal" role="form">
+  <div class="form-group">
+ 
+  <div class="form-group">   
+      
+      </div>
+
+      <div class="form-group">
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">   
+        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name", class: 'form-control' %></div></div>
+
+     <div class="form-group">
+      <%= f.label :username, class: 'col-sm-2 control-label' %>
+       <div class="col-sm-10">   
+          <%= f.text_field :username, size: 50,
+                    placeholder: "Username Alphanumeric characters only!", class: 'form-control' %>
+                    </div></div>
+
+      <div class="form-group">
+      <%= f.label :email, class: 'col-sm-2 control-label' %>
+       <div class="col-sm-10">   
+        <%= f.email_field :email, size: 50, placeholder: "Email Address", class: 'form-control' %>
+        </div></div>
+      
+      <div class="form-group">
+      <%= f.label :password, class: 'col-sm-2 control-label' %>
+       <div class="col-sm-10">   
+        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: 'form-control' %>
+        </div></div>
+
+        <div class="form-group">
+      <%= f.label :password_confirmation, class: 'col-sm-2 control-label' %>
+       <div class="col-sm-10">   
+        <%= f.password_field :password_confirmation, size: 40, placeholder: "Confirm Password", class: 'form-control' %>
+        </div></div>
+
+    <p>
+    <div class="form-group">
+    <div class="col-sm-7"></div> 
+    <div class="col-sm-7"> 
+      <% if @user.new_record? %>
+        <%= f.submit "Create Account" %>
+      <% else %>
+        <%= f.submit "Update Account" %>
+      <% end %></div>
+    </p>
+    </div>
+  </fieldset>
+<% end %>
+<% end %>
+  </div>
+  <div class="tab-pane" id="about"></div>
+</div></div>
+
+<div class="col-xs-12 col-md-4 user_main_right">
+
+  <p><%= profile_image_for@user, size: 350 %></p>
+    <div class='row'>
+    <div class="col-xs6- col-md-7">
+  <h3>Member Since</h3></div>
+  <div class="col-xs-6 col-md-5">
+ <h3> <%= @user.created_at.strftime("%B %Y") %></h3>
+  </div></div>
+
   <h2><%= @user.name %></h2>
     <h4><%= mail_to(@user.email) %></h4>
-  <h3>Member Since</h3>
-  <p>
-  <%= @user.created_at.strftime("%B %Y") %>
-</p>
 
   <% if current_user?(@user) %>
-    <%= link_to 'Setting', edit_user_path(@user), class: 'btn btn-info' %>
-    <%= link_to 'Delete Account', @user,
-                method: :delete,
-                data: { confirm: 'Are you sure you want to permanently delete your account?' },
-                class: 'btn btn-danger' %>
+    
     <% end %>
 
   </nav>
@@ -33,9 +226,7 @@
    <% end %>
   </ol>
 <% end %>
-
-  </div>
-    <div class='col-md-6'>
+  
 
      <% if @reviews.any? %>
     <h3>My Reviews on Startup Project</h3><br>
@@ -57,23 +248,8 @@
        </div>
        <% end %>
        <% end %>
-       </div>
 
 
-
-
-
-
-
-
-
-    
-
-
-<div class='col-md-3'>
-  <br><br>
-  <p><%= link_to "View Projects", projects_path, class: 'btn btn-warning' %>
-  <%= link_to "View Ideas", ideas_path, class: 'btn btn-primary' %></p>
 <% if current_user?(@user) %>
 <p><%= link_to ' Add Project ', new_project_path, class: 'btn btn-success' %>
    <%= link_to ' Post Idea ', new_idea_path, class: 'btn btn-info' %></p>
@@ -94,5 +270,5 @@
 
 </div>
 </div>
-
 </div>
+
