@@ -57,9 +57,9 @@
   <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %><br>
 <br>  <%= link_to 'Add Your Startup Project', new_project_path, class: 'btn btn-success' %>
   <% end %>
-  <% if current_user_admin? %>
+  <%# if current_user_admin? %>
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-<% end %>
+<%# end %>
 </nav>
 <p>
     <h2><%= pluralize(@followers.count, 'follow') %></h2>

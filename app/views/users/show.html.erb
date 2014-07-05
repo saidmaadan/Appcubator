@@ -165,44 +165,49 @@
   <div class='form-horizontal' role='form'>
   <div class="form-group">
   <div class='row'>
-  <div class='col-md-2'>
+  <div class='col-md-1'></div>
+  <div class='col-md-3'>
       <%= f.label :name, 'Full Name', class: 'control-label' %></div>
-      <div class="col-md-10">   
+      <div class="col-md-7">   
         <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name", class: 'form-control' %></div></div>
 
      <div class='row'>
-      <div class='col-md-2'>
+     <div class='col-md-1'></div>
+      <div class='col-md-3'>
       <%= f.label :username, class: 'control-label' %></div>
-       <div class="col-md-10">   
+       <div class="col-md-7">   
           <%= f.text_field :username, size: 50,
                     placeholder: "Username Alphanumeric characters only!", class: 'form-control' %>
                     </div></div>
 
       <div class='row'>
-      <div class='col-md-2'>
+      <div class='col-md-1'></div>
+      <div class='col-md-3'>
       <%= f.label :email, class: 'control-label' %></div>
-       <div class="col-md-10">   
+       <div class="col-md-7">   
         <%= f.email_field :email, size: 50, placeholder: "Email Address", class: 'form-control' %>
         </div></div>
       
       <div class='row'>
-      <div class='col-md-2'>
+      <div class='col-md-1'></div>
+      <div class='col-md-3'>
       <%= f.label :password, 'Password', class: 'control-label' %></div>
-       <div class="col-sm-10">   
+       <div class="col-sm-7">   
         <%= f.password_field :password, size: 50, placeholder: "Minimum of 8 characters", class: 'form-control' %>
         </div></div>
 
        <div class='row'>
-      <div class='col-md-2'>
+       <div class='col-md-1'></div>
+      <div class='col-md-3'>
       <%= f.label :password_confirmation, class: 'control-label' %></div>
-       <div class="col-md-10">   
-        <%= f.password_field :password_confirmation, size: 40, placeholder: "Confirm Password", class: 'form-control' %>
+       <div class="col-md-7">   
+        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: 'form-control' %>
         </div></div>
 
     <p>
     <div class='row'>
-      <div class='col-md-2'></div>
-    <div class="col-md-8"> 
+      <div class='col-md-4'></div>
+    <div class="col-md-7"> 
       <% if @user.new_record? %>
         <%= f.submit "Create Account" %>
       <% else %>
@@ -219,6 +224,7 @@
 <div class="col-xs-12 col-md-4 user_main_right">
 
   <p><%= profile_image_for@user, size: 350 %></p>
+  <div class="well">
   <h3><%= @user.name %></h3>
   <h4><%= mail_to@user.email, "Contact Me" %></h4>
   <h4><%= @user.specialization %></h4>
@@ -228,7 +234,7 @@
   <h4>Member Since</h4></div>
   <div class="col-xs-6 col-md-5">
  <h4> <%= @user.created_at.strftime("%B %Y") %></h4>
-  </div></div>
+  </div></div></div>
 
   <% if current_user?(@user) %>
     

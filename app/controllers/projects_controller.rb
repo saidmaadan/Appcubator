@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :require_signin, except: [:index, :show]
-  #before_action :correct_user, except: [:index, :show, :edit]
-  before_action :require_admin, only: [:delete]
+  before_action :correct_user, except: [:index, :show]
+  #before_action :require_admin, only: [:delete]
 
   def index
     @projects = Project.recent

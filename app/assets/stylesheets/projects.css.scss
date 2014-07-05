@@ -3,7 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap";
-.ico{
-  height: 500px;
-}
+// .ico{
+//   height: 500px;
+// }
 
+.project_post{
+	width: 100%;
+	height: 100%;
+	border-bottom: 3px solid #eee;
+	border-radius: 5px;
+}
