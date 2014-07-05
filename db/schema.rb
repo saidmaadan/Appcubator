@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704164645) do
+ActiveRecord::Schema.define(version: 20140704221203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorizations", ["skill_id"], name: "index_categorizations_on_skill_id", using: :btree
+  add_index "categorizations", ["user_id"], name: "index_categorizations_on_user_id", using: :btree
 
   create_table "checkins", force: true do |t|
     t.string   "skills"
@@ -75,6 +85,12 @@ ActiveRecord::Schema.define(version: 20140704164645) do
   end
 
   add_index "reviews", ["project_id"], name: "index_reviews_on_project_id", using: :btree
+
+  create_table "skills", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

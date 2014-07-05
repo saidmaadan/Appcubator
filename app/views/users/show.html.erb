@@ -18,118 +18,142 @@
  <% if current_user?(@user) %>
      <p><%= form_for(@user) do |f| %>
    <fieldset>
-
-   <form class="form-horizontal" role="form">
-  
- 
-  <div class="form-group">   
-        <%# f.label :sex, class: 'col-sm-2' %>
-         <%# f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
-      </div>
-     <div class="form-group">
-          <%# f.label :birthdate, class: 'col-sm-2' %>
-          <%# f.datetime_select :birthdate, class: 'col-sm-10' %>
-     </div>
-    <div class="form-group">
-        <%# f.label :marital, class: 'col-sm-2' %>
-        <%# f.select :marital, User::MARITAL, prompt: "Select One", class: 'col-sm-10' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :phone, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+  <div class='form-horizontal' role='form'>
+  <div class="form-group">
+  <div class='row'>
+  <div class='col-md-3'>
+        <%= f.label :sex, class: 'control-label' %></div>
+        <div class='col-md-9'>
+         <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
+      </div></div>
+      <div class='row'>
+      <div class='col-md-3'>
+          <%= f.label :birthdate, class: 'control-label' %></div>
+          <div class='col-md-9'>
+          <%= f.datetime_select :birthdate, class: 'form-control' %>
+     </div></div>
+     <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :marital, class: 'control-label' %></div>
+        <div class='col-md-9'>
+        <%= f.select :marital, User::MARITAL, prompt: "Select One", class: 'form-control' %>
+      </div></div>
+     <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :phone, class: 'control-label' %></div>
+        <div class="col-md-9">
         <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number: 234-9999-0000' %>
-      </div></div><br/>
-      <div class="form-group">
-        <%= f.label :location, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      </div></div><br>
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :location, class: 'control-label' %></div>
+      <div class="col-md-9">
         <%= f.text_field :location, class: 'form-control', placeholder: 'Your Address' %>
       </div></div><br/>
       
-      <div class="form-group">
-        <%= f.label :school, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :school, class: 'control-label' %></div>
+        <div class="col-md-9">
         <div class='row'>
-        <div class="col-sm-12">
-        <%= f.text_field :school, class: 'col-sm-10 form-control', placeholder: "School*" %></div>
+        <div class="col-md-12">
+        <%= f.text_field :school, class: 'form-control', placeholder: "School*" %></div>
         </div>
         <div class='row'>
-        <div class="col-sm-6">
-        <%= f.text_field :degree, class: 'col-sm-10 form-control', placeholder: "Degree(eg BSC)" %></div>
-        <div class="col-sm-3">
-        <%= f.text_field :start_year, class: 'col-sm-10 form-control', placeholder: "Start Year" %></div>
-        <div class="col-sm-3">
-        <%= f.text_field :grad_year, class: 'col-sm-10 form-control', placeholder: "Grad Year" %></div>
+        <div class="col-md-6">
+        <%= f.text_field :degree, class: 'form-control', placeholder: "Degree(eg BSC)" %></div>
+        <div class="col-md-3">
+        <%= f.text_field :start_year, class: 'form-control', placeholder: "Start Year" %></div>
+        <div class="col-md-3">
+        <%= f.text_field :grad_year, class: 'form-control', placeholder: "Grad Year" %></div>
 
      </div></div></div><br>
-     <div class="form-group">
-        <%= f.label :work, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-        <%= f.text_field :work, class: 'col-sm-10 form-control', placeholder: "Job Title" %>
+     <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :work, class: 'control-label' %></div>
+        <div class="col-md-9">
+        <%= f.text_field :work, class: 'form-control', placeholder: "Job Title" %>
      </div></div><br>
-     <div class="form-group">
-        <%= f.label :about, 'Describe Yourself', cols: 50, rows: 8, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-        <%= f.text_area :about, class: 'col-sm-10 form-control', placeholder: 'Tell us about yourself. What you are working on or your dream startup project' %>
-      </div></div>
-      <div class="form-group">
-        <%= f.label :achievements, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-        <%= f.text_field :achievements, class: 'col-sm-10 form-control', placeholder: 'Show off what you have accomplished in the past' %>
-      </div></div>
-      <div class="form-group">
-        <%= f.label :specialization, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-        <%= f.text_field :specialization, class: 'col-sm-10 form-control', placeholder: 'Backend, FrontEnd, Ruby on Rails, Javascript Developer' %>
-      </div></div>
-      <div class="form-group">
-        <%= f.label :powerpoint, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-        <%= f.text_field :powerpoint, size: 40, class: 'col-sm-10 form-control', placeholder: 'What is your inspiration' %>
-      </div></div>
-      <div class="form-group">
-        <%= f.label :github, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+     <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :about, 'Describe Yourself', cols: 50, rows: 8, class: 'control-label' %></div>
+        <div class="col-md-9">
+        <%= f.text_area :about, class: 'form-control', placeholder: 'Tell us about yourself. What you are working on or your dream startup project' %>
+      </div></div><br>
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :achievements, class: 'control-label' %></div>
+        <div class="col-md-9">
+        <%= f.text_field :achievements, class: 'form-control', placeholder: 'Show off what you have accomplished in the past' %>
+      </div></div><br>
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :specialization, class: 'control-label' %></div>
+        <div class="col-md-9">
+        <%= f.text_field :specialization, class: 'form-control', placeholder: 'Backend, FrontEnd, Ruby on Rails, Javascript Developer' %>
+      </div></div><br>
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :powerpoint, class: 'control-label' %></div>
+        <div class="col-md-9">
+        <%= f.text_field :powerpoint, size: 40, class: 'form-control', placeholder: 'What is your inspiration' %>
+      </div></div><br>
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :github, class: 'control-label' %></div>
+        <div class="col-md-9">
         <div class="input-group">
       <div class="input-group-addon">https://github.com/</div>
-        <%= f.text_field :github, size: 40, class: 'col-sm-10 form-control', placeholder: 'Your username' %>
+        <%= f.text_field :github, size: 40, class: 'form-control', placeholder: 'Your username' %>
       </div></div></div>
-      <div class="form-group">
-        <%= f.label :linkedin, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :linkedin, class: 'control-label' %></div>
+        <div class="col-md-9">
         <div class="input-group">
       <div class="input-group-addon">https://linkedin.com/in/</div>
-        <%= f.text_field :linkedin, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+        <%= f.text_field :linkedin, size: 40, class: 'form-control', placeholder: 'username' %>
       </div></div></div>
-      <div class="form-group">
-        <%= f.label :twitter, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :twitter, class: 'control-label' %></div>
+        <div class="col-md-9">
         <div class="input-group">
       <div class="input-group-addon">https://twitter.com/</div>
-        <%= f.text_field :twitter, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+        <%= f.text_field :twitter, size: 40, class: 'form-control', placeholder: 'username' %>
       </div></div></div>
-      <div class="form-group">
-        <%= f.label :dribbble, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :dribbble, class: 'control-label' %></div>
+        <div class="col-md-9">
         <div class="input-group">
       <div class="input-group-addon">https://dribbble.com/</div>
-        <%= f.text_field :dribbble, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
+        <%= f.text_field :dribbble, size: 40, class: 'form-control', placeholder: 'username' %>
       </div></div></div>
-      <div class="form-group">
-        <%= f.label :codeeval, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :codeeval, class: 'control-label' %></div>
+        <div class="col-md-9">
         <div class="input-group">
       <div class="input-group-addon">https://codeeval.com/public/</div>
-        <%= f.text_field :codeeval, size: 40, class: 'col-sm-10 form-control', placeholder: 'username' %>
-      </div></div></div>
-      <div class="form-group">
-        <%= f.label :video, class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-        <%= f.text_field :video, size: 40, placeholder: 'Enter Youtube video id e.g "BxRQNO8vg2Y"', class: 'col-sm-10 form-control' %>
+        <%= f.text_field :codeeval, size: 40, class: 'form-control', placeholder: 'username' %>
+      </div></div></div><br>
+      <div class='row'>
+      <div class='col-md-3'>
+        <%= f.label :video, class: 'control-label' %></div>
+        <div class="col-md-9">
+        <%= f.text_field :video, size: 40, placeholder: 'Enter Youtube video id e.g "BxRQNO8vg2Y"', class: 'form-control' %>
+      </div></div><br>
+      <div class='row'>
+      <div class='col-md-1'>Skills:</div>
+      <div class='col-md-11'>
+      <%= f.collection_check_boxes(:skill_ids, Skill.all, :id, :name) %>
       </div></div>
       <p>
-      <div class="form-group">
-      <div class='col-sm-5'></div>
-        <%= f.submit "Update Profile", class: 'col-sm-3 btn btn-default' %></div></p>
+      <div class='row'>
+      <div class='col-md-4'></div>
+      <div class='col-md-5'>
+        <%= f.submit "Update Profile", class: 'btn btn-default' %></div></div></p>
   </fieldset>
 <% end %></p><% end %>
   </div>
@@ -137,52 +161,54 @@
   <br>
   <% if current_user?(@user) %>
     <%= form_for(@user) do |f| %>
-  <%= render "shared/errors", object: @user %>
   <fieldset>
-
-   <form class="form-horizontal" role="form">  
-    
-
-      <div class="form-group">
-      <%= f.label :name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">   
+  <div class='form-horizontal' role='form'>
+  <div class="form-group">
+  <div class='row'>
+  <div class='col-md-2'>
+      <%= f.label :name, 'Full Name', class: 'control-label' %></div>
+      <div class="col-md-10">   
         <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name", class: 'form-control' %></div></div>
 
-     <div class="form-group">
-      <%= f.label :username, class: 'col-sm-2 control-label' %>
-       <div class="col-sm-10">   
+     <div class='row'>
+      <div class='col-md-2'>
+      <%= f.label :username, class: 'control-label' %></div>
+       <div class="col-md-10">   
           <%= f.text_field :username, size: 50,
                     placeholder: "Username Alphanumeric characters only!", class: 'form-control' %>
                     </div></div>
 
-      <div class="form-group">
-      <%= f.label :email, class: 'col-sm-2 control-label' %>
-       <div class="col-sm-10">   
+      <div class='row'>
+      <div class='col-md-2'>
+      <%= f.label :email, class: 'control-label' %></div>
+       <div class="col-md-10">   
         <%= f.email_field :email, size: 50, placeholder: "Email Address", class: 'form-control' %>
         </div></div>
       
-      <div class="form-group">
-      <%= f.label :password, class: 'col-sm-2 control-label' %>
+      <div class='row'>
+      <div class='col-md-2'>
+      <%= f.label :password, 'Password', class: 'control-label' %></div>
        <div class="col-sm-10">   
-        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: 'form-control' %>
+        <%= f.password_field :password, size: 50, placeholder: "Minimum of 8 characters", class: 'form-control' %>
         </div></div>
 
-        <div class="form-group">
-      <%= f.label :password_confirmation, class: 'col-sm-2 control-label' %>
+       <div class='row'>
+      <div class='col-md-2'>
+      <%= f.label :password_confirmation, class: 'control-label' %></div>
        <div class="col-sm-10">   
         <%= f.password_field :password_confirmation, size: 40, placeholder: "Confirm Password", class: 'form-control' %>
         </div></div>
 
     <p>
-    <div class="form-group">
-    <div class="col-sm-7"></div> 
-    <div class="col-sm-7"> 
+    <div class='row'>
+      <div class='col-md-2'></div>
+    <div class="col-md-8"> 
       <% if @user.new_record? %>
         <%= f.submit "Create Account" %>
       <% else %>
         <%= f.submit "Update Account" %>
-      <% end %></div>
-    </p>
+      <% end %></div></div>
+    </p></div></div>
   </fieldset>
 <% end %>
 <% end %>
@@ -193,6 +219,9 @@
 <div class="col-xs-12 col-md-4 user_main_right">
 
   <p><%= profile_image_for@user, size: 350 %></p>
+  <h2><%= @user.name %></h2>
+  <h4><%= @user.specialization %></h4>
+  <h5><%= @user.location %></h5>
     <div class='row'>
     <div class="col-xs6- col-md-7">
   <h3>Member Since</h3></div>

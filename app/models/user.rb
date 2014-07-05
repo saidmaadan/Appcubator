@@ -1,9 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :reviews, dependent: :destroy
-  has_many :checkins, dependent: :destroy
-  has_many :follows, dependent: :destroy
-  has_many :followed_projects, through: :follows, source: :project
-
   has_secure_password
   validates :password, length: { minimum: 8, allow_blank: true }
 
@@ -16,13 +11,19 @@ class User < ActiveRecord::Base
                      format: /\A[A-Z0-9]+\z/i,
                      uniqueness: { case_sensitive: false }
 
-  # SEX = ['Male', 'Female', "I'll rather not say"]
-  # #validates :sex, inclusion: { in: SEX }
+  SEX = ['Male', 'Female', "I'll rather not say"]
+  #validates :sex, inclusion: { in: SEX }
 
-  # MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
-  # #validates :marital_status, inclusion: { in: MARITAL_STATUS }
+  MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
+  #validates :marital_status, inclusion: { in: MARITAL_STATUS }
 
-
+  has_many :reviews, dependent: :destroy
+  has_many :checkins, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :followed_projects, through: :follows, source: :project
+  has_many :categorizations, dependent: :destroy
+  has_many :skills, through: :categorizations
+  
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end

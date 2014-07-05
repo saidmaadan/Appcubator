@@ -33,3 +33,6 @@ Project.create!([
 
 idea = Idea.first
 idea.checkins.create(name: "Bobby S", email: "bobby@bobby.com", skills: "Backend", experience: 3, position: 'Part time', comment: "Tell me more about the project")
+
+names = [" HTML ", "CSS ", " RUBY", " JAVASCRIPT", " JAVA", " C", " C++", " C#", " CLOJURE", " PYTHON", " PERL", " SCALA", " COFFEE-SCRIPT", " HASKELL", "  PHP", " ADA", " ATS", " ADA", " RUBY on RAILS", " BACKBONE", " EMBER", " ANGULAR", " NODE", " JQUERY", " RIOT", " GIT VERSION CONTROL", " TDD", " CSS FRAMEWORK", " MYSQL", " POSTGRES", " SQLITE3" ]
+names.each { |name| Skill.create!(name:name) }
