@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :skills
-
   resource :session
   get "signin" => "sessions#new"
 
