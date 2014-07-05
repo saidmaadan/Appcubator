@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704221203) do
+ActiveRecord::Schema.define(version: 20140705032335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: true do |t|
+    t.string   "strenght"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "associations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "ability_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "associations", ["ability_id"], name: "index_associations_on_ability_id", using: :btree
+  add_index "associations", ["user_id"], name: "index_associations_on_user_id", using: :btree
 
   create_table "categorizations", force: true do |t|
     t.integer  "user_id"
@@ -39,6 +55,16 @@ ActiveRecord::Schema.define(version: 20140704221203) do
 
   add_index "checkins", ["idea_id"], name: "index_checkins_on_idea_id", using: :btree
 
+  create_table "classifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "proficiency_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "classifications", ["proficiency_id"], name: "index_classifications_on_proficiency_id", using: :btree
+  add_index "classifications", ["user_id"], name: "index_classifications_on_user_id", using: :btree
+
   create_table "follows", force: true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
@@ -55,6 +81,12 @@ ActiveRecord::Schema.define(version: 20140704221203) do
     t.string   "goal"
     t.string   "category"
     t.string   "market"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "proficiencies", force: true do |t|
+    t.string   "expert"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

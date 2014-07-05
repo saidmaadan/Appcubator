@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @abilities = @user.abilities
     @reviews = @user.reviews
     @checkins = @user.checkins
     @followed_projects = @user.followed_projects
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).
-      permit(:name, :email, :username, :password, :password_confirmation, :about, :achievements, :powerpoint, :specialization, :location, :sex, :birthdate, :phone, :school, :work, :marital, :video, :github, :twitter, :linkedin, :dribbble, :codeeval, :degree, :start_year, :grad_year)
+      permit(:name, :email, :username, :password, :password_confirmation, :about, :achievements, :powerpoint, :specialization, :location, :sex, :birthdate, :phone, :school, :work, :marital, :video, :github, :twitter, :linkedin, :dribbble, :codeeval, :degree, :start_year, :grad_year, :ability_ids => [])
   end
 
   def require_correct_user

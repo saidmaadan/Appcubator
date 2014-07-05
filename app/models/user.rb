@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   has_many :checkins, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :followed_projects, through: :follows, source: :project
-  has_many :categorizations, dependent: :destroy
-  has_many :skills, through: :categorizations
+  has_many :associations, dependent: :destroy
+  has_many :abilities, through: :associations
   
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
