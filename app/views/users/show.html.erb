@@ -9,29 +9,133 @@
   <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
   <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
   <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li>
+  <li><a href="#active" role="tab" data-toggle="tab">Activities</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane" id="dash"></div>
-  <div class="tab-pane active" id="profile">
+  <div class="tab-pane active" id="dash"><br><br>
+    <table class="table table-hover">
+  
+   <% if @user.about %> 
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h4>About Me</h4> 
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
+  </td>
+  </div>
+  </tr>
+<% end %>
+<% if @user.school %> 
+ <tr>
+  <div class='col-md-4'>
+  <th>
+  <h4>School</h4>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= @user.school %>
+  </td>
+  </div>
+  </tr>
+  <% end %>
+  <% if @user.degree %> 
+   <tr>
+  <div class='col-md-4'>
+  <th>
+  <h4>Studied/Qualification</h4>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= @user.degree %>
+  </div>
+  </tr>
+  </div>
+  <% end %>
+  <% if @user.work %> 
+   <tr>
+  <div class='col-md-4'>
+  <th>
+  <h4>Professional</h4>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= @user.work %>
+  </td>
+  </div>
+  </tr>
+  <% end %>
+<% if @user.specialization %> 
+   <tr>
+  <div class='col-md-4'>
+  <th>
+ <h4>Specialization</h4>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= @user.specialization %>
+  </td>
+  </div>
+  </tr>
+  <% end %>
+  <% if @user.powerpoint %> 
+  </div>
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h4>Powerpoint</h4>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= @user.powerpoint %>
+  </td>
+  </div>
+  </tr>
+  <% end %>
+  <% if @user.phone %> 
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h4>Phone</h4>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= @user.phone %>
+  </td>
+  </div>
+  </tr>
+  <% end %>
+  
+</table><br><br>
+
+ <p><iframe width="750" height="550" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
+</p>
+
+  </div>
+  <div class="tab-pane" id="profile">
  <% if current_user?(@user) %>
      <p><%= form_for(@user) do |f| %>
    <fieldset>
+
   <div class='form-horizontal' role='form'>
-  <div class="form-group">
+  <div class="form-group profiles">
   <div class='row'>
   <div class='col-md-3'>
         <%= f.label :sex, class: 'control-label' %></div>
         <div class='col-md-9'>
          <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
       </div></div>
-      <div class='row'>
-      <div class='col-md-3'>
-          <%= f.label :birthdate, class: 'control-label' %></div>
-          <div class='col-md-9'>
-          <%= f.datetime_select :birthdate, class: 'form-control' %>
-     </div></div>
      <div class='row'>
       <div class='col-md-3'>
         <%= f.label :marital, class: 'control-label' %></div>
@@ -103,40 +207,40 @@
         <%= f.label :github, class: 'control-label' %></div>
         <div class="col-md-9">
         <div class="input-group">
-      <div class="input-group-addon">https://github.com/</div>
-        <%= f.text_field :github, size: 40, class: 'form-control', placeholder: 'Your username' %>
+      <div class="input-group-addon">https://github.com/username</div>
+        <%= f.text_field :github, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
       </div></div></div>
       <div class='row'>
       <div class='col-md-3'>
         <%= f.label :linkedin, class: 'control-label' %></div>
         <div class="col-md-9">
         <div class="input-group">
-      <div class="input-group-addon">https://linkedin.com/in/</div>
-        <%= f.text_field :linkedin, size: 40, class: 'form-control', placeholder: 'username' %>
+      <div class="input-group-addon">https://linkedin.com/in/username</div>
+        <%= f.text_field :linkedin, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
       </div></div></div>
       <div class='row'>
       <div class='col-md-3'>
         <%= f.label :twitter, class: 'control-label' %></div>
         <div class="col-md-9">
         <div class="input-group">
-      <div class="input-group-addon">https://twitter.com/</div>
-        <%= f.text_field :twitter, size: 40, class: 'form-control', placeholder: 'username' %>
+      <div class="input-group-addon">https://twitter.com/username</div>
+        <%= f.text_field :twitter, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
       </div></div></div>
       <div class='row'>
       <div class='col-md-3'>
         <%= f.label :dribbble, class: 'control-label' %></div>
         <div class="col-md-9">
         <div class="input-group">
-      <div class="input-group-addon">https://dribbble.com/</div>
-        <%= f.text_field :dribbble, size: 40, class: 'form-control', placeholder: 'username' %>
+      <div class="input-group-addon">https://dribbble.com/username</div>
+        <%= f.text_field :dribbble, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
       </div></div></div>
       <div class='row'>
       <div class='col-md-3'>
         <%= f.label :codeeval, class: 'control-label' %></div>
         <div class="col-md-9">
         <div class="input-group">
-      <div class="input-group-addon">https://codeeval.com/public/</div>
-        <%= f.text_field :codeeval, size: 40, class: 'form-control', placeholder: 'username' %>
+      <div class="input-group-addon">https://codeeval.com/public/username</div>
+        <%= f.text_field :codeeval, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
       </div></div></div><br>
       <div class='row'>
       <div class='col-md-3'>
@@ -218,31 +322,55 @@
 <% end %>
 <% end %>
   </div>
-  <div class="tab-pane" id="about"></div>
-</div></div>
+  <div class="tab-pane" id="about"><br>
+  <% if @user.about %>
+<div class='row'>
+<div class='col-md-1'></div>
+<div class='col-md-10 well'>
+ <h4> <%= @user.about %></h4>
+</div>
+<div class='col-md-1'></div>
+</div>
+<% end %>
+  </div>
 
-<div class="col-xs-12 col-md-4 user_main_right">
+<div class="tab-pane" id="active">
+<br>
+<div class='row'>
+<div class='col-md-5 well'>
+ <% if @reviews.any? %>
+    <h4>My Reviews on Startup Project</h4><br>
+    <% @reviews.in_groups_of(2) do |group| %>
+    <div class="row">
+        <% group.each do |review| %>
+          <% if review %>
+            <div class="col-md-12">
 
-  <p><%= profile_image_for@user, size: 350 %></p>
-  <div class="well">
-  <h3><%= @user.name %></h3>
-  <h4><%= mail_to@user.email, "Contact Me" %></h4>
-  <h4><%= @user.specialization %></h4>
-  <h5><%= @user.location %></h5>
-    <div class='row'>
-    <div class="col-xs6- col-md-7">
-  <h4>Member Since</h4></div>
-  <div class="col-xs-6 col-md-5">
- <h4> <%= @user.created_at.strftime("%B %Y") %></h4>
-  </div></div></div>
+            <%= link_to review.project.name, review.project %>
+            <p>
+         &quot;<%= review.remark %>&quot;
+       </p></div>
+       <div class='row'>
+       <div class="col-md-4">
+       <%= pluralize(review.stars, 'star') %></div>
+       <div class="col-md-3"></div>
+       <div class="col-md-5">
+       <%= time_ago_in_words(review.created_at) %> ago</div>
+       </div>
+       <% end %>
+       <% end %>
+       </div>
+       <% end %>
+       <% else %>
+       <h4>You have not reviewed any project</h4>
+       <% end %>
+       </div>
 
-  <% if current_user?(@user) %>
-    
-    <% end %>
-
-  </nav>
-
-<% if @checkins.any? %>
+<div class='col-md-1'></div>
+<div class='col-md-6'>
+  <div class='row'>
+  <div class='col-md-11 well'>
+  <% if @checkins.any? %>
   <h3>Checkins for</h3>
   <ol id="reviews">
    <% @checkins.each do |checkin| %>
@@ -252,38 +380,16 @@
 
      </li>
    <% end %>
+   <% else %>
+   <h5>You have not check into any project</h5>
   </ol>
 <% end %>
-  
+ </div>
+ 
 
-     <% if @reviews.any? %>
-    <h3>My Reviews on Startup Project</h3><br>
-    <% @reviews.in_groups_of(2) do |group| %>
-    <div class="row">
-        <% group.each do |review| %>
-          <% if review %>
-            <div class="col-md-6">
-
-            <%= link_to review.project.name, review.project %><br>
-       <%= pluralize(review.stars, 'star') %><br>
-       <%= time_ago_in_words(review.created_at) %> ago
+ 
+ <div class='col-md-11 well'>
        <p>
-         &quot;<%= review.remark %>&quot;
-       </p>
-       </div>
-       <% end %>
-       <% end %>
-       </div>
-       <% end %>
-       <% end %>
-
-
-<% if current_user?(@user) %>
-<p><%= link_to ' Add Project ', new_project_path, class: 'btn btn-success' %>
-   <%= link_to ' Post Idea ', new_idea_path, class: 'btn btn-info' %></p>
-
-  <% end %>
-  <p>
 <% if @followed_projects.any? %>
 <h3>Followed Projects</h3>
 <ul>
@@ -295,6 +401,93 @@
 </ul>
 <% end %>
 </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-xs-12 col-md-4 user_main_right">
+
+  <p><%= profile_image_for@user, size: 350 %></p>
+  <div class="well">
+  <h3><%= @user.name %></h3>
+  <h4><%= @user.specialization %></h4>
+  <h4><%= mail_to@user.email, "Get in touch with me" %></h4>
+  <h5><%= @user.location %></h5>
+    <div class='row'>
+    <div class="col-xs6- col-md-7">
+  <h4>Member Since</h4></div>
+  <div class="col-xs-6 col-md-5">
+ <h4> <%= @user.created_at.strftime("%B %Y") %></h4>
+  </div></div></div>
+  <div class='row'>
+<div class="col-xs-12 col-md-12">
+<div class="skill_line">
+<h3>Skills:</h3>
+</div><!-- </div> --><br>
+<div class='row'><br>
+<div class="col-xs-12 col-md-12">
+<div class='row'>
+<% @abilities.in_groups_of(2) do |group| %>
+
+<% group.each do |ability| %>
+<% if ability %>
+<div class='col-md-6'>
+<ul>
+<li><%= ability.strenght %></li></ul>
+</div>
+<% end %>
+<% end %>
+<% end %>
+</div>
+ </div>
+</div>
+
+<div class='row'>
+<div class="col-xs-12 col-md-12">
+<div class="skill_line">
+<h3>Social Activities:</h3>
+</div>
+
+<div class="col-xs-12 col-md-12">
+<section class="well">
+<!-- <div class="col-md-12 well"> -->
+
+<div class='row'>
+<div class="col-xs-6 col-md-3">
+<% if @user.github %>
+  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %>
+  <% end %>
+</div>
+<div class="col-xs-6 col-md-3">
+<% if @user.linkedin %>
+  <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
+</div><% end %>
+<div class="col-xs-6 col-md-3">
+<% if @user.twitter %>
+   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% end %>
+</div>
+<div class="col-xs-6 col-md-3">
+<% if @user.dribbble %>
+   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% end %>
+</div>
+
+</section>
+</div></div>
+
+
+
+
+
+
+  <%# if current_user?(@user) %>
+    
+    <%# end %>
 
 </div>
 </div>

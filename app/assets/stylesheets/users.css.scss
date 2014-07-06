@@ -25,3 +25,27 @@ body{
 	border: 4px solid #E6E8E8
 }
 
+.profiles{
+	padding: 10px 30px;
+}
+.skill_line{
+	border-bottom: 2px solid gray;
+}
+
+.well a:link{
+	color: #A19F50;
+}
+
+section, .well a:link{
+	color: #BDBA17;
+}
+section, .well a:hover{
+  color: #D1154D;
+}
+
+section, .well a:active{
+	color: black;
+}
+section, .well a:visited{
+  color: #807A7E;
+}
