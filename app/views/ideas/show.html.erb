@@ -1,40 +1,78 @@
 <div class="container">
-<div class='row'>
-<article>
-<div class='col-md-8'>
+<div class='row'><br><br>
+<div class='col-md-1'></div>
+<div class='col-md-7 well'>
 <div id="idea" class="idea">
-  <header>
+  
     <h1><%= @idea.title %></h1>
-  </header>
+ 
 
   <p>
     <%= @idea.description %>
   </p>
 
-  <h3>Market Potential</h3>
-  <p>
-    <%= @idea.market %>
-  </p>
+  <div class="table-responsive">
+ <table class="table table-hover">
+  
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h5>Market Potential:</h5> 
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= @idea.market %>
+  </td>
+  </div>
+  </tr>
 
-  <h3>Goal</h3>
-  <p>
-    <%= @idea.goal %>
-  </p>
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h5>Goal</h5> 
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= @idea.goal %>
+  </td>
+  </div>
+  </tr>
 
-  <h3>Category</h3>
-  <p>
-    <%= @idea.category %>
-  </p>
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h5>Category</h5> 
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= @idea.category %>
+  </td>
+  </div>
+  </tr>
+
+  </table>
+  </div>
+ 
+ 
 </div>
 </div>
-<div class='col-md-4'>
+<div class='col-md-3'>
 <br>
-    <nav>
+  
 
-     <% if current_user %>
-      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>&nbsp
-      <%= link_to "All Startup Idea", ideas_path, class: 'btn btn-primary' %>
-      <%= link_to 'Post New Startup Idea', new_idea_path, class: 'btn btn-success' %>
+     
+    <p>If you are interested to paticipate in any form on<br> <%= link_to "Apply to Check-In", new_idea_checkin_path(@idea)
+             %></p>
+    <%# link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea), class: "btn btn-info btn-lg" %>
+
+    <% if current_user %>
+    <%= link_to 'Post New Startup Idea', new_idea_path %><br>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
+    
+      
       <% end %>
       <% if current_user_admin? %>
       <%= link_to 'Delete', @idea,
@@ -42,13 +80,9 @@
                  method: :delete, data: { confirm: 'Are you sure?' } %>
 
       <% end %>
-    </nav><br>
-    <p><%= link_to "Apply to Check-In", new_idea_checkin_path(@idea),
-             class: "btn btn-primary btn-lg" %></p>
-    <%= link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea), class: "btn btn-info btn-lg" %>
-
+    
 </div>
-</article>
+<div class='col-md-1'></div>
 </div>
 </div>
 

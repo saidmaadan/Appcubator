@@ -118,10 +118,10 @@
   <% end %>
   
 </table><br><br>
-
+<% if @user.video %> 
  <p><iframe width="750" height="550" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
 </p>
-
+<% end %>
   </div>
   <div class="tab-pane" id="profile">
  <% if current_user?(@user) %>

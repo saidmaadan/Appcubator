@@ -1,103 +1,176 @@
 <div class="container">
 <div class="row">
 
-<article>
- <header>
     <h1><%= @project.name %></h1>
 
-  </header>
+<div class='col-md-9 well'><br><br>
+<div class="row">
+<div class='col-md-4'>
 
-<div class='col-md-3'><br><br>
 <%= image_tag @project.screenshot.url(:medium) %>
 <p>
 
-<h3>Average Review</h3>
+<% if @project.reviews.any? %>
+<h4>Average Review</h4>
   <h4>
     <%= format_average_stars(@project) %>
   </h4>
-<h2><%= pluralize(@project.reviews.size, "Review") %></h2>
+<h3><%= pluralize(@project.reviews.size, "Review") %></h3>
 <%= link_to "Read More Review...",
-            project_reviews_path(@project), class: "btn btn-info btn-lg" %>
+            project_reviews_path(@project) %>
+ 
+  <% else %>
+  <h4>Got no Review</h4>
+  <h5>Be the first to <%= link_to "Review this Project", new_project_review_path(@project) %></h5>
 
-<h3><%= link_to "Review this Project", new_project_review_path(@project), class: 'button ok review' %></h3>
-</p>
-</div>
-<div class='col-md-6'>
+<% end %>
 
-  <h2>Description</h2>
-  <p>
-    <%= @project.description %>
-  </p>
-  <h3>Team Members</h3>
-  <p>
-    <%= @project.teams %>
-  </p>
-  <h3>Looking For</h3>
-  <p>
-    <%= @project.looking_for %>
-  </p>
-  <h3>Target Amount</h3>
-  <p>
-    <%= number_to_currency(@project.target_amount) %>
-  </p>
-  <h3>GitHub</h3>
-  <p>
-    <%= link_to @project.github_link %>
-  </p>
-  <h3>Website</h3>
-  <p>
-    <%= link_to @project.web_url %>
-  </p>
+
 </div>
-<div class='col-md-3'><br>
-  <nav>
-<%= link_to "All Projects", projects_path, class: 'btn btn-warning' %>
+<div class='col-md-8'>
+<div class="table-responsive">
+ <table class="table table-striped">
+  
+   
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h5>Summary</h5> 
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= @project.description %>
+  </td>
+  </div>
+  </tr>
+  
+  <tr>
+  <div class='col-md-4'>
+  <th>
+   <h5>Project Teams</h5>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= @project.teams %>
+  </td>
+  </div>
+  </tr>
+ 
+  <tr>
+  <div class='col-md-4'>
+  <th>
+  <h5>Looking For</h5>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= @project.looking_for %>
+  </td>
+  </div>
+  </tr>
+
+   <tr>
+  <div class='col-md-4'>
+  <th>
+   <h5>GitHub</h5>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+    <%= link_to "Source Code ", @project.github_link, :target => "_blank", class: 'fa fa-github' %>
+  </td>
+  </div>
+  </tr>
+
+   <tr>
+  <div class='col-md-4'>
+  <th>
+   <h5>WebSite URL</h5>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+   <%= link_to "Project Url ", @project.web_url, :target => "_blank", class: 'fa fa-tablet' %>
+  </td>
+  </div>
+  </tr>
+
+   <tr>
+  <div class='col-md-4'>
+  <th>
+   <h5>Target Amount</h5>
+  </th>
+  </div>
+  <div class='col-md-8'>
+  <td>
+  <%= number_to_currency(@project.target_amount) %>
+  </p>
+  </td>
+  </div>
+  </tr>
+  </table>
+  </div>
+
+  
+  
+  
+  </div></div></div>
+<div class='col-md-3'>
+
+ <% if @project.reviews.any? %>
+    <u><h4>Project Reviews</h4></u>
+      <% @project.recent_reviews.each do |review| %>
+      </span>
+            &quot;<%= review.remark %>&quot;
+        <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-3'>
+          <span class="review"><%= pluralize(review.stars, 'star') %></span></div>
+          
+          <div class='col-md-6'>
+
+          <span class="date">
+            <%= time_ago_in_words(review.created_at) %> ago
+          </span></div>
+        </div>
+      <% end %>
+   
+    <% end %>
+
+  <h4><%= link_to "Write your Review", new_project_review_path(@project), class: 'button ok review' %></h4>
+
+  
 <% if current_user %>
 
-  <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %><br>
-<br>  <%= link_to 'Add Your Startup Project', new_project_path, class: 'btn btn-success' %>
+  <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %>
+
   <% end %>
-  <%# if current_user_admin? %>
+  <% if current_user_admin? %>
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-<%# end %>
-</nav>
+<% end %>
 <p>
     <h2><%= pluralize(@followers.count, 'follow') %></h2>
   </p>
 
 <% if current_user %>
 
-  <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-primary btn-lg' %>
+  <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-primary' %>
   <% end %>
   <% if @followers.any? %>
   <h3>Followers</h3>
+  <div id='project_follower'><br>
   <ul>
     <% @followers.each do |user| %>
     <li>
       <%= link_to user.name, user %>
     </li>
     <% end %>
-  </ul>
+  </ul></div>
   <% end %>
 
 
- <% if @project.reviews.any? %>
-    <h3>Reviews</h3>
-    <ol id="reviews">
-      <% @project.recent_reviews.each do |review| %>
-        <li>
-          <span class="review"><%= pluralize(review.stars, 'star') %></span>
-
-          <span class="date">
-            <%= time_ago_in_words(review.created_at) %> ago
-          </span>
-          <p>
-            &quot;<%= review.remark %>&quot;
-          </p>
-        </li>
-      <% end %>
-    </ol>
-    <% end %>
 
 </div>
 </article>

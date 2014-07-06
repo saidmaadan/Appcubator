@@ -23,19 +23,19 @@
       <div class='col-md-3'>
         <%= f.label :goal, class: 'control-label' %></div>
         <div class='col-md-9'>
-        <%= f.text_field :goal, size: 30, class: "form-control" %>
+        <%= f.select :goal, Idea::GOAL, prompt: "Select One", class: 'form-control' %>
       </div></div><br>
       <div class='row'>
       <div class='col-md-3'>
         <%= f.label :market, 'Market Potential', class: 'control-label' %></div>
         <div class='col-md-9'>
-        <%= f.text_field :market, size: 30, class: "col-md-10 form-control" %>
+       <%= f.select :market, Idea::MARKET, prompt: "Select One", class: 'form-control' %>
       </div></div><br>
       <div class='row'>
       <div class='col-md-3'>
         <%= f.label :category, class: 'control-label' %></div>
         <div class='col-md-9'>
-        <%= f.text_field :category, class: "form-control" %>
+        <%= f.select :category, Idea::CATEGORY, prompt: "Select One", class: 'form-control' %>
       </div></div>
 
 
