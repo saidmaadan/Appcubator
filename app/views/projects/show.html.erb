@@ -79,7 +79,8 @@
   </div>
   <div class='col-md-8'>
   <td>
-    <%= link_to "Source Code", @project.github_link, :target => "_blank", class: 'fa fa-github' %>
+  <% if @project.github_link %>
+    <%= link_to "Source Code", @project.github_link, :target => "_blank", class: 'fa fa-github' %><% end %>
   </td>
   </div>
   </tr>
@@ -92,7 +93,11 @@
   </div>
   <div class='col-md-8'>
   <td>
+  <% if @project.web_url %>
    <%= link_to "Project Url", @project.web_url, :target => "_blank", class: 'fa fa-tablet' %>
+   <% else %>
+   <h4>Project url link not available</h4>
+   <% end %>
   </td>
   </div>
   </tr>
