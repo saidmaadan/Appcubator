@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   resources :abilities
 
   resource :session
@@ -16,9 +14,11 @@ Rails.application.routes.draw do
     resources :reviews
     resources :follows
   end
+  # get 'ideas/filter/:scope' => "ideas#index", as: :filtered_ideas
 
   resources :ideas do
     resources :checkins
+    resources :votes
   end
 
 

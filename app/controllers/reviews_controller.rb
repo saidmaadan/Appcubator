@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @review = @project.reviews.new(review_params)
     @review.user = current_user
       if @review.save
-      redirect_to project_reviews_path(@project),
+      redirect_to project_path(@project),
                     notice: "Thanks for your review!"
     else
       render :new
@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = @project.reviews.find(params[:id])
     @review.destroy
-    redirect_to project_reviews_path(@project), notice: "Review successfully deleted!"
+    redirect_to project_path(@project), notice: "Review successfully deleted!"
   end
 
 

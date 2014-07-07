@@ -14,11 +14,17 @@ class CheckinsController < ApplicationController
     @checkin = @idea.checkins.new(checkin_params)
     @checkin.user = current_user
     if @checkin.save
-      redirect_to idea_checkins_path(@idea),
+      redirect_to idea_path(@idea),
                     notice: "You are successfull check-in for this project!"
     else
       render :new
     end
+  end
+
+  def destroy
+    @heckin = @idea.checkins.find(params[:id])
+    @checkin.destroy
+    redirect_to idea_path(@idea), notice: " You successfully check out of this project !"
   end
 
   private

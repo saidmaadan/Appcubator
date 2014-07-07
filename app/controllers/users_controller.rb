@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @reviews = @user.reviews
     @checkins = @user.checkins
     @followed_projects = @user.followed_projects
+    @voted_ideas = @user.voted_ideas
   end
 
   def new

@@ -4,11 +4,15 @@ class IdeasController < ApplicationController
   before_action :require_admin, only: [:only]
 
   def index
-    @ideas = Idea.recent
+    @ideas = Idea.recent.limit(12)
   end
 
   def show
     @idea = Idea.find(params[:id])
+    @voters = @idea.voters
+    if current_user
+      @current_vote = current_user.votes.find_by(idea_id: @idea.id)
+    end
   end
 
   def edit

@@ -66,10 +66,26 @@
      
     <p>If you are interested to paticipate in any form on<br> <%= link_to "Apply to Check-In", new_idea_checkin_path(@idea)
              %></p>
-    <%# link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea), class: "btn btn-info btn-lg" %>
 
     <% if current_user %>
-    <%= link_to 'Post New Startup Idea', new_idea_path %><br>
+    <%= link_to 'Post Your Startup Idea', new_idea_path %><% end %><br>
+    <%# link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea), class: "btn btn-info btn-lg" %>
+    <p><h3><%= pluralize(@voters.size, "Vote") %></h3></p>
+    <% if current_user %>
+      <% if @current_vote %>
+      <%= button_to "Unvote", idea_vote_path(@idea, @current_vote), class: 'btn btn-default btn-lg', method: :delete %>
+      <% else %>
+    <%= button_to "Vote", idea_votes_path(@idea), class: 'btn btn-info btn-lg' %>
+    <% end %>
+    <% end %>
+    <% if @votes.try(:any?) %>
+    <h4>Voters</h4>
+    <% @voters.each do |user| %>
+    <%= links_to user.name, user %>
+    <% end %>
+    <% end %><br>
+
+    <% if current_user %>
       <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
     
       

@@ -34,6 +34,6 @@
 # idea = Idea.first
 # idea.checkins.create(name: "Bobby S", email: "bobby@bobby.com", skills: "Backend", experience: 3, position: 'Part time', comment: "Tell me more about the project")
 
- strenghts = [" HTML ", "CSS ", " RUBY", " JAVASCRIPT", " JAVA", " C", " C++", " C#", " CLOJURE", " PYTHON", " PERL", " SCALA", " COFFEE-SCRIPT", " HASKELL", "  PHP", " ADA", " ATS", " RUBY on RAILS", " BACKBONE", " EMBER", " ANGULAR", " NODE", " JQUERY", " RIOT", " GIT VERSION CONTROL", " TDD", " CSS FRAMEWORK", " MYSQL", " POSTGRES", " SQLITE3" ]
- strenghts.each { |strenght| Ability.create!(strenght:strenght) }
+ # strenghts = [" HTML ", "CSS ", " RUBY", " JAVASCRIPT", " JAVA", " C", " C++", " C#", " CLOJURE", " PYTHON", " PERL", " SCALA", " COFFEE-SCRIPT", " HASKELL", "  PHP", " ADA", " ATS", " RUBY on RAILS", " BACKBONE", " EMBER", " ANGULAR", " NODE", " JQUERY", " RIOT", " GIT VERSION CONTROL", " TDD", " CSS FRAMEWORK", " MYSQL", " POSTGRES", " SQLITE3" ]
+ # strenghts.each { |strenght| Ability.create!(strenght:strenght) }
 

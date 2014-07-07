@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   has_many :followed_projects, through: :follows, source: :project
   has_many :associations, dependent: :destroy
   has_many :abilities, through: :associations
+  has_many :votes, dependent: :destroy
+  has_many :voted_ideas, through: :votes, source: :idea
+
   
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)

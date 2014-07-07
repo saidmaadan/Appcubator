@@ -364,6 +364,14 @@
        <% else %>
        <h4>You have not reviewed any project</h4>
        <% end %>
+
+       <p>
+         <% if @voted_ideas.any? %>
+         <h4>Voted Ideas</h4>
+         <%= @voted_ideas.each do |idea| %>
+         <% link_to idea.title, idea %>
+         <% end %>
+       </p>
        </div>
 
 <div class='col-md-1'></div>
