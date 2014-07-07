@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
 
+  
 
   def self.recent
     order("created_at desc")

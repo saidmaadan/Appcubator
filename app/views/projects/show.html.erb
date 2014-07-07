@@ -150,12 +150,15 @@
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>
 <p>
-    <h2><%= pluralize(@followers.count, 'follow') %></h2>
+    <h2><%= pluralize(@followers.count, 'Follower') %></h2>
   </p>
 
 <% if current_user %>
-
-  <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-primary' %>
+   <% if @current_follow %>
+   <%= button_to "Unfollow", project_follow_path(@project, @current_follow), class: 'btn btn-default btn-lg', method: :delete %>
+      <% else %>
+  <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-info btn-lg' %>
+  <% end %>
   <% end %>
   <% if @followers.any? %>
   <h3>Followers</h3>

@@ -339,7 +339,7 @@
 <div class='row'>
 <div class='col-md-5 well'>
  <% if @reviews.any? %>
-    <h4>My Reviews on Startup Project</h4><br>
+    <h4 class="btn btn-default">My Reviews on Startup Project</h4><br><br>
     <% @reviews.in_groups_of(2) do |group| %>
     <div class="row">
         <% group.each do |review| %>
@@ -367,9 +367,9 @@
 
        <p>
          <% if @voted_ideas.any? %>
-         <h4>Voted Ideas</h4>
-         <%= @voted_ideas.each do |idea| %>
-         <% link_to idea.title, idea %>
+         <h4 class="btn btn-default">Voted Ideas</h4>
+         <% @voted_ideas.each do |idea| %>
+         <p><%= link_to idea.title, idea %></p>
          <% end %>
          <% end %>
 

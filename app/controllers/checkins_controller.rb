@@ -24,7 +24,7 @@ class CheckinsController < ApplicationController
   def destroy
     @heckin = @idea.checkins.find(params[:id])
     @checkin.destroy
-    redirect_to idea_path(@idea), notice: " You successfully check out of this project !"
+    redirect_to idea_path(@idea)#, notice: " You successfully check out of this project !"
   end
 
   private

@@ -4,7 +4,7 @@ class VotesController < ApplicationController
 
 	def create
 		@idea.votes.create!(user: current_user)
-		redirect_to @idea, notice: "Glad you voted"
+		redirect_to @idea #notice: "Glad you voted"
 	end
 
 	def destroy

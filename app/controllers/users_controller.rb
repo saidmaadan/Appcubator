@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "Account successfully updated!"
+      redirect_to @user#, notice: "Account successfully updated!"
     else
       render :edit
     end
