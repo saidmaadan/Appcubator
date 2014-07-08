@@ -1,6 +1,6 @@
 == Appcubator
 
-Appcubator is an App developemnt business network. Build for developers happiness.
+Appcubator is an Application development business network. Build for developers happiness.
 live at https://appcubator.herokuapp.com
 
 
