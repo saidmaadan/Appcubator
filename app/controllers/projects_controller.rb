@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :require_admin, only: [:delete]
 
   def index
-    @projects = Project.recent.limit(12)
+    @projects = Project.recent
   end
 
   def show

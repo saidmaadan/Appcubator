@@ -2,13 +2,13 @@
 <div id="ideas">
 <% if @ideas.any? %>
 <% @ideas.in_groups_of(3) do |group| %>
-<div class='row'>
+<div class='row ideas_show'>
 <% group.each do |idea| %>
 <% if idea %>
 <div class='col-md-4'>
 <h2><%= link_to(idea.title, idea) %></h2>
 <p> <%= truncate(idea.description, length: 150, separator: ' ') %></p>
-<table>
+<!-- <table>
           <tr>
             <th>Goal</th>
             <td><%= idea.goal %></td>
@@ -21,7 +21,7 @@
             <th>category</th>
             <td><%= idea.category %></td>
           </tr>
-        </table>
+        </table> -->
 
       </article>
       </div>
