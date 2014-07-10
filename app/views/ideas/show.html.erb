@@ -85,12 +85,11 @@
     <% end %>
     <% end %><br>
 
-    <% if current_user %>
+    <%# if current_user %>
+     <% if current_user_admin? %>
       <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
-    
-      
-      <% end %>
-      <% if current_user_admin? %>
+  
+     
       <%= link_to 'Delete', @idea,
                   class: 'btn btn-danger',
                  method: :delete, data: { confirm: 'Are you sure?' } %>
