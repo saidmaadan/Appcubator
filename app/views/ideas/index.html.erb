@@ -6,7 +6,7 @@
 <% group.each do |idea| %>
 <% if idea %>
 <div class='col-md-4'>
-<h2><%= link_to(idea.title, idea) %></h2>
+<h3><%= link_to(idea.title, idea) %></h3>
 <p> <%= truncate(idea.description, length: 150, separator: ' ') %></p>
 <!-- <table>
           <tr>
