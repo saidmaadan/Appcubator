@@ -19,12 +19,12 @@ class Project < ActiveRecord::Base
   end
 
   #validates_attachment_content_type :screenshot, :content_type => /\Aimage\/.*\Z/
-  validates :name, :looking_for, :teams, presence: true
+  validates :name, :teams, presence: true
   validates :description, length: { minimum: 25 }
-  validates :target_amount, numericality: { greater_than_or_equal_to: 0 }
+  #validates :target_amount, numericality: { greater_than_or_equal_to: 0 }
 
-  LOOKING_FOR = ['Partnership', 'Investor', 'Buyer']
-  validates :looking_for, inclusion: { in: LOOKING_FOR }
+  LOOKING_FOR = ['Partnership', 'Investor', 'Buyer', 'Other']
+  #validates :looking_for, inclusion: { in: LOOKING_FOR }
 
   has_many :reviews, dependent: :destroy
   has_many :follows, dependent: :destroy
