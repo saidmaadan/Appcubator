@@ -21,9 +21,24 @@ article{
 	
 }
 #project_follower{
-	// width: 90%;
-	// height: 300px;
-	// float: right;
-	// overflow: auto;
+	width: 90%;
+	height: 200px;
+	float: right;
+	overflow: auto;
 	border-top: 2px solid #eee;
+}
+.project_show{
+	height: 700px;
+}
+.review_comment{
+	
+	height: 250px;
+	// float: right;
+	overflow: auto;
+	border-top: 2px solid #eee;
+}
+.project_wrap2{
+	height: 650px;
+	overflow: auto;
+	//border-top: 2px solid #eee;
 }

@@ -3,9 +3,8 @@
 <div class='col-md-9'></div>
 <div class='col-md-3'>
 <h1><%= pluralize(@projects.size, 'Project') %></h1></div></article>
-<div class='project_wrap2'>
-<div class='row'>
-<div class='col-md-12'>
+<!-- <div class='row'> -->
+<div class='col-md-12 project_wrap2'>
 
 <% if @projects.any? %>
 <% @projects.in_groups_of(2) do |group| %>
@@ -55,6 +54,4 @@
     <% end %>
     </div>
     </div>
-    </div>
-</div>
 

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :require_signin, except: [:index, :show]
   #before_action :correct_user, except: [:index, :show]
-  #before_action :require_admin, only: [:delete]
+  before_action :require_admin, only: [:delete]
 
   def index
     @projects = Project.recent.limit(12)
@@ -29,29 +29,36 @@ class ProjectsController < ApplicationController
   end
 end
 
-def new
-  @project =Project.new
-end
-
-def create
-  @project = Project.new(project_params)
-  if @project.save
-    redirect_to @project, notice: "Project successfully created!"
-  else
-    render :new
+  def new
+    @project =Project.new
   end
-end
 
-def destroy
-  @project = Project.find(params[:id])
-  @project.destroy
-  redirect_to projects_url, alert: "Project successfully deleted!"
-end
+  def create
+    @project = current_user.projects.build(project_params)
+    # @project = Project.new(project_params)
+    if @project.save
+      redirect_to @project, notice: "Project successfully created!"
+    else
+      render :new
+    end
+  end
 
-private
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to projects_url, alert: "Project successfully deleted!"
+  end
 
-def project_params
-  project_params = params.require(:project).permit(:name, :description, :looking_for, :teams, :target_amount, :github_link, :web_url, :screenshot)
-end
+  private
+
+  def project_params
+    project_params = params.require(:project).permit(:name, :description, :looking_for, :teams, :target_amount, :github_link, :web_url, :screenshot, :user_id)
+  end
+
+  def correct_user
+    unless @project = current_user.projects.find_by(id: params[:id])
+    redirect_to projects_url, alert: "Unauthorized access!"
+  end
+  end
 
 end

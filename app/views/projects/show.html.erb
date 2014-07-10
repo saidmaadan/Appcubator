@@ -3,7 +3,7 @@
 
     <h1><%= @project.name %></h1>
 
-<div class='col-md-9 well'><br><br>
+<div class='col-md-9 well project_show'><br><br>
 <div class="row">
 <div class='col-md-4'>
 
@@ -24,6 +24,25 @@
   <h5>Be the first to <%= link_to "Review this Project", new_project_review_path(@project) %></h5>
 
 <% end %>
+
+ <% if @project.reviews.any? %>
+    <div class='review_comment'>
+      <% @project.recent_reviews.each do |review| %>
+      </span>
+            &quot;<%= review.remark %>&quot;
+        
+        <div class='col-md-4'>
+          <span class="review"><%= pluralize(review.stars, 'star') %></span></div>
+          <div class='col-md-1'></div>
+          <div class='col-md-7'>
+
+          <span class="date">
+            <%= time_ago_in_words(review.created_at) %> ago
+          </span></div>
+          <% end %>
+        </div>
+   
+    <% end %>
 
 
 </div>
@@ -123,35 +142,18 @@
   
   </div></div></div>
 <div class='col-md-3'>
+<h4>Project from <%= link_to @project.user.name %></h4>
 
- <% if @project.reviews.any? %>
-    <u><h4>Project Reviews</h4></u>
-      <% @project.recent_reviews.each do |review| %>
-      </span>
-            &quot;<%= review.remark %>&quot;
-        <div class='row'>
-        <div class='col-md-3'>
-          <span class="review"><%= pluralize(review.stars, 'star') %></span></div>
-          <div class='col-md-1'></div>
-          <div class='col-md-8'>
-
-          <span class="date">
-            <%= time_ago_in_words(review.created_at) %> ago
-          </span></div>
-        </div>
-      <% end %>
-   
-    <% end %>
+<%= profile_image_for @project.user, size: 250 %>
 
   <h4><%= link_to "Write your Review", new_project_review_path(@project), class: 'button ok review' %></h4>
 
   
-<% if current_user %>
+<%# if current_user %>
+<% if current_user_admin? %>
 
   <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %>
-
-  <% end %>
-  <% if current_user_admin? %>
+  
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>
 <p>
@@ -168,13 +170,13 @@
   <% if @followers.any? %>
   <h3>Followers</h3>
   <div id='project_follower'><br>
-  <ul>
+  
     <% @followers.each do |user| %>
-    <li>
-      <%= link_to user.name, user %>
-    </li>
+    
+     <p> <%= link_to user.name, user %></p>
+    
     <% end %>
-  </ul></div>
+ </div>
   <% end %>
 
 

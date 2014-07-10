@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
   #validates :marital_status, inclusion: { in: MARITAL_STATUS }
 
+  has_many :projects, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :checkins, dependent: :destroy
   has_many :follows, dependent: :destroy
