@@ -29,11 +29,12 @@
     <div class='review_comment'>
       <% @project.recent_reviews.each do |review| %>
       </span>
-            &quot;<%= review.remark %>&quot;
+      <div class='col-md-12'>
+            &quot;<%= review.remark %>&quot;</div>
         
         <div class='col-md-4'>
           <span class="review"><%= pluralize(review.stars, 'star') %></span></div>
-          <div class='col-md-1'></div>
+          
           <div class='col-md-7'>
 
           <span class="date">
@@ -142,7 +143,7 @@
   
   </div></div></div>
 <div class='col-md-3'>
-<h4>Project from <%= link_to @project.user.name %></h4>
+<h4>Project Team Member ::</h4><h4> &nbsp{ <%= link_to @project.user.name %> }</h4>
 
 <%= profile_image_for @project.user, size: 250 %>
 
