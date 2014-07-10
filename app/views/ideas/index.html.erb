@@ -1,11 +1,15 @@
 <div class='container'>
-<div id="ideas">
-<% if @ideas.any? %>
-<% @ideas.in_groups_of(3) do |group| %>
 <div class='row'>
+<div class='col-md-9'></div>
+<div class='col-md-3'>
+<h2><%= pluralize(@ideas.size, 'Startup-Idea') %></h2></div>
+<div class='col-md-12 idea_place'><br>
+<div class='col-md-9 idea'>
+<% if @ideas.any? %>
+<% @ideas.in_groups_of(2) do |group| %>
 <% group.each do |idea| %>
 <% if idea %>
-<div class='col-md-4'>
+<div class='col-md-6'>
 <h3><%= link_to(idea.title, idea) %></h3>
 <p> <%= truncate(idea.description, length: 150, separator: ' ') %></p>
 <!-- <table>
@@ -23,13 +27,19 @@
           </tr>
         </table> -->
 
-      </article>
+      
       </div>
       <% end %>
       <% end %>
+      <% end %>
+      <% end %>
       </div>
-      <% end %>
-      <% end %>
+       <div class='col-md-1'></div>
+      <div class='col-md-2 well'>
+        <%= link_to ' Post Startup Idea', new_idea_path, class: 'fa fa-folder-open-o' %><br><br>
+        <%= link_to ' Add Project', new_project_path, class: 'fa fa-folder-open' %>
+      </div>
+      </div>
       </div>
       </div>
 
