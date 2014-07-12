@@ -25,7 +25,6 @@
     <table class="table table-hover">
   
    <% if @user.about %> 
-   <% if @about %> 
   <tr>
   <div class='col-md-4'>
   <th>
@@ -38,9 +37,8 @@
   </td>
   </div>
   </tr>
-<% end %><% end %>
+<% end %>
 <% if @user.school %>
-<% if @school %>  
  <tr>
   <div class='col-md-4'>
   <th>
@@ -53,9 +51,8 @@
   </td>
   </div>
   </tr>
-  <% end %><% end %>
+  <% end %>
   <% if @user.degree %>
-  <% if @degree %>  
    <tr>
   <div class='col-md-4'>
   <th>
@@ -68,9 +65,8 @@
   </div>
   </tr>
   </div>
-  <% end %><% end %>
+  <% end %>
   <% if @user.work %> 
-   <% if @work %> 
    <tr>
   <div class='col-md-4'>
   <th>
@@ -83,9 +79,8 @@
   </td>
   </div>
   </tr>
-  <% end %><% end %>
+  <% end %>
 <% if @user.specialization %> 
-<% if @specialization %> 
    <tr>
   <div class='col-md-4'>
   <th>
@@ -99,9 +94,7 @@
   </div>
   </tr>
   <% end %>
-  <% end %>
   <% if @user.powerpoint %>
-  <% if @powerpoint %> 
   </div>
   <tr>
   <div class='col-md-4'>
@@ -116,9 +109,7 @@
   </div>
   </tr>
   <% end %>
-  <% end %>
   <% if @user.phone %>
-  <% if @phone %> 
   <tr>
   <div class='col-md-4'>
   <th>
@@ -131,7 +122,7 @@
   </td>
   </div>
   </tr>
-  <% end %><% end %>
+  <% end %>
   
 </table><br><br>
 
@@ -493,24 +484,20 @@
 <div class='row'>
 <div class="col-xs-6 col-md-3">
 <% if @user.github %>
-<% if @github %>
   <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %>
-  <% end %><% end %>
+  <% end %>
 </div>
 <div class="col-xs-6 col-md-3">
 <% if @user.linkedin %>
-<% if @linkedin %>
   <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
-</div><% end %><% end %>
+</div><% end %>
 <div class="col-xs-6 col-md-3">
 <% if @user.twitter %>
-<% if @twitter %>
-   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% end %><% end %>
+   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% end %>
 </div>
 <div class="col-xs-6 col-md-3">
 <% if @user.dribbble %>
-<% if @dribbble %>
-   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% end %><% end %>
+   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% end %>
 </div>
 
 </section>
