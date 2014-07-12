@@ -6,10 +6,16 @@
   
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
+  <% if current_user?(@user) %>
   <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
   <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
-  <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li>
-  <li><a href="#active" role="tab" data-toggle="tab">Activities</a></li>
+  <% end %>
+  <% if @user.about %>
+  <% if current_user?(@user) %>
+  <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %><% end %>
+  <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
+  <% if @user.video %>
+   <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
 </ul>
 
 <!-- Tab panes -->
@@ -118,10 +124,7 @@
   <% end %>
   
 </table><br><br>
-<% if @user.video %> 
- <p><iframe width="750" height="550" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
-</p>
-<% end %>
+
   </div>
   <div class="tab-pane" id="profile">
  <% if current_user?(@user) %>
@@ -334,7 +337,7 @@
 <% end %>
   </div>
 
-<div class="tab-pane" id="active">
+<div class="tab-pane" id="activity">
 <br>
 <div class='row'>
 <div class='col-md-5 well'>
@@ -416,7 +419,15 @@
 </div>
 </div>
 </div>
+<div class="tab-pane" id="video">
+  <% if @user.video %> 
+  <br><br>
+ <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
+</p>
+<% end %>
 </div>
+</div>
+
 </div>
 
 
