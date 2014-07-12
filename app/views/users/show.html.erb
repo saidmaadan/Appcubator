@@ -15,8 +15,7 @@
   <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %><% end %>
   <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
   <% if @user.video %>
-  <% if @video %> 
-   <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %><% end %>
+   <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
 </ul>
 
 <!-- Tab panes -->
@@ -422,11 +421,10 @@
 </div>
 <div class="tab-pane" id="video">
   <% if @user.video %> 
-  <% if @video %> 
   <br><br>
  <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
 </p>
-<% end %><% end %>
+<% end %>
 </div>
 </div>
 
