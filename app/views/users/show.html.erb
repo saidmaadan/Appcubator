@@ -11,8 +11,7 @@
   <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
   <% end %>
   <% if @user.about %>
-  <% if current_user?(@user) %>
-  <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %><% end %>
+  <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %>
   <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
   <% if @user.video %>
    <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
