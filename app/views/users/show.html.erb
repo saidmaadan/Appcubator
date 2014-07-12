@@ -15,7 +15,8 @@
   <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %><% end %>
   <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
   <% if @user.video %>
-   <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
+  <% if @video %> 
+   <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %><% end %>
 </ul>
 
 <!-- Tab panes -->
@@ -24,6 +25,7 @@
     <table class="table table-hover">
   
    <% if @user.about %> 
+   <% if @about %> 
   <tr>
   <div class='col-md-4'>
   <th>
@@ -36,8 +38,9 @@
   </td>
   </div>
   </tr>
-<% end %>
-<% if @user.school %> 
+<% end %><% end %>
+<% if @user.school %>
+<% if @school %>  
  <tr>
   <div class='col-md-4'>
   <th>
@@ -50,8 +53,9 @@
   </td>
   </div>
   </tr>
-  <% end %>
-  <% if @user.degree %> 
+  <% end %><% end %>
+  <% if @user.degree %>
+  <% if @degree %>  
    <tr>
   <div class='col-md-4'>
   <th>
@@ -64,8 +68,9 @@
   </div>
   </tr>
   </div>
-  <% end %>
+  <% end %><% end %>
   <% if @user.work %> 
+   <% if @work %> 
    <tr>
   <div class='col-md-4'>
   <th>
@@ -78,8 +83,9 @@
   </td>
   </div>
   </tr>
-  <% end %>
+  <% end %><% end %>
 <% if @user.specialization %> 
+<% if @specialization %> 
    <tr>
   <div class='col-md-4'>
   <th>
@@ -93,7 +99,9 @@
   </div>
   </tr>
   <% end %>
-  <% if @user.powerpoint %> 
+  <% end %>
+  <% if @user.powerpoint %>
+  <% if @powerpoint %> 
   </div>
   <tr>
   <div class='col-md-4'>
@@ -108,7 +116,9 @@
   </div>
   </tr>
   <% end %>
-  <% if @user.phone %> 
+  <% end %>
+  <% if @user.phone %>
+  <% if @phone %> 
   <tr>
   <div class='col-md-4'>
   <th>
@@ -121,7 +131,7 @@
   </td>
   </div>
   </tr>
-  <% end %>
+  <% end %><% end %>
   
 </table><br><br>
 
@@ -421,10 +431,11 @@
 </div>
 <div class="tab-pane" id="video">
   <% if @user.video %> 
+  <% if @video %> 
   <br><br>
  <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
 </p>
-<% end %>
+<% end %><% end %>
 </div>
 </div>
 
@@ -482,20 +493,24 @@
 <div class='row'>
 <div class="col-xs-6 col-md-3">
 <% if @user.github %>
+<% if @github %>
   <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %>
-  <% end %>
+  <% end %><% end %>
 </div>
 <div class="col-xs-6 col-md-3">
 <% if @user.linkedin %>
+<% if @linkedin %>
   <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
-</div><% end %>
+</div><% end %><% end %>
 <div class="col-xs-6 col-md-3">
 <% if @user.twitter %>
-   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% end %>
+<% if @twitter %>
+   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% end %><% end %>
 </div>
 <div class="col-xs-6 col-md-3">
 <% if @user.dribbble %>
-   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% end %>
+<% if @dribbble %>
+   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% end %><% end %>
 </div>
 
 </section>
