@@ -17,3 +17,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+#Ignore server files
+/server.crt
+/server.csr
+/server.key
+/server.pass.key
