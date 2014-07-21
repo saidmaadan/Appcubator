@@ -1,10 +1,10 @@
-== Appcubator
+Appcubator
 
-Appcubator is an Application development business network.Build for developers happiness.
-URL:
-http://www.app-cubator.com
+App development business network - aimed at providing the ability to find collaborators and volunteers for startup ideas...<br><b>Build for developers happiness.</b><br>
+<b>URL:</b><br>
+http://www.app-cubator.com <br>
 https://appcubator.herokuapp.com
-
+<br>
 <img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/Appcubator.png">
 
 
