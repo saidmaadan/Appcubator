@@ -4,15 +4,16 @@ App development business network - aimed at providing the ability to find collab
 <b>URL:</b><br>
 http://www.app-cubator.com <br>
 https://appcubator.herokuapp.com
-<br><br>
+<br>
 <h2>Tech:</h2>
 <ul>
 	<li><b>Server:</b> Ruby on Rails, RSpec, Postgres,ActiveRecord, ImageMagick, PaperClip, BCrypt, Amazon S3</li>
 	<li><b>Client:</b> HTML, CSS, JavaScript, JQuery, Twitter Bootstrap</li>
 	<li><b>Production:</b>Heroku</li>
-</ul><br>
+</ul>
+<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/tech.png">
 
-<h2>Entities</h2>
+<h2>Entities:</h2>
 <ul>
 	<li>Users</li>
 	<li>Projects</li>
@@ -24,7 +25,7 @@ https://appcubator.herokuapp.com
 	<li>Checkins</li>
 	<li>Associations</li>
 	
-</ul><br><br>
+</ul><br>
 <img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/Appcubator.png">
 
 
