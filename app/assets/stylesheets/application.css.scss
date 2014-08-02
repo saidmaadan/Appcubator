@@ -21,6 +21,8 @@
   margin: 0;
 }
 html, body {
+  margin:0;
+  padding:0;
   height: 100%;
 }
 // main{
@@ -41,7 +43,10 @@ html, body {
    }
  }
  main{
-  //min-height: 100%;
+  min-height:100%;
+  position:relative;
+  height: auto !important;
+  height: 100%;
   margin-top: 75px;
   padding-bottom: 50px;
  }
@@ -63,6 +68,7 @@ ol li{
 // }
 footer, .push {
 clear: both;
+height: 4em;
 }
 
 footer{
@@ -72,6 +78,8 @@ footer{
   margin-bottom: 0;
   border-top: 3px solid #eee;
   clear: both;
+  bottom: 0;
+  left: 0;
 }
 footer a:link{
   color: #77B5A8;
