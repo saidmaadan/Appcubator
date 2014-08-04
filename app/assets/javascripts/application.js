@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require social-share-button
 //= require_tree .
 //= require tinymce

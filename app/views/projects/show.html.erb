@@ -40,9 +40,9 @@
           <span class="date">
             <%= time_ago_in_words(review.created_at) %> ago
           </span></div>
-          <% end %>
-        </div>
-   
+
+          <% end %> </div>
+    
     <% end %>
 
 
@@ -119,6 +119,7 @@
    <h4>Project url link not available</h4>
    <% end %>
   </td>
+
   </div>
   </tr>
 
@@ -136,6 +137,9 @@
   </div>
   </tr>
   </table>
+  <p>Share us: 
+<%= social_share_button_tag("App development business network") %>
+       </p>
   </div>
 
   

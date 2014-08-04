@@ -36,7 +36,7 @@ gem "rmagick", :require => 'RMagick'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'figaro'
-
+gem 'social-share-button', '~> 0.1.6'
 gem 'tinymce-rails'
 
 group :development do
