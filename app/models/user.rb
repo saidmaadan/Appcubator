@@ -1,15 +1,15 @@
 class User < ActiveRecord::Base
   has_secure_password
-  # validates :password, length: { minimum: 8, allow_blank: true }
+  validates :password, length: { minimum: 8, allow_blank: true }
 
-  # validates :name, presence: true
-  # validates :email, presence: true,
-  #                 format: /\A\S+@\S+\z/,
-  #                 uniqueness: { case_sensitive: false }
+  validates :name, presence: true
+  validates :email, presence: true,
+                  format: /\A\S+@\S+\z/,
+                  uniqueness: { case_sensitive: false }
 
-  # validates :username, presence: true,
-  #                    format: /\A[A-Z0-9]+\z/i,
-  #                    uniqueness: { case_sensitive: false }
+  validates :username, presence: true,
+                     format: /\A[A-Z0-9]+\z/i,
+                     uniqueness: { case_sensitive: false }
 
   SEX = ['Male', 'Female', "I'll rather not say"]
   #validates :sex, inclusion: { in: SEX }
@@ -37,14 +37,14 @@ class User < ActiveRecord::Base
     user && user.authenticate(password)
   end
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.name
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save!
-    end
+  # def self.from_omniauth(auth)
+  #   where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+  #     user.provider = auth.provider
+  #     user.uid = auth.uid
+  #     user.name = auth.info.name
+  #     user.oauth_token = auth.credentials.token
+  #     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  #     user.save!
+  #   end
   end
 end
