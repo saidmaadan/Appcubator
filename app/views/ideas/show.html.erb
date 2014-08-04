@@ -84,6 +84,9 @@
     <%= links_to user.name, user %>
     <% end %>
     <% end %><br>
+    <p>
+<%= social_share_button_tag("App development business network!") %>
+       </p>  
 
     <%# if current_user %>
      <% if current_user_admin? %>
@@ -95,7 +98,7 @@
                  method: :delete, data: { confirm: 'Are you sure?' } %>
 
       <% end %>
-    
+  
 </div>
 <div class='col-md-1'></div>
 </div>
