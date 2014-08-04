@@ -17,7 +17,7 @@
       <div class='col-md-3'>
         <%= f.label :description, class: 'control-label' %></div>
         <div class='col-md-9'>
-        <%= f.text_area :description, cols: 40, rows: 7, class: "form-control" %>
+        <%= f.text_area :description, cols: 40, rows: 7, class: "form-control tinymce" %>
       </div></div><br>
       <div class='row'>
       <div class='col-md-3'>
@@ -45,7 +45,7 @@
       <%= f.submit class: "btn btn-info" %>
       <%= link_to "Cancel", ideas_path, class: "btn btn-default" %>
     </div></div>
-
+<%= tinymce %>
 <% end %>
 <div class='col-md-5'></div>
 </div>
