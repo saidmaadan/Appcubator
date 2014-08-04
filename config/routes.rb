@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   
   resource :session
   get "signin" => "sessions#new"
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
+  # get 'auth/:provider/callback', to: 'sessions#create'
 
   resources :users
   get 'signup' => 'users#new'
