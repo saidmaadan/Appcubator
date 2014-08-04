@@ -28,6 +28,7 @@
             </ul></li>
      
         <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
 
 <%= form_tag(session_path) do %>
 

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.authenticate(params[:email], params[:password])
+    if user = User.authenticate(params[:email], params[:password]) || User.from_omniauth(env["omniauth.auth"])
       session[:user_id] = user.id
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to (session[:intended_url] || user)

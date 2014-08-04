@@ -36,6 +36,7 @@ gem "rmagick", :require => 'RMagick'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'omniauth-facebook', '~> 1.4.1'
 
 
 group :development do

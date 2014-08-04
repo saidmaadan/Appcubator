@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :abilities
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
   resource :session
   get "signin" => "sessions#new"
 
