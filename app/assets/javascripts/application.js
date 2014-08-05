@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require social-share-button
 //= require_tree .
-//= require tinymce
+
+

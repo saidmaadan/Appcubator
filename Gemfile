@@ -37,7 +37,9 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'figaro'
 gem 'social-share-button', '~> 0.1.6'
-gem 'tinymce-rails'
+# gem 'tinymce-rails'
+# gem "friendly_id", "~> 5.0.1"
+# gem "ckeditor"
 
 group :development do
   gem 'rails_layout'
