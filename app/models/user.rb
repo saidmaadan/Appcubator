@@ -27,7 +27,12 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :voted_ideas, through: :votes, source: :idea
 
-  
+  paginates_per 20
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end

@@ -94,3 +94,15 @@ footer a:hover{
 footer a:active {
   color: #BF526A;
 }
+.paginate{
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.1em;
+  color: #005500;
+}
+.paginate:active{
+  color: red;
+}
+.paginate:hover{
+  color: red;
+}

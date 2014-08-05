@@ -37,6 +37,9 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'figaro'
 gem 'social-share-button', '~> 0.1.6'
+gem 'kaminari'
+# gem 'will_paginate', '~> 3.0'
+
 # gem 'tinymce-rails'
 # gem "friendly_id", "~> 5.0.1"
 # gem "ckeditor"

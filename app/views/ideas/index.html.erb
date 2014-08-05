@@ -26,13 +26,15 @@
             <td><%= idea.category %></td>
           </tr>
         </table> -->
-
       
       </div>
       <% end %>
       <% end %>
       <% end %>
       <% end %>
+     <div class='paginate'>
+    <%= paginate @ideas, :outer_window => 3 %>
+</div>
       </div>
        <div class='col-md-1'></div>
       <div class='col-md-2 well'>

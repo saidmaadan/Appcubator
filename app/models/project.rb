@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
+  paginates_per 6
 
   def to_param
     "#{id}-#{name.parameterize}"

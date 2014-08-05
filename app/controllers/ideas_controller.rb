@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
   before_action :require_admin, only: [:only]
 
   def index
-    @ideas = Idea.recent
+    @ideas = Idea.recent.page params[:page]
   end
 
   def show

@@ -13,12 +13,14 @@ Rails.application.routes.draw do
   root "users#new"
 
   resources :projects do
+    get 'page/:page', :action => :index, :on => :collection
     resources :reviews
     resources :follows
   end
   # get 'ideas/filter/:scope' => "ideas#index", as: :filtered_ideas
 
   resources :ideas do
+    get 'page/:page', :action => :index, :on => :collection
     resources :checkins
     resources :votes
   end
