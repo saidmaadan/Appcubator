@@ -22,7 +22,7 @@ class Idea < ActiveRecord::Base
   # scope :mobileapp, -> { recent.where(category: 'MOBILE APP')}
   # scope :android, -> { recent.where(category: 'ANDROID APP')}
   # scope :ios, -> { recent.where(category: 'IOS APP')}
-paginates_per 8
+paginates_per 6
 
 def to_param
     "#{id}-#{title.parameterize}"
