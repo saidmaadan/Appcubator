@@ -1,0 +1,45 @@
+<div class="container">
+<div class="row">
+
+<div class='col-md-9 tips'>
+<h2><%= @trend.title %></h2><br>
+<div class='row'>
+
+<div class='col-md-1'>
+<%= profile_image_for @trend.user, size: 40 %></div>
+<div class='col-md-2'>By: 
+<%= link_to @trend.user.name, current_user %></div>
+<div class='col-md-2'>
+<%= time_ago_in_words(@trend.created_at) %> ago</div></div>
+<br>
+<div class='row'>
+<div class='col-md-6'>
+<%= image_tag @trend.upload.url(:medium) %></div>
+<div class='col-md-6'>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- appcubator -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-1207389406711656"
+     data-ad-slot="7623066796"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+<br>
+
+<span><%= @trend.content %><br></span>
+<br>
+<h4><%= link_to " Source ", @trend.source_url, :target => "_blank", class: 'fa fa-archive' %></h4>
+</div>
+
+<div class='col-md-3'>
+
+</div>
+         
+</div></div>
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+// Place all the styles related to the Trends controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ @import "bootstrap";
+
+.tips span{
+	font-size: 1.3em;
+}
+
+.tips h2{
+	font-size: 1.9em;
+	color: #005500;
+}
+.tips a{
+	color: red;
+}
+.insight a{
+	color: #77B5A8;
+}

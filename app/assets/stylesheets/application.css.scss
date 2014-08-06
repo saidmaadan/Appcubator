@@ -26,6 +26,16 @@ html, body {
   padding:0;
   height: 100%;
 }
+section{
+  margin-top: 50px;
+  background: gray;
+  height: 50px;
+}
+section p{
+  padding: 15px 0 10px 0;
+  color: white;
+}
+
 // main{
 //   min-height: 100%;
 //   height: auto !important;
@@ -48,7 +58,7 @@ html, body {
   position:relative;
   height: auto !important;
   height: 100%;
-  margin-top: 75px;
+  margin-top: 20px;
   padding-bottom: 50px;
  }
 ol li{
@@ -105,4 +115,12 @@ footer a:active {
 }
 .paginate:hover{
   color: red;
+}
+section ul{
+  padding-top: 10px;
+  font-size: 1.2em;
+  
+}
+.nav > li > a {
+  color: white;
 }

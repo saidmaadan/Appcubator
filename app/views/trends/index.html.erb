@@ -1,0 +1,37 @@
+<div class="container">
+<div class='row'>
+
+<div class='col-md-9 insight'>
+<% @trends.each do |trend| %>
+<br>
+<div class='col-md-4'>
+<%= image_tag trend.upload.url(:medium) %>
+</div>
+
+<div class='col-md-8'>
+<h2><%= link_to trend.title, trend %></h2><br>
+<div class='row'>
+<div class='col-md-2'>
+
+<%= profile_image_for trend.user, size: 40 %></div>
+<div class='col-md-3'>
+By <%= link_to trend.user.name, current_user %></div> 
+<div class='col-md-4'>
+<%= time_ago_in_words(trend.created_at) %> ago</div>
+</div><br>
+<%= truncate trend.content, length: 180, separator: ' ' %><br><br>
+<%= link_to 'Read more -->', trend, class: 'btn btn-default' %>
+</div>
+<% end %>
+<div class='paginate'>
+    <%= paginate @trends, :outer_window => 3 %>
+</div>
+</div>
+
+<div class='col-md-3'>
+ 	
+</div>
+
+</div>
+</div>
+

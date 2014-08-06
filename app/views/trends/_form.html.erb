@@ -1,0 +1,48 @@
+<div class='container'>
+<div class='row'>
+<br>
+<div class='col-md-7'>
+<%= form_for @trend, :html => { :multipart => true } do |f| %>
+<%= render "shared/errors", object: @trend %>
+<div class='form-horizontal' role='form'>
+  <div class="form-group">
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :title, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_field :title, autofocus: true, placeholder: "Title", class: "form-control" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :content, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_area :content, cols: 40, rows: 7, placeholder: "Details of Tips and Trends",class: "form-control" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :source_url, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.text_field :source_url, class: "form-control", placeholder: "http://example.com/source.html" %>
+  </div></div><br>
+  <div class='row'>
+  <div class='col-md-3'>
+    <%= f.label :upload, class: 'control-label' %></div>
+    <div class='col-md-8'>
+    <%= f.file_field :upload %>
+  </div></div><br>
+
+  <div class='row'>
+  <div class='col-md-3'></div>
+  <div class='col-md-8'>
+    <%= f.submit class: 'btn btn-info' %> <%= link_to "Cancel", trends_path, class: 'btn btn-warning' %>
+  </div></div>
+</div></div>
+<% end %>
+</div>
+<div class='col-md-4 ico'>
+<br><br>
+</div>
+</div>
+</div>
+</div>
+

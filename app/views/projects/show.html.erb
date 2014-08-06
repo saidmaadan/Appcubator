@@ -138,7 +138,7 @@
   </tr>
   </table>
   <p>Share us: 
-<%= social_share_button_tag("App development business network") %>
+<%= social_share_button_tag truncate(@project.description, length: 60)%>
        </p>
   </div>
 
@@ -147,7 +147,7 @@
   
   </div></div></div>
 <div class='col-md-3'>
-<h4>Project Team Member ::</h4><h4> &nbsp{ <%= link_to @project.user.name %> }</h4>
+<h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, current_user %> </h4>
 
 <%= profile_image_for @project.user, size: 250 %>
 
