@@ -32,20 +32,20 @@ body{
 	border-bottom: 2px solid gray;
 }
 
-.well a:link{
+aside .well a:link{
 	color: #A19F50;
 }
 
-section, .well a:link{
+aside, .well a:link{
 	color: #BDBA17;
 }
-section, .well a:hover{
+aside, .well a:hover{
   color: #D1154D;
 }
 
-section, .well a:active{
+aside, .well a:active{
 	color: black;
 }
-section, .well a:visited{
+aside, .well a:visited{
   color: #807A7E;
 }
