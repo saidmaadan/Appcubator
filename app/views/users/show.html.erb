@@ -481,20 +481,20 @@
 <div class='row'>
 <div class="col-xs-6 col-md-3">
 <% if @user.github %>
-  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %>
+  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %><% else %>
   <% end %>
 </div>
 <div class="col-xs-6 col-md-3">
 <% if @user.linkedin %>
   <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
-</div><% end %>
+</div><% else %><% end %>
 <div class="col-xs-6 col-md-3">
 <% if @user.twitter %>
-   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% end %>
+   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% else %><% end %>
 </div>
 <div class="col-xs-6 col-md-3">
 <% if @user.dribbble %>
-   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% end %>
+   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% else %><% end %>
 </div>
 
 </aside>

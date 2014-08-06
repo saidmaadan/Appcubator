@@ -21,7 +21,7 @@ class Trend < ActiveRecord::Base
   validates :title, presence: true
   validates :content, length: { minimum: 25 }
 
-  paginates_per 3
+  paginates_per 2
 
   def to_param
     "#{id}-#{title.parameterize}"
