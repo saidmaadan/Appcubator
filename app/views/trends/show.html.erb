@@ -1,24 +1,27 @@
 <div class="container">
 <div class="row">
 
-<div class='col-md-9 tips'>
-<h2><%= @trend.title %></h2><br>
+<div class='col-md-3 tips'>
+<h1><%= @trend.title %></h1><br>
 <div class='row'>
-<div class='col-md-1'>
+<div class='col-md-3'>
 <%= profile_image_for @trend.user, size: 40 %></div>
-<div class='col-md-2'>By: 
-<%= link_to @trend.user.name, current_user %></div>
+<div class='col-md-9'>By: 
+<%= link_to @trend.user.name, current_user %></div></div><br>
 <% if @trend.twitter_url %>
-<div class='col-md-3'>
-<%= link_to 'Follow me on Twitter', @trend.twitter_url, :target => "_blank", class: 'fa fa-twitter' %></div>
-<div class='col-md-2'>
-<%= time_ago_in_words(@trend.created_at) %> ago</div>
+<div class='row'>
+<div class='col-md-12'>
+<%= link_to 'Follow me on Twitter', @trend.twitter_url, :target => "_blank", class: 'fa fa-twitter' %></div></div>
+<div class='row'>
+<div class='col-md-12'>
+Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div>
 <% else %>
-<div class='col-md-3'>
-<%= time_ago_in_words(@trend.created_at) %> ago</div><% end %></div>
+<div class='row'>
+<div class='col-md-12'>
+Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
 <br>
 <div class='row'>
-<div class='col-md-6'>
+<div class='col-md-12'>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- appcubator1 -->
 <ins class="adsbygoogle"
@@ -27,28 +30,15 @@
      data-ad-slot="2994390796"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-<div class='col-md-6'>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- MasmaSpace -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-1207389406711656"
-     data-ad-slot="7130211771"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
 </script></div></div>
+</div>
 <br>
-
+<div class='col-md-9 tips'>
 <span><%= @trend.content %><br></span>
 <br>
 <h4><%= link_to " Source ", @trend.source_url, :target => "_blank", class: 'fa fa-archive' %></h4>
 </div>
 
-<div class='col-md-3'>
-
-</div>
-         
 </div></div>
 
 
