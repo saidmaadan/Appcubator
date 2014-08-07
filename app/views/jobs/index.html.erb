@@ -4,15 +4,16 @@
 <div class='col-md-9 job_home'>
 <% @jobs.each do |job| %>
 <br>
+<div class='row'>
 <div class='col-md-3'>
-<%= image_tag job.logo.url(:small) %>
+<%= image_tag job.logo.url(:thumb) %>
 </div>
 
-<div class='col-md-8'>
-<h4><%= link_to job.job_title, job %> <%= job.salary %> <%= job.salary_rate %></h4>
-		<%= job.company_name %> | <%= job.location %>, <%= job.state %> <%= job.zip_code %> <%= job.country %> | Posted <%= time_ago_in_words(job.created_at) %> ago<br>
+<div class='col-md-9'>
+<h4><%= link_to job.job_title, job %></h4>
+		<%= job.company_name %> | <%= job.salary %> <%= job.salary_rate %> | <%= job.location %>, <%= job.state %> <%= job.zip_code %> <%= job.country %> | Posted <%= time_ago_in_words(job.created_at) %> ago<br>
 <%= truncate job.job_details, length: 100, separator: ' ' %><br>
-</div>
+</div></div>
 <% end %>
 <div class='paginate'>
     <%= paginate @jobs, :outer_window => 3 %>
