@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root "users#new"
 
   resources :trends
+  resources :jobs
 
   resources :projects do
     get 'page/:page', :action => :index, :on => :collection

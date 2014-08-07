@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :voted_ideas, through: :votes, source: :idea
   has_many :trends, dependent: :destroy
+  has_many :jobs
 
   paginates_per 20
 

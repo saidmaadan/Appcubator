@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806230823) do
+ActiveRecord::Schema.define(version: 20140807162328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,37 @@ ActiveRecord::Schema.define(version: 20140806230823) do
     t.string   "goal"
     t.string   "category"
     t.string   "market"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.string   "job_title"
+    t.text     "job_details"
+    t.string   "experience"
+    t.string   "employment_type"
+    t.text     "desire_skill"
+    t.string   "location"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip_code"
+    t.string   "salary"
+    t.string   "other_pay"
+    t.string   "relocation"
+    t.string   "required_travel"
+    t.string   "company_name"
+    t.text     "company_description"
+    t.string   "website"
+    t.string   "application_link"
+    t.text     "key_responsibility"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "industry"
+    t.string   "company_size"
+    t.string   "salary_rate"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

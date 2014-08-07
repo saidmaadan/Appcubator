@@ -1,0 +1,55 @@
+<div class="container">
+<div class="row">
+<article class="col-md-12 job_head">
+	<div class="col-md-9">
+		<h2><%= @job.job_title %></h2>
+		<%= @job.company_name %> | <%= @job.location %>, <%= @job.state %> <%= @job.zip_code %> <%= @job.country %> | Posted <%= time_ago_in_words(@job.created_at) %> ago
+	</div>
+	<div class="col-md-3"><br>
+		<%= link_to "Apply for this job", @job.application_link, :target => "_blank", class: "btn btn-success" %>
+	</div><br>
+</article><br>
+<article class="col-md-12 job_main">
+	<div class="col-md-8">
+	<h3>Job Description</h3>
+	<h5>Job Type: <%= @job.employment_type %> </h5>
+	<% if @job.salary %>
+	<h5>Salary: <%= @job.salary %> per <%= @job.salary_rate %></h5>
+	<% else %>
+	<h5>Salary: Not Specified</h5>
+	<% end %>
+
+	<%= @job.job_details %>
+
+<h3>Responsibilities</h3>
+	<%= @job.key_responsibility %>
+
+	<h3>Job Requirements/Skills</h3>
+	<%= @job.desire_skill %>
+
+	<h2>JOB SNAPSHOT</h2>
+	<h4>Employment Type: <%= @job.employment_type %></h4>
+	<h4>Base Pay: <%= @job.salary %> per <%= @job.salary_rate %></h4>
+	<h4>Other Pay: <%= @job.other_pay %></h4>
+	<h4>Industry: <%= @job.industry %></h4>
+	<h4>Experience: <%= @job.experience %></h4>
+	<h4>Relocation: <%= @job.relocation %></h4>
+	<h4>Require travel: <%= @job.required_travel %></h4>
+
+	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-warning" %>
+	</div>
+	<div class="col-md-4"><br>
+	<div class="row">
+	<div class="col-md-5">
+	<%= image_tag @job.logo.url(:small) %></div>
+	<div class="col-md-7">
+		<h2><%= @job.company_name %></h2></div></div><br>
+
+		<%= @job.company_description %><br>
+
+		<%= link_to "Go to Company website", @job.website, :target => "_blank" %><br>
+
+	</div>
+</article><br>
+</div>
+</div>

@@ -15,15 +15,15 @@
 
 <%= profile_image_for trend.user, size: 40 %></div>
 <div class='col-md-3'>
-By <%= link_to trend.user.name, current_user %></div>
+By <%= link_to trend.user.name, @user %></div>
 <% if trend.twitter_url %>
 <div class='col-md-4'>
 <%= link_to 'Follow me on Twitter', trend.twitter_url, class: 'fa fa-twitter' %></div> 
 <div class='col-md-3'>
-<%= time_ago_in_words(trend.created_at) %> ago</div>
+Posted <%= time_ago_in_words(trend.created_at) %> ago</div>
 </div><% else %>
 <div class='col-md-4'>
-<%= time_ago_in_words(trend.created_at) %> ago</div>
+Posted <%= time_ago_in_words(trend.created_at) %> ago</div>
 </div>
 <% end %><br>
 <%= truncate trend.content, length: 180, separator: ' ' %><br><br>

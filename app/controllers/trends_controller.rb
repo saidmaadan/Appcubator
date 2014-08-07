@@ -46,7 +46,7 @@ class TrendsController < ApplicationController
 	private
 
 	def trend_params
-		trend_params = params.require(:trend).permit(:title, :content, :source_url, :user_id, :twitter_url, :upload)
+		params.require(:trend).permit(:title, :content, :source_url, :user_id, :twitter_url, :upload)
 	end
 
 	def correct_user

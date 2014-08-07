@@ -1,0 +1,37 @@
+<div class="container">
+<div class='row'>
+
+<div class='col-md-8 job_home'>
+<% @jobs.each do |job| %>
+<br>
+<div class='col-md-3'>
+<%= image_tag job.logo.url(:small) %>
+</div>
+
+<div class='col-md-8'>
+<h4><%= link_to job.job_title, job %> <%= job.salary %> <%= job.salary_rate %></h4>
+		<%= job.company_name %> | <%= job.location %>, <%= job.state %> <%= job.zip_code %> <%= job.country %> | Posted <%= time_ago_in_words(job.created_at) %> ago<br>
+<%= truncate job.job_details, length: 100, separator: ' ' %><br>
+</div>
+<% end %>
+<div class='paginate'>
+    <%= paginate @jobs, :outer_window => 3 %>
+</div>
+</div>
+
+<div class='col-md-4'>
+ 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- MasmaSpace News -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-1207389406711656"
+     data-ad-slot="8952579198"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+</div>
+</div>
+
+

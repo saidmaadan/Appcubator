@@ -7,7 +7,7 @@
 <div class='col-md-3'>
 <%= profile_image_for @trend.user, size: 40 %></div>
 <div class='col-md-9'>By: 
-<%= link_to @trend.user.name, current_user %></div></div><br>
+<%= link_to @trend.user.name, @user %></div></div><br>
 <% if @trend.twitter_url %>
 <div class='row'>
 <div class='col-md-12'>
@@ -33,7 +33,9 @@ Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
      data-ad-slot="3214716793"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div></div>
+</script></div>
+
+</div>
 </div>
 <br>
 <div class='col-md-8 tips'>
