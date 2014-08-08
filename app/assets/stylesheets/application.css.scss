@@ -136,8 +136,20 @@ section .nav > li > a {
 }
 @media(max-width:480px) {
 
-   footer {background: #eee; height: 500px}
+   footer {background: #eee; height: 400px}
    
+}
+@media(max-width:550px) {
+
+    section {height: 100px}
+
+}
+
+@media(max-width:550px) {
+
+    .logo {display: none}
+    .touch {display: none}
+
 }
 
 /* Small devices (tablets, 768px and up) */

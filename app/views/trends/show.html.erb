@@ -22,7 +22,14 @@ Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
 <br>
 <div class='row'>
 <div class='col-md-12'>
-<%= social_share_button_tag truncate(@trend.title, length: 60)%></div></div><br>
+<%= social_share_button_tag truncate(@trend.title, length: 60)%><br>
+<% if current_user_admin? %>
+
+  <%= link_to "Edit", edit_trend_path(@trend), class: 'btn btn-info' %>
+  
+  <%= link_to "Delete", trend_path(@trend), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% end %>
+</div></div><br>
 <div class='row'>
 <div class='col-md-12'>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -36,7 +36,14 @@
 	<h4>Relocation: <%= @job.relocation %></h4>
 	<h4>Require travel: <%= @job.required_travel %></h4>
 
-	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-warning" %><br>
+	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-warning" %>
+  <% if current_user_admin? %>
+
+  <%= link_to "Edit", edit_job_path(@job), class: 'btn btn-info' %>
+  
+  <%= link_to "Delete", job_path(@job), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% end %>
+	<br>
 	</div>
 	<div class="col-md-4"><br>
 	<div class="row">

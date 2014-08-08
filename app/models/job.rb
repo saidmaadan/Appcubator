@@ -36,7 +36,7 @@ class Job < ActiveRecord::Base
   RELOCATION = ['NO', '0 - 20%', '20 - 40%', '40 - 60%', '60 - 80%', "80 - 100%"]
   REQUIRED_TRAVEL = ["NO", '0 - 20%', '20 - 40%', '40 - 60%', '60 - 80%', "80 - 100%"]
   COMPANY_SIZE = ["1 - 10 Employees", "11 - 50 Employees", "51 - 100 Employees", "101 - 200 Employees", "201 - 500 Employees", "501 - 1000 Employees", "1001 - 5000 Employees", "5000+ Employees"]
-  paginates_per 3
+  paginates_per 4
 
   def to_param
     "#{id}-#{job_title.parameterize}"
