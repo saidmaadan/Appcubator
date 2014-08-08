@@ -14,7 +14,7 @@
 	<h3>Job Description</h3>
 	<h5>Job Type: <%= @job.employment_type %> </h5>
 	<% if @job.salary %>
-	<h5>Salary: <%= @job.salary %> per <%= @job.salary_rate %></h5>
+	<h5>Salary: <%= number_to_currency(@job.salary) %> per <%= @job.salary_rate %></h5>
 	<% else %>
 	<h5>Salary: Not Specified</h5>
 	<% end %>
@@ -36,7 +36,7 @@
 	<h4>Relocation: <%= @job.relocation %></h4>
 	<h4>Require travel: <%= @job.required_travel %></h4>
 
-	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-warning" %>
+	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-warning" %><br>
 	</div>
 	<div class="col-md-4"><br>
 	<div class="row">

@@ -2,24 +2,31 @@
 <div class='row'>
 
 <div class='col-md-9 job_home'>
-<% @jobs.each do |job| %>
-<br>
-<div class='row'>
-<div class='col-md-3'>
-<%= image_tag job.logo.url(:thumb) %>
-</div>
+<div class='row job_top'>
+<div class='col-md-2'></div>
+<div class='col-md-6'>Job Title and Description</div>
+<div class='col-md-2'>Location</div>
+<div class='col-md-2'>Posted</div></div>
 
-<div class='col-md-9'>
-<h4><%= link_to job.job_title, job %></h4>
-		<%= job.company_name %> | <%= job.salary %> <%= job.salary_rate %> | <%= job.location %>, <%= job.state %> <%= job.zip_code %> <%= job.country %> | Posted <%= time_ago_in_words(job.created_at) %> ago<br>
+ <% @jobs.each do |job| %>
+<div class='row job_level'>
+
+<div class='col-md-2'><%= image_tag job.logo.url(:thumb) %></div>
+<div class='col-md-6'><h5><%= link_to job.job_title, job %></h5>
 <%= truncate job.job_details, length: 100, separator: ' ' %><br>
-</div></div>
-<% end %>
+<%= job.company_name %> | | <%= number_to_currency(job.salary) %> <%= job.salary_rate %> | <%= job.employment_type %><br> <%= link_to "View full job description", job %></div>
+<div class='col-md-2'><%= job.location %>, <%= job.state %> <br> <%= job.zip_code %> <%= job.country %></div>
+<div class='col-md-2'><%= time_ago_in_words(job.created_at) %> ago</div>
+
+</div><br><% end %><br>
+<div class='row'>
+<div class='col-md-3'></div>
+<div class='col-md-6'>
 <div class='paginate'>
     <%= paginate @jobs, :outer_window => 3 %>
-</div>
-</div>
-
+</div></div>
+<div class='col-md-3'></div>	
+</div></div>
 <div class='col-md-3'>
  	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- MasmaSpace News -->
@@ -31,8 +38,10 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
+</div>
+</div>
 
-</div>
-</div>
+
+
 
 

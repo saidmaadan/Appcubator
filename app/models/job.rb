@@ -32,11 +32,11 @@ class Job < ActiveRecord::Base
   EXPERIENCE = ['Internship', 'Entry-level', 'Mid-level', 'Senior-level', "Associate", "Executive", "Director", "CEO", "Not Applicable"]
   EMPLOYMENT_TYPE = ['Full Time', 'Part Time', 'Contract', 'Contract', "Contract to Hire", "Temporary", "Other"]
   EXPERIENCE = ['Internship', 'Entry-level', 'Mid-level', 'Senior-level', "Associate", "Executive", "Director", "CEO", "Not Applicable"]
-  SALARY_RATE = ['Hourly', 'Weekly', 'Monthly', 'Annually/Yearly']
+  SALARY_RATE = ['Hourly', 'Weekly', 'Monthly', 'Annually']
   RELOCATION = ['NO', '0 - 20%', '20 - 40%', '40 - 60%', '60 - 80%', "80 - 100%"]
   REQUIRED_TRAVEL = ["NO", '0 - 20%', '20 - 40%', '40 - 60%', '60 - 80%', "80 - 100%"]
   COMPANY_SIZE = ["1 - 10 Employees", "11 - 50 Employees", "51 - 100 Employees", "101 - 200 Employees", "201 - 500 Employees", "501 - 1000 Employees", "1001 - 5000 Employees", "5000+ Employees"]
-  paginates_per 6
+  paginates_per 3
 
   def to_param
     "#{id}-#{job_title.parameterize}"

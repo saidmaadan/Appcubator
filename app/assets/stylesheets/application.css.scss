@@ -124,3 +124,31 @@ section ul{
 section .nav > li > a {
   color: white;
 }
+
+@media(max-width:1030px) {
+
+    footer {height: 380px}
+
+}
+@media(max-width:767px) {
+
+   footer {background: white}
+}
+@media(max-width:480px) {
+
+   footer {background: #eee; height: 500px}
+   
+}
+
+/* Small devices (tablets, 768px and up) */
+// @media (min-width: @screen-sm-min) { 
+// footer{
+//   background: #fff} 
+// }
+
+// Medium devices (desktops, 992px and up)
+// @media (min-width: @screen-md-min) { 
+// footer{
+//   background: #FFF} 
+// }
+
