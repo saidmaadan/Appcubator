@@ -5,7 +5,7 @@
 
 <div class='col-md-9 well project_show'><br><br>
 <div class="row">
-<div class='col-md-4'>
+<div class='col-sm-12 col-xs-12 col-md-4'>
 
 <%= image_tag @project.screenshot.url(:medium) %>
 <p>
@@ -47,18 +47,18 @@
 
 
 </div>
-<div class='col-md-8'>
+<div class='col-sm-12 col-xs-12 col-md-8'>
 <div class="table-responsive">
  <table class="table table-striped">
   
    
   <tr>
-  <div class='col-md-4'>
+  <div class='col-sm-12 col-xs-12 col-md-4'>
   <th>
   <h5>Summary</h5> 
   </th>
   </div>
-  <div class='col-md-8'>
+  <div class='col-sm-12 col-xs-12 col-md-8'>
   <td>
    <%= @project.description %>
   </td>
@@ -66,12 +66,12 @@
   </tr>
   
   <tr>
-  <div class='col-md-4'>
+  <div class='col-sm-12 col-xs-12 col-md-4'>
   <th>
    <h5>Project Teams</h5>
   </th>
   </div>
-  <div class='col-md-8'>
+  <div class='col-sm-12 col-xs-12 col-md-8'>
   <td>
    <%= @project.teams %>
   </td>
@@ -79,12 +79,12 @@
   </tr>
  
   <tr>
-  <div class='col-md-4'>
+  <div class='col-sm-12 col-xs-12 col-md-4'>
   <th>
   <h5>Looking For</h5>
   </th>
   </div>
-  <div class='col-md-8'>
+  <div class='col-sm-12 col-xs-12 col-md-8'>
   <td>
    <%= @project.looking_for %>
   </td>
@@ -92,12 +92,12 @@
   </tr>
 
    <tr>
-  <div class='col-md-4'>
+  <div class='col-sm-12 col-xs-12 col-md-4'>
   <th>
    <h5>GitHub</h5>
   </th>
   </div>
-  <div class='col-md-8'>
+  <div class='col-sm-12 col-xs-12 col-md-8'>
   <td>
   <% if @project.github_link %>
     <%= link_to "Source Code", @project.github_link, :target => "_blank", class: 'fa fa-github' %><% end %>
@@ -106,12 +106,12 @@
   </tr>
 
    <tr>
-  <div class='col-md-4'>
+  <div class='col-sm-12 col-xs-12 col-md-4'>
   <th>
    <h5>WebSite URL</h5>
   </th>
   </div>
-  <div class='col-md-8'>
+  <div class='col-sm-12 col-xs-12 col-md-8'>
   <td>
   <% if @project.web_url %>
    <%= link_to "Project Url", @project.web_url, :target => "_blank", class: 'fa fa-tablet' %>
@@ -124,12 +124,12 @@
   </tr>
 
    <tr>
-  <div class='col-md-4'>
+  <div class='col-sm-12 col-xs-12 col-md-4'>
   <th>
    <h5>Target Amount</h5>
   </th>
   </div>
-  <div class='col-md-8'>
+  <div class='col-sm-12 col-xs-12 col-md-8'>
   <td>
   <%= number_to_currency(@project.target_amount) %>
   </p>
@@ -146,7 +146,7 @@
   
   
   </div></div></div>
-<div class='col-md-3'>
+<div class='col-sm-6 col-xs-8 col-md-3'>
 <h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, @user %> </h4>
 
 <%= profile_image_for @project.user, size: 250 %>
