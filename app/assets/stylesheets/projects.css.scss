@@ -28,7 +28,7 @@ article{
 	border-top: 2px solid #eee;
 }
 .project_show{
-	height: 700px;
+	height: auto;
 }
 .review_comment{
 	
@@ -44,4 +44,10 @@ article{
 }
 .project_wrap2 a{
 	color: #77B5A8;
+}
+
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
 }

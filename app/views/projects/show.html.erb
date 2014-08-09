@@ -47,105 +47,88 @@
 
 
 </div>
-<div class='col-sm-12 col-xs-12 col-md-8'>
-<div class="table-responsive">
- <table class="table table-striped">
-  
-   
-  <tr>
-  <div class='col-sm-12 col-xs-12 col-md-4'>
-  <th>
-  <h5>Summary</h5> 
-  </th>
-  </div>
-  <div class='col-sm-12 col-xs-12 col-md-8'>
-  <td>
-   <%= @project.description %>
-  </td>
-  </div>
-  </tr>
-  
-  <tr>
-  <div class='col-sm-12 col-xs-12 col-md-4'>
-  <th>
-   <h5>Project Teams</h5>
-  </th>
-  </div>
-  <div class='col-sm-12 col-xs-12 col-md-8'>
-  <td>
-   <%= @project.teams %>
-  </td>
-  </div>
-  </tr>
- 
-  <tr>
-  <div class='col-sm-12 col-xs-12 col-md-4'>
-  <th>
-  <h5>Looking For</h5>
-  </th>
-  </div>
-  <div class='col-sm-12 col-xs-12 col-md-8'>
-  <td>
-   <%= @project.looking_for %>
-  </td>
-  </div>
-  </tr>
 
-   <tr>
+<div class='col-sm-12 col-xs-12 col-md-8'>
+<div class='row'>
   <div class='col-sm-12 col-xs-12 col-md-4'>
-  <th>
-   <h5>GitHub</h5>
-  </th>
+  
+  <h5>Summary</h5> 
+  
   </div>
   <div class='col-sm-12 col-xs-12 col-md-8'>
-  <td>
+  
+   <%= @project.description %>
+  
+  </div></div><hr>
+  <div class='row'>
+  <div class='col-sm-6 col-xs-6 col-md-4'>
+  
+   <h5>Project Teams</h5>
+  
+  </div>
+  <div class='col-sm-6 col-xs-6 col-md-8'>
+  
+   <%= @project.teams %>
+  </div></div><hr>
+  <div class='row'>
+  
+  <div class='col-sm-6 col-xs-6 col-md-4'>
+  
+  <h5>Looking For</h5>
+  
+  </div>
+  <div class='col-sm-6 col-xs-6 col-md-8'>
+  
+   <%= @project.looking_for %>
+  </div></div><hr>
+   <div class='row'>
+  <div class='col-sm-6 col-xs-6 col-md-4'>
+  
+   <h5>GitHub</h5>
+  
+  </div>
+  <div class='col-sm-6 col-xs-6 col-md-8'>
+  
   <% if @project.github_link %>
     <%= link_to "Source Code", @project.github_link, :target => "_blank", class: 'fa fa-github' %><% end %>
-  </td>
-  </div>
-  </tr>
-
-   <tr>
-  <div class='col-sm-12 col-xs-12 col-md-4'>
-  <th>
+  </div></div><hr>
+ <div class='row'>
+  <div class='col-sm-6 col-xs-6 col-md-4'>
+ 
    <h5>WebSite URL</h5>
-  </th>
+  
   </div>
-  <div class='col-sm-12 col-xs-12 col-md-8'>
-  <td>
+  <div class='col-sm-6 col-xs-6 col-md-8'>
+ 
   <% if @project.web_url %>
    <%= link_to "Project Url", @project.web_url, :target => "_blank", class: 'fa fa-tablet' %>
    <% else %>
    <h4>Project url link not available</h4>
    <% end %>
-  </td>
-
-  </div>
-  </tr>
-
-   <tr>
-  <div class='col-sm-12 col-xs-12 col-md-4'>
-  <th>
+ </div></div><hr>
+<div class='row'>
+  <div class='col-sm-6 col-xs-6 col-md-4'>
+ 
    <h5>Target Amount</h5>
-  </th>
+  
   </div>
-  <div class='col-sm-12 col-xs-12 col-md-8'>
-  <td>
+  <div class='col-sm-6 col-xs-6 col-md-8'>
+  
   <%= number_to_currency(@project.target_amount) %>
-  </p>
-  </td>
   </div>
-  </tr>
-  </table>
-  <p>Share us: 
+  </div>
+  <hr>
+  <br><br>
+  <div class='row'>
+  <div class='col-sm-8 col-xs-8 col-md-8'>
+   <p>Share: 
 <%= social_share_button_tag truncate(@project.description, length: 60)%>
-       </p>
-  </div>
+       </p></div></div>
+</div>
 
   
-  
-  
-  </div></div></div>
+ 
+  </div></div>
 <div class='col-sm-6 col-xs-8 col-md-3'>
 <h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, @user %> </h4>
 
@@ -187,7 +170,6 @@
 
 
 </div>
-</article>
 </div></div>
 
 

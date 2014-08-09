@@ -9,54 +9,29 @@
 
   <p>
     <%= @idea.description %>
-  </p>
-
-  <div class="table-responsive">
- <table class="table table-hover">
-  
-  <tr>
-  <div class='col-md-4'>
-  <th>
-  <h5>Market Potential:</h5> 
-  </th>
+  </p><hr>
+  <div class='row'>
+  <div class='col-sm-6 col-md-4'>
+  <h5>Market Potential:</h5>  
   </div>
-  <div class='col-md-8'>
-  <td>
+  <div class='col-sm-6 col-md-8'>
    <%= @idea.market %>
-  </td>
-  </div>
-  </tr>
-
-  <tr>
-  <div class='col-md-4'>
-  <th>
+  </div></div><hr>
+  <div class='row'>
+  <div class='col-sm-6 col-md-4'>
   <h5>Goal</h5> 
-  </th>
   </div>
-  <div class='col-md-8'>
-  <td>
+  <div class='col-sm-6 col-md-8'> 
    <%= @idea.goal %>
-  </td>
+  </div></div><hr>
+  <div class='row'>
+  <div class='col-sm-6 col-md-4'>
+  <h5>Category</h5>  
   </div>
-  </tr>
-
-  <tr>
-  <div class='col-md-4'>
-  <th>
-  <h5>Category</h5> 
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
+  <div class='col-sm-6 col-md-8'>
    <%= @idea.category %>
-  </td>
-  </div>
-  </tr>
-
-  </table>
-  </div>
- 
- 
+  </div></div><hr> <br><br>
+  
 </div>
 </div>
 <div class='col-md-3'>
@@ -67,8 +42,8 @@
     <p>If you are interested to paticipate in any form on<br> <%= link_to "Apply to Check-In", new_idea_checkin_path(@idea)
              %></p>
 
-    <% if current_user %>
-    <%= link_to 'Post Your Startup Idea', new_idea_path %><% end %><br>
+    <%# if current_user %>
+    <%= link_to 'Post Your Startup Idea', new_idea_path %><%# end %><br>
     <%# link_to pluralize(@idea.checkins.size, "Developer has Check-In"), idea_checkins_path(@idea), class: "btn btn-info btn-lg" %>
     <p><h3><%= pluralize(@voters.size, "Vote") %></h3></p>
     <% if current_user %>
@@ -77,6 +52,8 @@
       <% else %>
     <%= button_to "Vote", idea_votes_path(@idea), class: 'btn btn-info btn-lg' %>
     <% end %>
+    <% else %>
+    <%= button_to "Login in Vote", idea_votes_path(@idea), class: 'btn btn-info btn-lg' %>
     <% end %>
     <% if @votes.try(:any?) %>
     <h4>Voters</h4>
@@ -85,7 +62,7 @@
     <% end %>
     <% end %><br>
     <p>
-<%= social_share_button_tag("App development business network!") %>
+ Share: <%= social_share_button_tag truncate(@idea.description, length: 60)%>
        </p>  
 
     <%# if current_user %>

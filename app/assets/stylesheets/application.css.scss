@@ -125,6 +125,12 @@ section .nav > li > a {
   color: white;
 }
 
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
+
 @media(max-width:1030px) {
 
     footer {height: 380px}
