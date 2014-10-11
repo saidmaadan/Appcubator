@@ -23,9 +23,11 @@ Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
 <div class='row'>
 <div class='col-md-12'>
 <%= social_share_button_tag truncate(@trend.title, length: 60)%><br>
-<% if current_user_admin? %>
 
-  <%= link_to "Edit", edit_trend_path(@trend), class: 'btn btn-info' %>
+ <% if current_user %>
+ <%= link_to "Edit", edit_trend_path(@trend), class: 'btn btn-info' %>
+<% end %>
+<% if current_user_admin? %>
   
   <%= link_to "Delete", trend_path(@trend), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>

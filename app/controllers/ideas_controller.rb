@@ -1,7 +1,8 @@
 class IdeasController < ApplicationController
   before_action :require_signin, except: [:index, :show]
+   before_action :correct_user, only: [:edit, :update]
   #before_action :correct_user, except: [:index, :show]
-  before_action :require_admin, only: [:only]
+  before_action :require_admin, only: [:delete]
 
   def index
     @ideas = Idea.recent.page params[:page]

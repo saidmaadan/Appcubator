@@ -11,12 +11,19 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+ 
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <section>
+    <%if current_user %>
+    <article>
+  
+    </article>
+    <% else %>
+     <section>
        <%= render 'layouts/navigation_nav' %>
     </section>
+    <% end %>
     <main role="main">
        <%= render 'layouts/messages' %>
        <%= yield %>

@@ -23,6 +23,19 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user?
 
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user?(@user)
+      redirect_to root_url
+    end
+  end
+
+  def correct_user?
+    # current_user == correct_user
+     @correct_user == @user
+  end
+  helper_method :correct_user?
+
 
   def require_admin
     unless current_user_admin?

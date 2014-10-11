@@ -496,8 +496,12 @@
 <% if @user.dribbble %>
    <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% else %><% end %>
 </div>
-
+ 
 </aside>
+<% if current_user_admin? %>
+<%= link_to ' Delete Account', @user, 
+                method: :delete,
+                data: { confirm: 'Are you sure you want to permanently delete your account?' } %><% end %>
 </div></div>
 
 
