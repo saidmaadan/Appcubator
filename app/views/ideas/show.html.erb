@@ -53,7 +53,7 @@
     <%= button_to "Vote", idea_votes_path(@idea), class: 'btn btn-info btn-lg' %>
     <% end %>
     <% else %>
-    <%= button_to "Login To Vote", idea_votes_path(@idea), class: 'btn btn-info btn-lg' %>
+    <%#= button_to "Login To Vote", idea_votes_path(@idea), class: 'btn btn-info btn-lg' %>
     <% end %>
     <% if @votes.try(:any?) %>
     <h4>Voters</h4>
