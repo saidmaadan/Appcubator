@@ -15,15 +15,9 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <%if current_user %>
-    <article>
-  
+    <article> 
     </article>
-    <% else %>
-     <section>
-       <%= render 'layouts/navigation_nav' %>
-    </section>
-    <% end %>
+
     <main role="main">
        <%= render 'layouts/messages' %>
        <%= yield %>

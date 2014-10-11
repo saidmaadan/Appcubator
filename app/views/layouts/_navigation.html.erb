@@ -22,8 +22,13 @@
         </div>
         <button type="submit" class="btn btn-default"><i class="fa fa-search "></i></button>
       </form><% else %>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li> <%= link_to " Projects", projects_path, class: 'fa fa-database' %></li>
+        <li><%= link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %></li>
+         <li><%= link_to " TechJobs", jobs_path, class: 'fa fa-code' %></li>
+     <li><%= link_to " Tips & Insights", trends_path, class: 'fa fa-info' %></li> </ul>
       <% end %>
-
       <ul class="nav navbar-nav navbar-right">
         <%= render 'layouts/navigation_links' %>
       </ul>

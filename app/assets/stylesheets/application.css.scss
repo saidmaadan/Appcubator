@@ -26,18 +26,31 @@ html, body {
   padding:0;
   height: 100%;
 }
+.navbar-inverse .navbar-nav > li > a{
+  color: #050505;
+}
+.navbar-inverse .navbar-nav > li > a:hover{
+  color: #77B5A8;
+  font-size: 1.05em;
+}
+.navbar-inverse .navbar-nav > .open > 
+a:hover, .navbar-inverse .navbar-nav > 
+.open > a:focus {
+  background-color: #E71E1E;
+}
 article{
-  margin-top: 50px;
+  margin-top: 70px;
 }
-section{
-  margin-top: 50px;
-  background: gray;
-  height: 50px;
-}
-section p{
-  padding: 15px 0 10px 0;
-  color: white;
-}
+
+// section{
+//   margin-top: 50px;
+//   background: gray;
+//   height: 50px;
+// }
+// section p{
+//   padding: 15px 0 10px 0;
+//   color: white;
+// }
 
 // main{
 //   min-height: 100%;
