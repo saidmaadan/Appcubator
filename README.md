@@ -18,6 +18,8 @@ https://appcubator.herokuapp.com
 	<li>Users</li>
 	<li>Projects</li>
 	<li>Ideas</li>
+	<li>Jobs</li>
+	<li>Trends</li>
 	<li>Votes</li>
 	<li>Reviews</li>
 	<li>Follows</li>
