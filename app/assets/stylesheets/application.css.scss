@@ -109,36 +109,51 @@ ol li{
   border-color: #46b8da;
 }
 
-// .navbar-collapse:hover{
-//   background: red;
+// footer, .push {
+// clear: both;
+// height: 4em;
 // }
-footer, .push {
-clear: both;
-height: 4em;
-}
 
 footer{
   width: 100%;
-  height: 250px;
-  background: #eee;
+  // height: 100%;
+  // height: 250px;
+  background: #c3e2f4;
   margin-bottom: 0;
   border-top: 3px solid #eee;
   clear: both;
   bottom: 0;
   left: 0;
+  .bottom{
+    margin: 40px 0;
+  }
 }
 footer a:link{
-  color: #77B5A8;
+  color: #46b8da;
 }
 footer a:visited {
-  color: #77B5A8;
+  color: #d9534f;
 }
 footer a:hover{
-  color: #807A7E;
+  color: #fff;
 }
 footer a:active {
-  color: #BF526A;
+  color: #d9534f;
 }
+.last-bottom{
+  width: 100%;
+  background-color: #46b8da;
+  color: #ddd;
+  font-size: 18px;
+  p{
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+  a{
+    color: white;
+  }
+}
+
 .paginate{
   margin-top: 30px;
   text-align: center;
@@ -166,32 +181,32 @@ section .nav > li > a {
     }
 }
 
-@media(max-width:1030px) {
+// @media(max-width:1030px) {
 
-    footer {height: 380px}
+//     footer {height: 380px}
 
-}
-@media(max-width:767px) {
+// }
+// @media(max-width:767px) {
 
-   footer {background: white}
-}
-@media(max-width:480px) {
+//    footer {background: white}
+// }
+// @media(max-width:480px) {
 
-   footer {background: #eee; height: 400px}
+//    footer {background: #eee; height: 400px}
    
-}
-@media(max-width:550px) {
+// }
+// @media(max-width:550px) {
 
-    section {height: 100px}
+//     section {height: 100px}
 
-}
+// }
 
-@media(max-width:550px) {
+// @media(max-width:550px) {
 
-    .logo {display: none}
-    .touch {display: none}
+//     .logo {display: none}
+//     .touch {display: none}
 
-}
+// }
 
 /* Small devices (tablets, 768px and up) */
 // @media (min-width: @screen-sm-min) { 
