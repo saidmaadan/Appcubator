@@ -46,10 +46,13 @@
 <div class='home-projects'>
 	<div class='container'>
 		<div class='row'>
-		<% @projects.each do |project| %>
-			<div class="col-md-3 col-sm-6">
-				<h1><%= project.name %></h1>
-			</div>
+			<h2>Recent Projects</h2>
+			<% @projects.each do |project| %>
+				<div class="col-md-3 col-sm-6">
+					<div class="thumbnail project">
+						<%= image_tag project.screenshot.url %>
+					</div>
+				</div>
 	<% end %>	
 </div>
 	</div>
@@ -57,13 +60,58 @@
 
 <div class='home-ideas'>
 	<div class='container'>
-		<div class='row'>
-		<% @ideas.each do |idea| %>
-			<div class="col-md-3 col-sm-6">
-				<h1><%= idea.title %></h1>
-			</div>
-	<% end %>	
+		<div class='row ideas'>
+			
+				<div class="col-md-2"></div>
+			
+				<div class="col-md-8 col-sm-12">
+					<div class='row'>
+						<% @ideas.each do |idea| %>
+					    <div class="col-sm-6">
+					    	<h2><%= link_to(idea.title, idea) %></h2>
+								<p><%= truncate(idea.description, length: 200, separator: ' ') %></p>
+					    </div>
+				    <% end %>	
+				  </div>
+				</div>
+				<div class="col-md-2"></div>
+			
+		</div>
+	</div>
 </div>
+<div class='home-trends'>
+	<div class='container'>
+		<div class='row trends'>
+			<div class="col-md-1"></div>
+		
+			<div class="col-md-10 col-sm-12">
+				<% @trends.each do |trend| %>
+				<div class='row'>
+					<div class="col-sm-2">
+						<%= image_tag trend.upload.url, class: "img-responsive" %>
+					</div>
+					<div class="col-sm-10">
+						<div class='row'>
+							<div class="col-xs-2"><br>
+								<%= profile_image_for trend.user, size: 40 %>
+							</div>
+							<div class="col-xs-9">
+								<h2><%= trend.title %></h2>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class="col-sm-12">
+								<p><%= truncate trend.content, length: 280, separator: ' ' %></p>
+							</div>
+						</div>
+
+					</div>
+				
+				</div>
+			<% end %>	
+		</div>
+		<div class="col-md-1"></div>
+		</div>
 	</div>
 </div>
 
@@ -71,22 +119,16 @@
 	<div class='container'>
 		<div class='row'>
 		<% @jobs.each do |job| %>
-			<div class="col-md-3 col-sm-6">
-				<h1><%= job.job_title %></h1>
+			<div class="col-sm-3">
+				<h3><%=  truncate( job.job_title, length: 25, separator: ' ' ) %></h3>
+				<p><%= truncate job.job_details, length: 200, separator: ' ' %></p>
+				<%= job.company_name %> | | <%= number_to_currency(job.salary) if job.salary %> <%= job.salary_rate %> | <%= job.employment_type %><br> 
+				<%= job.location %>, <%= job.state %>  <%= job.zip_code %> <%= job.country %><br>
+				<%= link_to "View full job description", job %>
 			</div>
 	<% end %>	
 </div>
 	</div>
 </div>
 
-<div class='home-trends'>
-	<div class='container'>
-		<div class='row'>
-		<% @trends.each do |trend| %>
-			<div class="col-md-3 col-sm-6">
-				<h1><%= trend.title %></h1>
-			</div>
-	<% end %>	
-</div>
-	</div>
-</div>
+
