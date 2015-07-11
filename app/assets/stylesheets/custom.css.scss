@@ -1,0 +1,155 @@
+@import "bootstrap";
+
+// IDEAS
+.idea{
+	height: auto;
+	
+}
+.idea_place{
+	border-top: 2px solid #eee;
+}
+.idea a{
+	color: #42CABF;
+}
+
+@media(max-width:780px) {
+
+   .ideas_post {display: none}
+   
+}
+
+// Jobs
+
+.job_home{
+	border: 2px solid #eee;
+	margin-top: 30px;
+}
+.job_top{
+	padding: 10px 0 10px 0;
+	// border-bottom: 1px solid #eee; 
+}
+
+.job_level{
+	padding: 10px 0 10px 0;
+	border-top: 1px solid #eee; 
+}
+
+@media(max-width:480px) {
+
+   .job_top {display: none}
+   .ads {display: none}
+}
+
+@media(max-width:880px) {
+
+   .job_top {display: none}
+   
+}
+
+// TRENDS
+
+.tips span{
+	font-size: 1.3em;
+}
+
+.tips h1{
+	font-size: 2.9em;
+	color: #77B5A8;
+}
+.tips a{
+	color: #E68EA3;
+}
+.insight a{
+	color: #77B5A8;
+}
+
+// PROJECTS
+.project_post{
+	width: 100%;
+	height: 100%;
+	border-bottom: 3px solid #eee;
+	border-radius: 5px;
+}
+article{
+	width: 100%;
+	border-bottom: 2px solid #eee;
+	float: right;
+	overflow: auto;
+	
+}
+#project_follower{
+	width: 90%;
+	height: 200px;
+	float: right;
+	overflow: auto;
+	border-top: 2px solid #eee;
+}
+.project_show{
+	height: auto;
+}
+.review_comment{
+	
+	height: 250px;
+	// float: right;
+	overflow: auto;
+	border-top: 2px solid #eee;
+}
+.project_wrap2{
+	height: 650px;
+	// overflow: auto;
+	//border-top: 2px solid #eee;
+}
+.project_wrap2 a{
+	color: #77B5A8;
+}
+
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
+
+// USERS
+
+.tophead{
+  text-align: center;
+  font-weight: bolder;
+ }
+.user_main{
+	background: #eee;
+	border: 4px solid #E6E8E8
+}
+.user_main_left{
+	background: #eee;
+	border: 4px solid #E6E8E8
+}
+
+.user_main_right{
+	background: #fff;
+	border: 4px solid #E6E8E8
+}
+
+.profiles{
+	padding: 10px 30px;
+}
+.skill_line{
+	border-bottom: 2px solid gray;
+}
+
+aside .well a:link{
+	color: #A19F50;
+}
+
+aside, .well a:link{
+	color: #BDBA17;
+}
+aside, .well a:hover{
+  color: #D1154D;
+}
+
+aside, .well a:active{
+	color: black;
+}
+aside, .well a:visited{
+  color: #807A7E;
+}
