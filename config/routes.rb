@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
 
   # root "users#new"
-  root "pages#home"
+  root 'pages#home'
 
   resources :trends
   resources :jobs
