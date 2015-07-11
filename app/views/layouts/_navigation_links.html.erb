@@ -4,6 +4,7 @@
 
 <% if current_user %>
 
+
        <!-- <li><%# link_to " Projects", projects_path, class: 'fa fa-database' %></li> -->
        <!-- <li><%# link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %></li> -->
 
@@ -41,6 +42,8 @@
         <li><%= link_to ' Delete Account', @user, 
             method: :delete, class: 'fa fa-warning ',
             data: { confirm: 'Are you sure you want to permanently delete your account?' } %></li>
+        <li class="divider"></li>
+        <li><%= link_to ' Contact Us', contact_path, class: ' fa fa-comment ' %></li>
         <% end %>
         </ul></li>
 

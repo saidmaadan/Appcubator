@@ -5,6 +5,8 @@
     <meta name="msvalidate.01" content="DA89893F2AE9176311128B79AC667BCD" />
     <title><%= content_for?(:title) ? yield(:title) : "DKonnect | Developers Business Network" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Appcubator" %>">
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -15,7 +17,10 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <article></article>
+    <article>
+      
+    </article>
+
     <div class='main'>
        <%= render 'layouts/messages' %>
        <%= yield %>
@@ -23,6 +28,6 @@
 
     </div>
     <%= render 'layouts/footer' %>
-  </body>
 
+  </body>
 </html>

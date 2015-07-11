@@ -2,127 +2,211 @@
   <div class='row user_main'>
 <br><br>
 
-  <div class="col-xs-12 col-md-8 user_main_left">
-  
-<ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
-  <% if current_user?(@user) %>
-  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
-  <% end %>
-  <% if @user.about %>
-  <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %>
-  <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
-  <% if @user.video %>
-   <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
-</ul>
+    <div class="col-xs-12 col-md-4 user_main_right">
+
+  <p><%= profile_image_for@user, size: 300 %></p>
+  <div class="well">
+    <h3><%= @user.name %></h3>
+    <h4><%= @user.specialization %></h4>
+    <h4><%= mail_to@user.email, "Get in touch with me" %></h4>
+    <h5><%= @user.location %></h5>
+    <div class='row'>
+      <div class="col-xs-6 col-sm-7">
+          <h4>Member Since</h4>
+      </div>
+      <div class="col-xs-6 col-sm-5">
+        <h4> <%= @user.created_at.strftime("%B %Y") %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="col-xs-12 col-md-12">
+      <div class="skill_line">
+        <h3>Skills:</h3>
+      </div><!-- </div> --><br>
+      <div class='row'><br>
+        <div class="col-xs-12 col-md-12">
+          <div class='row'>
+            <% @abilities.in_groups_of(2) do |group| %>
+
+              <% group.each do |ability| %>
+              <% if ability %>
+              <div class='col-xs-6'>
+              <ul>
+              <li><%= ability.strenght %></li></ul>
+              </div>
+              <% end %>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      <div class='row'>
+        <div class="col-xs-12 col-md-12">
+          <div class="skill_line">
+            <h3>Social Activities:</h3>
+          </div>
+        </div><br>
+
+        <div class="col-xs-12 col-md-12">
+          <aside class='well'>
+
+            <div class='row'>
+              <div class="col-xs-3 col-sm-3">
+                <% if @user.github %>
+                  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %><% else %>
+                <% end %>
+              </div>
+              <div class="col-xs-3 col-sm-3">
+                <% if @user.linkedin %>
+                  <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
+                <% else %><% end %>
+              </div>
+              <div class="col-xs-3 col-sm-3">
+              <% if @user.twitter %>
+                 <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% else %><% end %>
+              </div>
+              <div class="col-xs-3 col-sm-3">
+                <% if @user.dribbble %>
+                   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% else %>
+                  <% end %>
+              </div>
+             </div>
+          </aside>
+        </div>
+        <%#if current_user_admin? %>
+        <%#= link_to ' Delete Account', @user, 
+                        method: :delete,
+                        data: { confirm: 'Are you sure you want to permanently delete your account?' } %><%# end %> 
+       </div>
+
+</div>
+</div>
+</div>
+
+    <div class="col-xs-12 col-md-8 user_main_left">
+    
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
+        <% if current_user?(@user) %>
+        <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
+        <% end %>
+        <% if @user.about %>
+        <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %>
+        <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
+        <% if @user.video %>
+         <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
+      </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="dash"><br><br>
     <table class="table table-hover">
   
-   <% if @user.about %> 
-  <tr>
-  <div class='col-md-4'>
-  <th>
-  <h4>About Me</h4> 
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
-  </td>
-  </div>
-  </tr>
-<% end %>
-<% if @user.school %>
- <tr>
-  <div class='col-md-4'>
-  <th>
-  <h4>School</h4>
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= @user.school %>
-  </td>
-  </div>
-  </tr>
-  <% end %>
-  <% if @user.degree %>
-   <tr>
-  <div class='col-md-4'>
-  <th>
-  <h4>Studied/Qualification</h4>
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= @user.degree %>
-  </div>
-  </tr>
-  </div>
-  <% end %>
-  <% if @user.work %> 
-   <tr>
-  <div class='col-md-4'>
-  <th>
-  <h4>Professional</h4>
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= @user.work %>
-  </td>
-  </div>
-  </tr>
-  <% end %>
-<% if @user.specialization %> 
-   <tr>
-  <div class='col-md-4'>
-  <th>
- <h4>Specialization</h4>
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= @user.specialization %>
-  </td>
-  </div>
-  </tr>
-  <% end %>
-  <% if @user.powerpoint %>
-  </div>
-  <tr>
-  <div class='col-md-4'>
-  <th>
-  <h4>Powerpoint</h4>
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= @user.powerpoint %>
-  </td>
-  </div>
-  </tr>
-  <% end %>
-  <% if @user.phone %>
-  <tr>
-  <div class='col-md-4'>
-  <th>
-  <h4>Phone</h4>
-  </th>
-  </div>
-  <div class='col-md-8'>
-  <td>
-  <%= @user.phone %>
-  </td>
-  </div>
-  </tr>
-  <% end %>
-  
-</table><br><br>
+       <% if @user.about %> 
+      <tr>
+      <div class='col-md-4'>
+      <th>
+      <h4>About Me</h4> 
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
+      </td>
+      </div>
+      </tr>
+    <% end %>
+    <% if @user.school %>
+     <tr>
+      <div class='col-md-4'>
+      <th>
+      <h4>School</h4>
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= @user.school %>
+      </td>
+      </div>
+      </tr>
+      <% end %>
+      <% if @user.degree %>
+       <tr>
+      <div class='col-md-4'>
+      <th>
+      <h4>Studied/Qualification</h4>
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= @user.degree %>
+      </div>
+      </tr>
+      </div>
+      <% end %>
+      <% if @user.work %> 
+       <tr>
+      <div class='col-md-4'>
+      <th>
+      <h4>Professional</h4>
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= @user.work %>
+      </td>
+      </div>
+      </tr>
+      <% end %>
+    <% if @user.specialization %> 
+       <tr>
+      <div class='col-md-4'>
+      <th>
+     <h4>Specialization</h4>
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= @user.specialization %>
+      </td>
+      </div>
+      </tr>
+      <% end %>
+      <% if @user.powerpoint %>
+      </div>
+      <tr>
+      <div class='col-md-4'>
+      <th>
+      <h4>Powerpoint</h4>
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= @user.powerpoint %>
+      </td>
+      </div>
+      </tr>
+      <% end %>
+      <% if @user.phone %>
+      <tr>
+      <div class='col-md-4'>
+      <th>
+      <h4>Phone</h4>
+      </th>
+      </div>
+      <div class='col-md-8'>
+      <td>
+      <%= @user.phone %>
+      </td>
+      </div>
+      </tr>
+      <% end %>
+      
+    </table><br><br>
 
   </div>
   <div class="tab-pane" id="profile">
@@ -426,94 +510,12 @@
 <% end %>
 </div>
 </div>
-
 </div>
 
 
 
-<div class="col-xs-12 col-md-4 user_main_right">
-
-  <p><%= profile_image_for@user, size: 350 %></p>
-  <div class="well">
-  <h3><%= @user.name %></h3>
-  <h4><%= @user.specialization %></h4>
-  <h4><%= mail_to@user.email, "Get in touch with me" %></h4>
-  <h5><%= @user.location %></h5>
-    <div class='row'>
-    <div class="col-xs6- col-md-7">
-  <h4>Member Since</h4></div>
-  <div class="col-xs-6 col-md-5">
- <h4> <%= @user.created_at.strftime("%B %Y") %></h4>
-  </div></div></div>
-  <div class='row'>
-<div class="col-xs-12 col-md-12">
-<div class="skill_line">
-<h3>Skills:</h3>
-</div><!-- </div> --><br>
-<div class='row'><br>
-<div class="col-xs-12 col-md-12">
-<div class='row'>
-<% @abilities.in_groups_of(2) do |group| %>
-
-<% group.each do |ability| %>
-<% if ability %>
-<div class='col-md-6'>
-<ul>
-<li><%= ability.strenght %></li></ul>
-</div>
-<% end %>
-<% end %>
-<% end %>
-</div>
- </div>
-</div>
-
-<div class='row'>
-<div class="col-xs-12 col-md-12">
-<div class="skill_line">
-<h3>Social Activities:</h3>
-</div><br>
-
-<div class="col-xs-12 col-md-12">
-<aside class='well'>
-<!-- <div class="col-md-12 well"> -->
-
-<div class='row'>
-<div class="col-xs-6 col-md-3">
-<% if @user.github %>
-  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %><% else %>
-  <% end %>
-</div>
-<div class="col-xs-6 col-md-3">
-<% if @user.linkedin %>
-  <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
-</div><% else %><% end %>
-<div class="col-xs-6 col-md-3">
-<% if @user.twitter %>
-   <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% else %><% end %>
-</div>
-<div class="col-xs-6 col-md-3">
-<% if @user.dribbble %>
-   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% else %><% end %>
-</div>
- 
-</aside>
-<% if current_user_admin? %>
-<%= link_to ' Delete Account', @user, 
-                method: :delete,
-                data: { confirm: 'Are you sure you want to permanently delete your account?' } %><% end %>
-</div></div>
 
 
-
-
-
-
-  <%# if current_user?(@user) %>
-    
-    <%# end %>
-
-</div>
 </div>
 </div>
 

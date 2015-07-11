@@ -1,40 +1,32 @@
 <div class="container">
-<div class='row'>
-<div class='col-md-2'></div>
-<div class='col-md-8'>
-<header id="content-header">
-  <h2>Post Your Review for <%= link_to(@project.name, @project) %></h2><br>
-</header>
-
-<%= form_for([@project, @review]) do |f| %>
-<%= render "shared/errors", object: @review %>
-<div class='form-horizontal' role='form'>
-  <div class="form-group">
   <div class='row'>
-  <div class='col-md-2'>
+    <div class='col-sm-3'></div>
+    <div class='col-sm-6'>
+      <header id="content-header">
+        <h2>Post Your Review for <%= link_to(@project.name, @project) %></h2><br>
+      </header>
 
-        <%= f.label :stars, 'Rating:' %>&nbsp</div>
-        <div class='col-md-6'>
-        <% Review::STARS.each do |star| %>
+      <%= form_for([@project, @review]) do |f| %>
+        <%= render "shared/errors", object: @review %>
+        
+          <div class="form-group">
+              <%= f.label :stars, 'Rating:' %>
+                <% Review::STARS.each do |star| %>
 
-        <%= f.radio_button :stars, star %> <% star %>&nbsp
+                <%= f.radio_button :stars, star %> <% star %>&nbsp
 
-        <% end %> </div></div><br>
-        <div class='row'>
-  <div class='col-md-2'>
-        <%= f.label :remark, class: 'control-label' %></div>
-        <div class='col-md-6'>
-
-        <%= f.text_area :remark, cols: 50, rows: 4, placeholder: "Tell us your honest opinion about this project", class: "form-control" %></div></div><br>
-
-    <div class='row'>
-    <div class='col-md-2'></div>
-
-  <div class='col-md-6'>
-      <%= f.submit 'Post Review', class: "btn btn-success" %>
-      <%= link_to "Cancel", @project, class: 'btn btn-warning' %></div></div>
-
-<% end %>
-</div>
-</div>
+                <% end %> 
+          </div>
+          <div class='form-group'>
+              <%= f.label :remark %>
+               <%= f.text_area :remark, cols: 30, rows: 4, placeholder: "Tell us your honest opinion about this project", class: "form-control" %>
+          </div>
+          <div class='form-group text-center'>
+             <%= f.submit 'Post Review', class: "btn btn-info" %>
+            <%= link_to "Cancel", @project, class: 'btn btn-default' %>
+          </div>
+        <% end %> 
+      </div>
+      <div class='col-sm-3'></div>
+  </div>
 </div>

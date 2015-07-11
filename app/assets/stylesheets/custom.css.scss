@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+// NAV
+.has-success .form-control {
+  border-color: #46b8da;
+}
 // IDEAS
 .idea{
 	height: auto;
@@ -9,7 +13,7 @@
 	border-top: 2px solid #eee;
 }
 .idea a{
-	color: #42CABF;
+	color: #46b8da;
 }
 
 @media(max-width:780px) {
@@ -23,6 +27,9 @@
 .job_home{
 	border: 2px solid #eee;
 	margin-top: 30px;
+	a{
+		color: #46b8da;
+	}
 }
 .job_top{
 	padding: 10px 0 10px 0;
@@ -57,10 +64,10 @@
 	color: #77B5A8;
 }
 .tips a{
-	color: #E68EA3;
+	color: #46b8da;
 }
 .insight a{
-	color: #77B5A8;
+	color: #46b8da;
 }
 
 // PROJECTS
@@ -100,7 +107,7 @@ article{
 	//border-top: 2px solid #eee;
 }
 .project_wrap2 a{
-	color: #77B5A8;
+	color: #46b8da;
 }
 
 @-moz-document url-prefix() {
@@ -116,17 +123,31 @@ article{
   font-weight: bolder;
  }
 .user_main{
-	background: #eee;
-	border: 4px solid #E6E8E8
+	background: #f2f9fd;
+	border: 4px solid #f2f9fd;
+	.nav-tabs > li > a {
+		color: #46b8da;
+	}
+	.nav-tabs > li > a:hover{
+		color: #ddd;
+		background-color: #d9534f;
+	}
+	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+		color: #ddd;
+		background-color: #d9534f;
+	}
 }
 .user_main_left{
-	background: #eee;
-	border: 4px solid #E6E8E8
+	background: #f2f9fd;
+	border: 4px solid #f2f9fd;
 }
 
 .user_main_right{
-	background: #fff;
-	border: 4px solid #E6E8E8
+	background: #f2f9fd;
+	border: 4px solid #f2f9fd;
+	img{
+		border-radius: 50%;
+	}
 }
 
 .profiles{
@@ -136,20 +157,40 @@ article{
 	border-bottom: 2px solid gray;
 }
 
+
 aside .well a:link{
-	color: #A19F50;
+	color: #46b8da;
 }
 
-aside, .well a:link{
-	color: #BDBA17;
-}
 aside, .well a:hover{
-  color: #D1154D;
+  color: #d9534f;
 }
 
 aside, .well a:active{
-	color: black;
+	color: #d9534f;
 }
 aside, .well a:visited{
-  color: #807A7E;
+  color: #d9534f;
+}
+.contact-main{
+	width: 100%;
+	height: 100%;
+	margin-top: 10px;
+	h2{
+		color: #46b8da;
+		font-family: "Open Sans", sans-serif;
+		font-size: 2em;
+		font-weight: 900;
+		padding-bottom: 14px;
+	}
+	.contact-contact{
+		height: 450px;
+		margin-bottom: 30px;
+	}
+	.contact-map{
+		height: 450px;
+		margin-bottom: 30px;
+		
+		#map { position:absolute; top:0; bottom:0; width:100%; height: 430px; }
+	}
 }
