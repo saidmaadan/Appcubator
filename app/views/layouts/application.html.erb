@@ -15,15 +15,13 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <article> 
-    </article>
-
-    <main role="main">
+    <article></article>
+    <div class='main'>
        <%= render 'layouts/messages' %>
        <%= yield %>
        <div class="push"></div>
 
-    </main>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 

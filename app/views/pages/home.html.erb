@@ -1,0 +1,92 @@
+<div class='jumbotron'>
+	<div class='home-top'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-sm-6 hidden-xs'>
+					<div class='home-left'>
+						<h1>App Development Business Network</h1>
+						<p>Connect with thousand of developers and entrepreneur </p>
+					</div>
+				</div>
+				<div class='col-sm-1'></div>
+				<div class='col-sm-5'>
+					<div class='home-login'>
+						<ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" class="active"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">Sign Up</a></li>
+					    <li role="presentation"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Log In</a>
+					    </li>
+					  </ul>
+
+					 	<div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="signup">
+					    	<%= render "users/form" %>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="login">
+					    	<%= form_tag(session_path) do %>
+								
+									      <div class="form-group">
+									        <%= text_field_tag :email, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username", class: 'form-control' %>
+									      </div>
+									      <div class="form-group">
+									        <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password", class: 'form-control' %>
+			    				      </div>
+									    	<div class="form-group">
+									      <%= submit_tag 'Sign In', class: 'btn btn-danger' %>
+									    	</div>
+									  </fieldset>
+								<% end %>
+							</div>					    
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class='home-projects'>
+	<div class='container'>
+		<div class='row'>
+		<% @projects.each do |project| %>
+			<div class="col-md-3 col-sm-6">
+				<h1><%= project.name %></h1>
+			</div>
+	<% end %>	
+</div>
+	</div>
+</div>
+
+<div class='home-ideas'>
+	<div class='container'>
+		<div class='row'>
+		<% @ideas.each do |idea| %>
+			<div class="col-md-3 col-sm-6">
+				<h1><%= idea.title %></h1>
+			</div>
+	<% end %>	
+</div>
+	</div>
+</div>
+
+<div class='home-jobs'>
+	<div class='container'>
+		<div class='row'>
+		<% @jobs.each do |job| %>
+			<div class="col-md-3 col-sm-6">
+				<h1><%= job.job_title %></h1>
+			</div>
+	<% end %>	
+</div>
+	</div>
+</div>
+
+<div class='home-trends'>
+	<div class='container'>
+		<div class='row'>
+		<% @trends.each do |trend| %>
+			<div class="col-md-3 col-sm-6">
+				<h1><%= trend.title %></h1>
+			</div>
+	<% end %>	
+</div>
+	</div>
+</div>

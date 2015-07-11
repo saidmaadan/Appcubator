@@ -69,9 +69,12 @@ article{
     color: green;
    }
  }
- main{
+ .main{
+  width: 100%;
   min-height:100%;
   position:relative;
+  left: 0;
+  right: 0;
   height: auto !important;
   height: 100%;
   margin-top: 20px;
@@ -85,9 +88,25 @@ ol li{
 .fa-fa-cubes{
   color: green;
 }
-.navbar{
-  background: #eee;
-  border-bottom: 3px solid #E0DEDE;
+.navbar {
+  background: white;
+  border-bottom: 3px solid white;
+}
+.navbar-inverse{
+  .navbar-brand{
+      color:#fff;
+      font-size: 30px;
+      padding: 20px;
+      font-weight: 900;
+      font-family: 'Hobo Std';
+      text-shadow: 2px 00 #46b8da, -2px 0 0 #46b8da, 0 2px 0 #46b8da, 0 -2px 0 #46b8da, 1px 1px #46b8da, -1px -1px 0 #46b8da, 1px -1px 0 #46b8da, -1px 1px 0 #46b8da;
+    }
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #46b8da;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #46b8da;
 }
 
 // .navbar-collapse:hover{

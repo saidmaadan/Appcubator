@@ -10,9 +10,10 @@
         <span class="icon-bar"></span>
       </button>
     <% if current_user %>
-    <%= link_to ' AppCubator', current_user, class: 'navbar-brand fa fa-cubes fa-2x' %>
+    <%= link_to ' DKonnect', current_user, class: 'navbar-brand ' %>
     <% else %>
-      <%= link_to ' AppCubator', root_path, class: 'navbar-brand fa fa-cubes fa-2x' %><% end %>
+      <%= link_to ' DKonnect', root_path, class: 'navbar-brand' %>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse">
      <% if current_user %>
@@ -22,16 +23,30 @@
         </div>
         <button type="submit" class="btn btn-default"><i class="fa fa-search "></i></button>
       </form><% else %>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
       <ul class="nav navbar-nav">
-        <li> <%= link_to " Projects", projects_path, class: 'fa fa-database' %></li>
-        <li><%= link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %></li>
-         <li><%= link_to " TechJobs", jobs_path, class: 'fa fa-code' %></li>
-     <li><%= link_to " Tips & Insights", trends_path, class: 'fa fa-info' %></li> </ul>
+      <li class="dropdown">
+    <a href="#" class="dropdown-toggle " data-toggle="dropdown" style="font-size:24px;color:#46b8da;padding-top: 20px;">Browse<span class="caret"></span></a>
+    <ul class="nav navbar-nav dropdown-menu" role="menu">
+       <li> <%= link_to " Projects", projects_path, class: 'fa fa-database' %></li>
+       <li class="divider"></li>
+      <li><%= link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %></li>
+      <li class="divider"></li>
+      <li><%= link_to " TechJobs", jobs_path, class: 'fa fa-code' %></li>
+      <li class="divider"></li>
+      <li><%= link_to " Tips & Insights", trends_path, class: 'fa fa-info' %></li>
+    </ul>
+  </li></ul>
+      <!-- <ul class="nav navbar-nav">
+        <li> <%#= link_to " Projects", projects_path, class: 'fa fa-database' %></li>
+        <li><%#= link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %></li>
+         <li><%#= link_to " TechJobs", jobs_path, class: 'fa fa-code' %></li>
+     <li><%#= link_to " Tips & Insights", trends_path, class: 'fa fa-info' %></li> </ul> -->
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <%= render 'layouts/navigation_links' %>
       </ul>
     </div>
+  </div>
   </div>
 </nav>

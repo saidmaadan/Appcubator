@@ -1,35 +1,33 @@
 
 <%= form_for(@user) do |f| %>
   <%= render "shared/errors", object: @user %>
-  <fieldset>
 
-      <p class="required">
+      <div class="form-group">
+        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+      </div>
 
-
-        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name" %>
-      </p>
-      <p class="required">
-
+      <div class="form-group">
           <%= f.text_field :username, size: 50,
-                    placeholder: "Username Alphanumeric characters only!" %>
-</p>
-      <p class="required">
+                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+      </div>
 
-        <%= f.email_field :email, size: 50, placeholder: "Email Address" %>
-      </p>
-      <p class="required">
+      <div class="form-group">
+        <%= f.email_field :email, size: 50, placeholder: "Email Address", class: "form-control" %>
+      </div>
 
-        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters" %></p>
+     <div class="form-group">
+        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+      </div>
 
-      <p class="required">
-        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password" %></p>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+      </div>
 
-    <p>
-      <% if @user.new_record? %>
-        <%= f.submit "Create Account" %>
-      <% else %>
-        <%= f.submit "Update Account" %>
-      <% end %>
-    </p>
-  </fieldset>
+      <div class="form-group">
+        <% if @user.new_record? %>
+          <%= f.submit "Create Account", class: "btn btn-info" %>
+        <% else %>
+          <%= f.submit "Update Account", class: "btn btn-info" %>
+        <% end %>
+      </div>
 <% end %>
