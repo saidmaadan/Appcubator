@@ -1,0 +1,22 @@
+
+<div class='contactMe'>
+	<%= form_for @contact do |f| %>
+		<div class='form-group contact-form'>
+			<%#= f.label :name %>
+			<%= f.text_field :name, class: 'form-control', placeholder: "Your Name" %>
+			<%= f.text_field :email, class: 'form-control', placeholder: "Enter Your Email"%>
+		</div>
+		<!-- <div class='form-group'>
+			<%#= f.label :email %>
+			<%#= f.text_field :email, class: 'form-control' %>
+		</div> -->
+		<div class='form-group'>
+			<%#= f.label :comments %>
+			<%= f.text_area :comments, class: 'form-control', cols: 20, rows: 3, placeholder: "Your Message" %>
+		</div>
+		<div class='form-group'>
+			<%= f.submit 'Send Message', class: 'btn btn-danger' %>
+			
+		</div>
+	<% end %>
+</div>

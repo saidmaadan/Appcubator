@@ -149,7 +149,7 @@
 			font-weight: 900;
 		}
 		p{
-			font-size: 18px;
+			font-size: 14px;
 			a{
 				color: #46b8da;
 			}
@@ -157,3 +157,12 @@
 	}
 }
 
+.contactMe{
+	.form-group.contact-form{
+	display: inline;
+  }
+  .form-control{
+  	background-color: #f2f9fd;
+  	color: #46b8da;
+  }
+}

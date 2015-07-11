@@ -1,0 +1,28 @@
+<br><br><br>
+
+<div class='row'>
+	<div class='col-sm-3'></div>
+		<div class='col-sm-6'>
+			<div class='well'>
+				<%= form_for @contact do |f| %>
+					<div class='form-group'>
+						<%= f.label :name %>
+						<%= f.text_field :name, class: 'form-control' %>
+					</div>
+					<div class='form-group'>
+						<%= f.label :email %>
+						<%= f.text_field :email, class: 'form-control' %>
+					</div>
+					<div class='form-group'>
+						<%= f.label :comments %>
+						<%= f.text_area :comments, class: 'form-control', cols: 40, rows: 7 %>
+					</div>
+					<div class='form-group'>
+						<%= f.submit 'Send Message', class: 'btn btn-danger' %>
+						
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

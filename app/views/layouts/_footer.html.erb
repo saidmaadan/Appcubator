@@ -3,7 +3,7 @@
 		<div class='bottom'>
 			<div class='row '>
 
-				<div class='col-sm-3 col-xs-6 col-md-2 contact_us'>
+				<div class='col-md-3 col-sm-2 col-xs-6 contact_us'>
 					<h3>Contact us</h3>
 
 					<address>
@@ -15,7 +15,7 @@
 					</address>				
 				</div>
 
-				<div class='col-sm-3 col-xs-6 col-md-3 connect'>
+				<div class='col-md-3 col-sm-3 col-xs-6 connect'>
 					<h3>Connect with us!</h3>
 					<p>Don't hesitate to connect with us<br> on your favourite social networks...</p>
 					<a href = "https://www.linkedin.com/company/inventtive" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
@@ -27,12 +27,34 @@
 					<a href = "https://google.com/saidmaadan" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
 
 				</div>
-				<div class='col-sm-3 col-xs-12 col-md-3 touch'>
+				<div class='col-md-3 col-sm-3 col-xs-12 touch'>
 					<h3>Get in touch...</h3>
-								<p>Have a question about a particular startup project or idea, just curious to know our process, or how the whole system work generally? Drop us a note or give us a call; we’re happy to answer all your questions --></p></div>
+								<p>Have a question about a particular startup project or idea, just curious to know our process, or how the whole system work generally? Drop us a note or give us a call; we’re happy to answer all your questions --></p>
 				</div>
-				<div class='col-sm-3 col-xs-12 col-md-4 logo'>
-
+				<div class=' col-md-3 col-sm-4 col-xs-12'>
+					<h3></h3>
+					<%#= render "contacts/form" %>
+					<div class='contactMe'>
+						<%= form_for contact_path do |f| %>
+							<div class='form-group contact-form'>
+								<%#= f.label :name %>
+								<%= f.text_field :name, class: 'form-control', placeholder: "Your Name" %>
+								<%= f.text_field :email, class: 'form-control', placeholder: "Enter Your Email"%>
+							</div>
+							<!-- <div class='form-group'>
+								<%#= f.label :email %>
+								<%#= f.text_field :email, class: 'form-control' %>
+							</div> -->
+							<div class='form-group'>
+								<%#= f.label :comments %>
+								<%= f.text_area :comments, class: 'form-control', cols: 20, rows: 3, placeholder: "Your Message" %>
+							</div>
+							<div class='form-group'>
+								<%= f.submit 'Send Message', class: 'btn btn-danger' %>
+								
+							</div>
+						<% end %>
+</div>
 				</div>
 			</div>
 		</div>

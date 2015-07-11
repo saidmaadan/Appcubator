@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'pages/home'
+  root 'pages/home'
 
   resources :abilities
+  get '/contact' => 'contacts#new'
+  resources :contacts
 
   
   resource :session
@@ -12,7 +14,8 @@ Rails.application.routes.draw do
   resources :users
   get 'signup' => 'users#new'
 
-  root "users#new"
+  # root "users#new"
+  root 'pages/home'
 
   resources :trends
   resources :jobs
