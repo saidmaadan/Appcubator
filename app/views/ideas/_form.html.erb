@@ -1,41 +1,35 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-sm-7'>
 
-      <%= form_for(@idea) do |f| %>
-        <%= render "shared/errors", object: @idea %>
+<%= form_for(@idea) do |f| %>
+  <%= render "shared/errors", object: @idea %>
 
-          <div class='form-group'>
-              <%= f.label :title, "Project Title:" %>
-              <%= f.text_field :title, autofocus: true, class: "form-control" %>
-          </div>
-          
-          <div class='form-group'>
-            <%= f.label :description, class: 'control-label' %>
-            <%= f.text_area :description, cols: 40, rows: 7, class: "form-control tinymce" %>
-          </div>
-         
-          <div class='form-group'>
-            <%= f.label :goal, class: 'control-label' %>
-            <%= f.select :goal, Idea::GOAL, prompt: "Select One", class: 'form-control' %>
-          </div>
-         
-          <div class='form-group'>
-            <%= f.label :market, 'Market Potential', class: 'control-label' %>
-           <%= f.select :market, Idea::MARKET, prompt: "Select One", class: 'form-control' %>
-          </div>
-         
-          <div class='form-group'>
-            <%= f.label :category, class: 'control-label' %>
-            <%= f.select :category, Idea::CATEGORY, prompt: "Select One", class: 'form-control' %>
-          </div>
-
-        <div class='form-group'>
-          <%= f.submit class: "btn btn-info" %>
-          <%= link_to "Cancel", ideas_path, class: "btn btn-default" %>
-        </div>
-      <% end %>
+    <div class='form-group'>
+        <%= f.label :title, "Project Title:" %>
+        <%= f.text_field :title, autofocus: true, class: "form-control" %>
     </div>
-    <div class='col-sm-5'></div>
+    
+    <div class='form-group'>
+      <%= f.label :description, class: 'control-label' %>
+      <%= f.text_area :description, cols: 40, rows: 7, class: "form-control tinymce" %>
+    </div>
+   
+    <div class='form-group'>
+      <%= f.label :goal, class: 'control-label' %>
+      <%= f.select :goal, Idea::GOAL, prompt: "Select One", class: 'form-control' %>
+    </div>
+   
+    <div class='form-group'>
+      <%= f.label :market, 'Market Potential', class: 'control-label' %>
+     <%= f.select :market, Idea::MARKET, prompt: "Select One", class: 'form-control' %>
+    </div>
+   
+    <div class='form-group'>
+      <%= f.label :category, class: 'control-label' %>
+      <%= f.select :category, Idea::CATEGORY, prompt: "Select One", class: 'form-control' %>
+    </div>
+
+  <div class='form-group'>
+    <%= f.submit class: "btn btn-info" %>
+    <%= link_to "Cancel", ideas_path, class: "btn btn-default" %>
   </div>
-</div>
+<% end %>
+    

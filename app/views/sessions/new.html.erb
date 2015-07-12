@@ -1,57 +1,52 @@
 <div class='container'>
-<div class='row'>
-<br><br>
-<% if current_user %>
-<h2>You already sign in</h2>
-<% else %>
-<div class='col-md-4 col-md-offset-1'>
-<header id="content-header">
-  <h1>Sign In</h1>
+  <div class='row main-session'>
+    
+        <% if current_user %>
+          <h2>You already sign in</h2>
+        <% else %>
+          <div class='col-sm-5 col-offset-1'>
+            <header id="content-header">
+              <h1>Sign In</h1>
+            </header>
 
-</header>
+            <%= form_tag(session_path) do %>
+                <div class="form-group">
+                  <%= text_field_tag :email, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username", class: "form-control" %>
+                </div>
+                <div class="form-group">
 
-<%= form_tag(session_path) do %>
+                  <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password", class: "form-control" %>
+                </div>
 
-  <fieldset>
+              <div class="form-group">
+                <%= submit_tag 'Sign In', class: 'btn btn-info' %>
+              </div>
+            
+          <% end %>
+            <p>
+              No account yet? <%= link_to 'Sign up!', signup_path %>
+            </p>
+          </div>
 
-      <p class="required">
+        <div class='col-md-1'></div>
 
-        <%= text_field_tag :email, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
-      </p>
-      <p class="required">
+        <div class='col-sm-5 hidden-xs'>
+          <div class='row topimg'>
+          <br><br>
+          <div class='col-sm-4 hidden-xs thumbnail img-responsive'><%= image_tag("mks613.png", :alt => "Caressa") %></div>
+         
+          <div class='col-sm-4 hidden-xs thumbnail img-responsive '><%= image_tag("mks72.png", :alt => "Caressa") %></div>
+          <div class='col-sm-4 hidden-xs thumbnail img-responsive '><%= image_tag("mks73.png", :alt => "Caressa") %></div>
+         
+          <%= image_tag "mks74.png", :alt => "Caressa", class: 'col-sm-4 hidden-xs thumbnail img-responsive ' %>
+          <%= image_tag "mks75.png", :alt => "Caressa", class: 'col-sm-4 hidden-xs thumbnail img-responsive ' %>
+          <%= image_tag "mks168.png", :alt => "Caressa", class: 'col-sm-4 hidden-xs thumbnail img-responsive ' %>
+          </div>
 
-        <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password" %>
-      </p>
+        </div>
 
-    <p>
-      <%= submit_tag 'Sign In' %>
-    </p>
-  </fieldset>
-<% end %>
-<p>
-  No account yet? <%= link_to 'Sign up!', signup_path %>
-</p>
+    <% end %>
+  </div>
 </div>
 
-
-<div class='col-md-5'>
-<div class='row'>
-<br><br>
-<div class='topimg'>
-<div class='col-md-4'><%= image_tag("mks71.png", :alt => "Caressa") %></div>
-<div class='col-md-4'><%= image_tag("mks72.png", :alt => "Caressa") %></div>
-<div class='col-md-4'><%= image_tag("mks73.png", :alt => "Caressa") %></div>
-</div>
-</div>
-<div class='row'>
-<%= image_tag "mks74.png", :alt => "Caressa", class: 'col-md-4' %>
-<%= image_tag "mks75.png", :alt => "Caressa", class: 'col-md-4' %>
-<%= image_tag "mks76.png", :alt => "Caressa", class: 'col-md-4' %>
-</div>
-
-</div>
-<div class='col-md-2'></div>
-<% end %>
-</div>
-</div>
 

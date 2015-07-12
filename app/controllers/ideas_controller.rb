@@ -31,6 +31,7 @@ class IdeasController < ApplicationController
 
   def new
     @idea = Idea.new
+    @ideas = Idea.recent.limit(4)
   end
 
   def create

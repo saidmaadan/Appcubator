@@ -27,16 +27,21 @@
 		padding-bottom: 100px;
 
 		h1{
-			color: white;
-			font-size: 4.5em;
+			color: #d9534f;
+			font-size: 3.5em;
 			font-weight: 900;
 			font-family: "Shift", sans-serif;
 		}
 		p{
-			color: #d9534f;
-			font-size: 35px;
+			color: white;
+			font-size: 24px;
 			font-weight: 900;
 			font-family: "Shift", sans-serif;
+			padding-left: 15px;
+		}
+		.fa{
+			color: #46b8da;
+			padding-right: 10px;
 		}
 	}
 }

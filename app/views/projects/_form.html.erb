@@ -1,73 +1,57 @@
-<div class='container'>
-<div class='row'>
-<br>
-<div class='col-md-7'>
-<%= form_for @project, :html => { :multipart => true } do |f| %>
-<%= render "shared/errors", object: @project %>
-<div class='form-horizontal' role='form'>
-  <div class="form-group">
+<!-- <div class='container'>
   <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :name, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.text_field :name, autofocus: true, placeholder: "Project title", class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :description, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.text_area :description, cols: 40, rows: 7, placeholder: "Your project description",class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :looking_for, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.select :looking_for, Project::LOOKING_FOR, prompt: "Select one", class: "form-control" %>
+  <br>
+  <div class='col-sm-7'> -->
+  <%= form_for @project, :html => { :multipart => true } do |f| %>
+    <%= render "shared/errors", object: @project %>
+    
+      <div class='form-group'>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, placeholder: "Project title", class: "form-control" %>
+      </div>
 
-  </div></div>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :teams, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.text_field :teams, class: "form-control", placeholder: "Team members" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :target_amount, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.number_field :target_amount, class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :github_link, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.text_field :github_link, class: "form-control", placeholder: "https://" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :web_url, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.text_field :web_url, class: "form-control", placeholder: "http://" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :screenshot, class: 'control-label' %></div>
-    <div class='col-md-8'>
-    <%= f.file_field :screenshot %>
-  </div></div><br>
+      
+      <div class='form-group'>
+        <%= f.label :description %>
+        <%= f.text_area :description, cols: 40, rows: 7, placeholder: "Your project description",class: "form-control" %>
+      </div>
+      
+      <div class='form-group'>
+        <%= f.label :looking_for %>
+        <%= f.select :looking_for, Project::LOOKING_FOR, prompt: "Select one", class: "form-control" %>
 
-  <div class='row'>
-  <div class='col-md-3'></div>
-  <div class='col-md-8'>
-    <%= f.submit class: 'btn btn-info' %> <%= link_to "Cancel", projects_path, class: 'btn btn-default' %>
-  </div></div>
-</div></div>
-<% end %>
-</div>
-<div class='col-md-4 ico'>
-<br><br>
-</div>
-</div>
-</div>
-</div>
+      </div>
+      
+      <div class='form-group'>
+        <%= f.label :teams %>
+        <%= f.text_field :teams, class: "form-control", placeholder: "Team members" %>
+      </div>
+      
+      <div class='form-group'>
+        <%= f.label :target_amount %>
+        <%= f.number_field :target_amount, class: "form-control" %>
+      </div>
+      
+      <div class='form-group'>
+        <%= f.label :github_link %>
+        <%= f.text_field :github_link, class: "form-control", placeholder: "https://" %>
+      </div>
+      
+      <div class='form-group'>
+        <%= f.label :web_url %>
+        <%= f.text_field :web_url, class: "form-control", placeholder: "http://" %>
+      </div>
+      
+      <div class='form-group'>
+        <%= f.label :screenshot %>
+        <%= f.file_field :screenshot, class: "form-control" %>
+      </div>
 
+      
+      <div class='form-group'>
+        <%= f.submit class: 'btn btn-info' %> <%= link_to "Cancel", projects_path, class: 'btn btn-default' %>
+      </div>
+    
+  <% end %>
+ 
+  

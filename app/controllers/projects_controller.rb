@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
     if current_user
       @current_follow = current_user.follows.find_by(project_id: @project.id)
     end
+
   end
 
   def edit
@@ -33,6 +34,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project =Project.new
+    @projects = Project.recent.limit(3)
   end
 
   def create

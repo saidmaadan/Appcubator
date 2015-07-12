@@ -1,16 +1,21 @@
 <div class="container">
-<div class-'row'>
-<div class='col-md-12'>
-<div class='col-md-3'></div>
-<div class='col-md-6'>
-<h2>Post Your Startup Idea or Project</h2></div>
-<div class='col-md-3'></div></div></div>
-<div class-'row idea_post'>
-<div class='col-md-2'></div>
-<div class='col-md-8'>
- <div class="well">
-  
-<%= render 'form' %>
-</div></div>
-<div class='col-md-2'></div>
-</div></div>
+	<div class='row ideas-main'>
+		<div class='col-sm-5 hidden-xs ideas-tips'>
+			<div class='row'>
+					<h2 class='text-center'>Startup Ideas</h2>
+					<% @ideas.each do |idea| %>
+				    <div class="col-sm-12">
+				    	<h4><%= link_to(idea.title, idea) %></h4>
+							<p><%= truncate(idea.description, length: 200, separator: ' ') %></p>
+				    </div>
+			    <% end %>	
+				</div>
+		</div>
+		<div class='col-sm-7'>
+			<div class="well">
+				<h2>Post Your Startup Idea or Project</h2>
+						<%= render 'form' %>
+			</div>
+		</div>
+	</div>
+</div>

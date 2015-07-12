@@ -1,153 +1,129 @@
-<div class='container'>
-<div class='row'>
-<br>
-<div class='col-md-9'>
+
 <%= form_for @job, :html => { :multipart => true } do |f| %>
-<%= render "shared/errors", object: @job %>
-<div class='form-horizontal' role='form'>
-  <div class="form-group">
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :company_name, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_field :company_name, autofocus: true, placeholder: "Company Name", class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :industry, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.select :industry, Job::INDUSTRY, prompt: "Select one", class: "form-control" %>
-
-  </div></div>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :company_size, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.select :company_size, Job::COMPANY_SIZE, prompt: "Select one", class: "form-control" %></div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :logo, "Company Logo", class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.file_field :logo %>
-  </div></div><br>
- <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :company_description, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_area :company_description, cols: 40, rows: 7, autofocus: true, placeholder: "Brief description about your company, what you are up to, service and product", class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :website, "Company Website", class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_field :website, autofocus: true, placeholder: "http://companyname.com", class: "form-control" %>
-  </div></div><br>
-
-   <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :job_title, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_field :job_title, autofocus: true, placeholder: "Job title", class: "form-control" %>
-  </div></div><br>
-   <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :job_details, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_area :job_details, cols: 40, rows: 7, autofocus: true, placeholder: "Job description", class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :desire_skill, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_area :desire_skill, cols: 40, rows: 7, class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :key_responsibility, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_area :key_responsibility, cols: 40, rows: 7, placeholder: "List of job responsibilties",class: "form-control" %>
-  </div></div><br>
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :location, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <div class='col-md-6'>
-    <%= f.text_field :location, class: "form-control", cols: 20, placeholder: "Austin" %><br>
-     <%= f.text_field :zip_code, class: "form-control", placeholder: "78701" %></div>
-    <div class='col-md-6'>
-      <%= f.text_field :state, class: "form-control", placeholder: "Texas" %><br>
-      <%= f.text_field :country, class: "form-control", placeholder: "USA" %>
+  <%= render "shared/errors", object: @job %>
+  
+    <div class='form-group'>
+      <%= f.label :company_name, class: 'control-label' %>
+      <%= f.text_field :company_name, autofocus: true, placeholder: "Company Name", class: "form-control" %>
     </div>
-  </div></div><br>
-  
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :salary, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <div class='col-md-8'>
-    <%= f.text_field :salary, class: "form-control" %></div>
-    <div class='col-md-4'>
-    <%= f.select :salary_rate, Job::SALARY_RATE, prompt: "Select one", class: "form-control" %></div>
-  </div></div><br>
-  
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :employment_type, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <div class='col-md-4'>
-    <%= f.select :employment_type, Job::EMPLOYMENT_TYPE, prompt: "Select one", class: "form-control" %></div>
-    <div class='col-md-8'>
-    <div class='col-md-7'>
-    <%= f.label :experience, class: 'control-label' %></div>
-    <div class='col-md-5'>
-    <%= f.select :experience, Job::EXPERIENCE, prompt: "Select one", class: "form-control" %>
+    
+    <div class='form-group'>
+      <div class='row'>
+        <div class='col-md-4 col-sm-6'>
+          <%= f.label :industry, class: 'control-label' %><br>
+          <%= f.select :industry, Job::INDUSTRY, prompt: "Select one", class: "form-control" %>
+        </div>
+        <div class='col-md-4 col-sm-6'>
+          <%= f.label :company_size, class: 'control-label' %><br>
+          <%= f.select :company_size, Job::COMPANY_SIZE, prompt: "Select one", class: "form-control" %>
+        </div>
+        <div class='col-md-4 col-sm-6'>
+           <%= f.label :logo, "Company Logo", class: 'control-label' %><br>
+           <%= f.file_field :logo %>
+        </div>
+      </div>
+    </div>
+    
+     <div class='form-group'>
+      <div class='row'>
+         <div class='col-sm-6'>
+           <%= f.label :website, "Company Website", class: 'control-label' %>
+          <%= f.text_field :website, autofocus: true, placeholder: "http://companyname.com", class: "form-control" %>
+        </div>
+        <div class='col-sm-6'>
+          <%= f.label :job_title, class: 'control-label' %>
+          <%= f.text_field :job_title, autofocus: true, placeholder: "Job title", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+   
+    <div class='form-group'>
+      <div class='row'>
+         <div class='col-sm-6'>
+            <%= f.label :company_description, class: 'control-label' %>
+            <%= f.text_area :company_description, cols: 40, rows: 7, autofocus: true, placeholder: "Brief description about your company, what you are up to, service and product", class: "form-control" %>
+          </div>
+          <div class='col-sm-6'>
+            <%= f.label :job_details, class: 'control-label' %>
+            <%= f.text_area :job_details, cols: 40, rows: 7, autofocus: true, placeholder: "Job description", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+     
+    
+    <div class='form-group'>
+      <%= f.label :desire_skill, class: 'control-label' %>
+      <%= f.text_area :desire_skill, cols: 40, rows: 7, class: "form-control" %>
+    </div>
+    
+    <div class='form-group'>
+      <%= f.label :key_responsibility, class: 'control-label' %>
+      <%= f.text_area :key_responsibility, cols: 40, rows: 7, placeholder: "List of job responsibilties",class: "form-control" %>
+    </div>
+    
+    <div class='form-group'>
+      <%= f.label :location, class: 'control-label' %>
+        <div class='row'>
+          <div class='col-sm-6'>
+          <%= f.text_field :location, class: "form-control", cols: 20, placeholder: "City e.g Austin" %><br>
+           <%= f.text_field :zip_code, class: "form-control", placeholder: "Zip code e.g 78701" %></div>
+          <div class='col-sm-6'>
+            <%= f.text_field :state, class: "form-control", placeholder: "State e.g Texas" %><br>
+            <%= f.text_field :country, class: "form-control", placeholder: "Country e.g USA" %>
+          </div>
+        </div>
+    </div>
+    
+    
+    <div class='form-group'>
+      <%= f.label :salary, class: 'control-label' %>
+      <div class='row'>
+        <div class='col-sm-8'>
+          <%= f.text_field :salary, class: "form-control", placeholder: "Salary Range" %></div>
+        <div class='col-sm-4'>
+          <%= f.select :salary_rate, Job::SALARY_RATE, prompt: "Select one", class: "form-control" %>
+        </div>
+    </div><br>
+    
+    
+    <div class='form-group'>
+      <div class='row'>
+        <div class='col-sm-3 col-xs-6'>
+          <%= f.label :employment_type, class: 'control-label' %><br>
+          <%= f.select :employment_type, Job::EMPLOYMENT_TYPE, prompt: "Select one", class: "form-control" %><br>
+        </div>
+        <div class='col-sm-3 col-xs-6'>
+          <%= f.label :experience, class: 'control-label' %><br> 
+          <%= f.select :experience, Job::EXPERIENCE, prompt: "Select one", class: "form-control" %><br>
+        </div>
+         <div class='col-sm-3 col-xs-6'>
+           <%= f.label :relocation, class: 'control-label' %><br>
+           <%= f.select :relocation, Job::RELOCATION, prompt: "Select one", class: "form-control" %><br>
+         </div>
+         <div class='col-sm-3 col-xs-6'>
+            <%= f.label :required_travel, class: 'control-label' %><br>
+            <%= f.select :required_travel, Job::REQUIRED_TRAVEL, prompt: "Select one", class: "form-control" %><br>
+          </div>
+         </div>
+      </div><br>
 
-  </div></div>
-    </div></div><br>
+      
+    <div class='form-group'>
+      <div class='row'>
+        <div class='col-sm-6'>
+          <%= f.label :other_pay, class: 'control-label' %>
+          <%= f.text_field :other_pay, class: "form-control" %>
+        </div>
+        <div class='col-sm-6'>
+          <%= f.label :application_link, class: 'control-label' %>
+        <%= f.text_field :application_link, class: "form-control", placeholder: "http://companyname.com/job.html" %>
+        </div>
+      </div>
+    </div>
 
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :relocation, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <div class='col-md-4'>
-    <%= f.select :relocation, Job::RELOCATION, prompt: "Select one", class: "form-control" %></div>
-    <div class='col-md-8'>
-    <div class='col-md-7'>
-    <%= f.label :required_travel, class: 'control-label' %></div>
-    <div class='col-md-5'>
-    <%= f.select :required_travel, Job::REQUIRED_TRAVEL, prompt: "Select one", class: "form-control" %>
-
-  </div></div>
-    </div></div><br>
-
-    <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :other_pay, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_field :other_pay, class: "form-control" %>
-  </div></div><br>
-
-  <div class='row'>
-  <div class='col-md-3'>
-    <%= f.label :application_link, class: 'control-label' %></div>
-    <div class='col-md-7'>
-    <%= f.text_field :application_link, class: "form-control", placeholder: "http://companyname.com/job.html" %>
-  </div></div><br>
-<br>
-
-  </div></div>
-  <div class='row'>
-  <div class='col-md-3'></div>
-  <div class='col-md-8'>
-    <%= f.submit class: 'btn btn-info' %> <%= link_to "Cancel", jobs_path, class: 'btn btn-default' %>
-  </div></div>
-</div></div>
+    
+    <div class='form-group'>
+      <%= f.submit class: 'btn btn-info' %> <%= link_to "Cancel", jobs_path, class: 'btn btn-default' %>
+  </div>
 <% end %>
-</div>
-<div class='col-md-2 ico'>
-<br><br>
-</div>
-</div>
-</div>
-</div>
-
+ 
