@@ -1,53 +1,59 @@
 <div class="container">
-<div class='row'>
+	<div class='row'>
 
-<div class='col-md-9 insight'>
-<% @trends.each do |trend| %>
-<br>
-<div class='col-md-4'>
-<%= image_tag trend.upload.url(:medium) %>
-</div>
+		<div class='col-md-9 insight'>
+			<% @trends.each do |trend| %>
+				<br>
+				<div class='row'>
+					<div class='col-sm-4'>
+						<%= image_tag trend.upload.url, class: 'img-responsive' %>
+					</div>
 
-<div class='col-md-8'>
-<h2><%= link_to trend.title, trend %></h2><br>
-<div class='row'>
-<div class='col-md-2'>
+					<div class='col-sm-8'>
+						<h2><%= link_to trend.title, trend %></h2><br>
+						<div class='row'>
+							<div class='col-sm-2 col-xs-3'>
+								<%= profile_image_for trend.user, size: 40 %>
+							</div>
+							<div class='col-sm-3 col-xs-4'>
+								By <%= link_to trend.user.name, trend.user %>
+							</div>
+							<% if trend.twitter_url %>
+								<div class='col-sm-4 col-xs-5'>
+									<%= link_to 'Follow me on Twitter', trend.twitter_url, class: 'fa fa-twitter' %><br>
+									Posted <%= time_ago_in_words(trend.created_at) %> ago
+								</div> <br>
+							<% else %>
+								<div class='col-xs-5'>
+									Posted <%= time_ago_in_words(trend.created_at) %> ago
+								</div>
+							<% end %><br>
+						</div><br>
+						<div>
+							<%= truncate trend.content, length: 180, separator: ' ' %><br><br>
+							<%= link_to 'Read more -->', trend, class: 'btn btn-default' %>
+						</div>
+					</div>
+				</div>	
+			<% end %>
+			<div class='paginate'>
+			    <%= paginate @trends, :outer_window => 3 %>
+			</div>
+		</div>
 
-<%= profile_image_for trend.user, size: 40 %></div>
-<div class='col-md-3'>
-By <%= link_to trend.user.name, @user %></div>
-<% if trend.twitter_url %>
-<div class='col-md-4'>
-<%= link_to 'Follow me on Twitter', trend.twitter_url, class: 'fa fa-twitter' %></div> 
-<div class='col-md-3'>
-Posted <%= time_ago_in_words(trend.created_at) %> ago</div>
-</div><% else %>
-<div class='col-md-4'>
-Posted <%= time_ago_in_words(trend.created_at) %> ago</div>
-</div>
-<% end %><br>
-<%= truncate trend.content, length: 180, separator: ' ' %><br><br>
-<%= link_to 'Read more -->', trend, class: 'btn btn-default' %>
-</div>
-<% end %>
-<div class='paginate'>
-    <%= paginate @trends, :outer_window => 3 %>
-</div>
-</div>
+		<div class='col-sm-3 hidden-xs'><br><br>
+		 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- MasmaSpace News -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:300px;height:600px"
+		     data-ad-client="ca-pub-1207389406711656"
+		     data-ad-slot="8952579198"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+		</div>
 
-<div class='col-md-3'><br><br>
- 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- MasmaSpace News -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:600px"
-     data-ad-client="ca-pub-1207389406711656"
-     data-ad-slot="8952579198"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
-
-</div>
+	</div>
 </div>
 
 

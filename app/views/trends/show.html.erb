@@ -1,30 +1,27 @@
 <div class="container">
 <div class="row">
 
-<div class='col-md-3 tips'>
+<div class='col-sm-3 tips'>
+
 <h1><%= @trend.title %></h1><br>
 <div class='row'>
-<div class='col-md-3'>
+<div class='col-xs-3'>
 <%= profile_image_for @trend.user, size: 40 %></div>
-<div class='col-md-9'>By: 
-	<%= link_to @user do %>
-		<%= link_to @trend.user.name %>
-	<% end %></div></div><br>
-<% if @trend.twitter_url %>
-<div class='row'>
-<div class='col-md-12'>
-<%= link_to 'Follow me on Twitter', @trend.twitter_url, :target => "_blank", class: 'fa fa-twitter' %></div></div>
-<div class='row'>
-<div class='col-md-12'>
-Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div>
-<% else %>
-<div class='row'>
-<div class='col-md-12'>
-Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
+<div class='col-xs-9'>By: 
+	<%= link_to @trend.user.name, @trend.user %><br>
+	<% if @trend.twitter_url %>
+		<%= link_to 'Follow me on Twitter', @trend.twitter_url, :target => "_blank", class: 'fa fa-twitter' %><br>
+		Posted <%= time_ago_in_words(@trend.created_at) %> ago
+	<% else %>
+		Posted <%= time_ago_in_words(@trend.created_at) %> ago
+	<% end %><br><br>
+	<%= social_share_button_tag truncate(@trend.title, length: 60)%><br>
+	</div></div>
+
 <br>
 <div class='row'>
-<div class='col-md-12'>
-<%= social_share_button_tag truncate(@trend.title, length: 60)%><br>
+<div class='col-sm-12 text-center'>
+
 
  <% if current_user %>
  <%= link_to "Edit", edit_trend_path(@trend), class: 'btn btn-info' %>
@@ -35,7 +32,7 @@ Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
 <% end %>
 </div></div><br>
 <div class='row'>
-<div class='col-md-12'>
+<div class='col-sm-12 hidden-xs'>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- App -->
 <ins class="adsbygoogle"
@@ -49,7 +46,8 @@ Posted <%= time_ago_in_words(@trend.created_at) %> ago</div></div><% end %>
 </div>
 </div>
 <br>
-<div class='col-md-8 tips'>
+<div class='col-sm-9 tips'>
+<%= image_tag @trend.upload.url, class: "img-responsive", style: "width:100%;" %><br>
 <span><%= @trend.content %><br></span>
 <br>
 <h4><%= link_to " Source ", @trend.source_url, :target => "_blank", class: 'fa fa-archive' %></h4>
