@@ -2,8 +2,8 @@
 	<div class='container'>
 		<div class='bottom'>
 			<div class='row '>
-
-				<div class='col-md-3 col-sm-2 col-xs-6 contact_us'>
+				<div class='col-md-1'></div>
+				<div class='col-md-2 col-sm-3 col-xs-6 contact_us'>
 					<h3>Contact us</h3>
 
 					<address>
@@ -14,8 +14,21 @@
 					  <a href="mailto:app@app-cubator.com">hello@dkonnect.com</a>
 					</address>				
 				</div>
+				<div class=' col-md-2 col-sm-3 col-xs-6 footer-menu'>
+					<h1></h1><br>
+						<ul>
+							<li><%= link_to " Projects", projects_path, class: 'fa fa-database' %></li>
+				        <li><%= link_to " Startup Ideas", ideas_path, class: 'fa fa-dashboard' %></li>
+				        <li><%= link_to " TechJobs", jobs_path, class: 'fa fa-code' %></li>
+				         <li><%= link_to " Tips & Insights", trends_path, class: 'fa fa-comment' %></li>
+				      
+				        <li><%= link_to ' Contact Us', contact_path, class: ' fa fa-envelope ' %></li> </ul>
+					
+					<%#= render "contacts/form" %>
+					
+				</div>
 
-				<div class='col-md-3 col-sm-3 col-xs-6 connect'>
+				<div class='col-md-3 col-sm-3 col-xs-12 connect'>
 					<h3>Connect with us!</h3>
 					<p>Don't hesitate to connect with us<br> on your favourite social networks...</p>
 					<a href = "https://www.linkedin.com/company/inventtive" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
@@ -31,11 +44,7 @@
 					<h3>Get in touch...</h3>
 								<p>Have a question about a particular startup project or idea, just curious to know our process, or how the whole system work generally? Drop us a note or give us a call; we’re happy to answer all your questions --></p>
 				</div>
-				<div class=' col-md-3 col-sm-4 col-xs-12'>
-					<h3></h3>
-					<%= render "contacts/form" %>
-					
-				</div>
+				<div class='col-md-1'></div>
 			</div>
 		</div>
 	</div>

@@ -6,7 +6,7 @@
 		<%= @job.company_name %> | <%= @job.location %>, <%= @job.state %> <%= @job.zip_code %> <%= @job.country %> | Posted <%= time_ago_in_words(@job.created_at) %> ago
 	</div>
 	<div class="col-md-3"><br>
-		<%= link_to "Apply for this job", @job.application_link, :target => "_blank", class: "btn btn-success" %>
+		<%= link_to "Apply for this job", @job.application_link, :target => "_blank", class: "btn btn-danger" %>
 	</div><br>
 </article><br>
 <article class="col-md-12 job_main">
@@ -36,7 +36,7 @@
 	<h4>Relocation: <%= @job.relocation %></h4>
 	<h4>Require travel: <%= @job.required_travel %></h4>
 
-	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-warning" %>
+	<%= link_to "<< Apply Now >>", @job.application_link, :target => "_blank", class: "btn btn-info" %>
   <% if current_user_admin? %>
 
   <%= link_to "Edit", edit_job_path(@job), class: 'btn btn-info' %>

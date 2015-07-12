@@ -9,8 +9,14 @@
 	height: auto;
 	
 }
-.idea_place{
-	border-top: 2px solid #eee;
+.ideas-h1 h1{
+	color: #46b8da;
+	font-family: "Shift", sans-serif;
+	font-weight: 900;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 35px;
+	text-align: center;
 }
 .idea a{
 	color: #46b8da;
@@ -42,7 +48,7 @@
 // Jobs
 
 .job_home{
-	border: 2px solid #eee;
+	// border: 2px solid #eee;
 	margin-top: 30px;
 	a{
 		color: #46b8da;
@@ -55,7 +61,7 @@
 
 .job_level{
 	padding: 10px 0 10px 0;
-	border-top: 1px solid #eee; 
+	// border-top: 1px solid #eee; 
 }
 .new-job{
 	margin-top: 30px;
@@ -89,7 +95,7 @@
 
 .tips h1{
 	font-size: 2.9em;
-	color: #77B5A8;
+	color: #d9534f;
 }
 .tips a{
 	color: #46b8da;
@@ -111,6 +117,13 @@ article{
 	float: right;
 	overflow: auto;
 	
+}
+.project-h1 h2{
+	color: #d9534f;
+	font-family: "Shift", sans-serif;
+	font-weight: 900;
+	margin-bottom: 20px;
+	float: right;
 }
 #project_follower{
 	width: 90%;

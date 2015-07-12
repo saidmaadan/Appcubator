@@ -131,7 +131,16 @@ footer{
   left: 0;
   .bottom{
     margin: 40px 0;
+    .footer-menu > ul{
+      list-style-type: none;
+      a{
+        color: #46b8da;
+      }
+
+    }
+  
   }
+  
 }
 footer a:link{
   color: #46b8da;

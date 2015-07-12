@@ -7,7 +7,9 @@
 <div class='col-md-3'>
 <%= profile_image_for @trend.user, size: 40 %></div>
 <div class='col-md-9'>By: 
-<%= link_to @trend.user.name, @user %></div></div><br>
+	<%= link_to @user do %>
+		<%= link_to @trend.user.name %>
+	<% end %></div></div><br>
 <% if @trend.twitter_url %>
 <div class='row'>
 <div class='col-md-12'>
