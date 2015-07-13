@@ -92,13 +92,13 @@
         <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
         <% if current_user?(@user) %>
         <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li><a href="#settings" role="tab" data-toggle="tab">Account Settings</a></li>
+        <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
         <% end %>
         <% if @user.about %>
-        <li><a href="#about" role="tab" data-toggle="tab">About Me</a></li><% end %>
+        <li><a href="#about" role="tab" data-toggle="tab">About</a></li><% end %>
         <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
-        <% if @user.video %>
-         <li><a href="#video" role="tab" data-toggle="tab">Video</a></li><% end %>
+        <li><a href="#addideas" role="tab" data-toggle="tab">Post a Startup Ideas</a></li>
+          <li><a href="#addproject" role="tab" data-toggle="tab">Add Project</a></li>
       </ul>
 
 <!-- Tab panes -->
@@ -399,9 +399,9 @@
       <div class='col-md-4'></div>
     <div class="col-md-7"> 
       <% if @user.new_record? %>
-        <%= f.submit "Create Account" %>
+        <%= f.submit "Create Account", class: "btn btn-info" %>
       <% else %>
-        <%= f.submit "Update Account" %>
+        <%= f.submit "Update Account", class: 'btn btn-info' %>
       <% end %></div></div>
     </p></div></div>
   </fieldset>
@@ -411,18 +411,31 @@
   <div class="tab-pane" id="about"><br>
   <% if @user.about %>
 <div class='row'>
-<div class='col-md-1'></div>
-<div class='col-md-10 well'>
- <h4> <%= @user.about %></h4>
+<div class='col-sm-1'></div>
+<div class='col-sm-10 well'>
+ <p> <%= @user.about %></p>
+
 </div>
-<div class='col-md-1'></div>
+ 
+<div class='col-sm-1'></div>
 </div>
+<% end %>
+<% if @user.video %>
+  <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen class="img-responsive text-center" style="width:100%;height:500px;"></iframe>
+</p>
 <% end %>
   </div>
 
 <div class="tab-pane" id="activity">
 <br>
 <div class='row'>
+<% if @projects.any? %>
+  <% @projects.each do |p| %>
+    <% if p %>
+      <%= p.name %>
+    <% end %>
+  <% end %>
+<% end %>
 <div class='col-md-5 well'>
  <% if @reviews.any? %>
     <h4 class="btn btn-default">My Reviews on Startup Project</h4><br><br>
@@ -502,12 +515,15 @@
 </div>
 </div>
 </div>
-<div class="tab-pane" id="video">
-  <% if @user.video %> 
+<div class="tab-pane" id="addideas">
+<br><br>
+  <p><%= render 'ideas/form' %>
+</div>
+<div class="tab-pane" id="addproject">
+ 
   <br><br>
- <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
+ <p><%= render 'projects/form' %>
 </p>
-<% end %>
 </div>
 </div>
 </div>

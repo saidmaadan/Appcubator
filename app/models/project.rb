@@ -32,7 +32,7 @@ class Project < ActiveRecord::Base
   paginates_per 6
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    "#{id}?030/#{name.parameterize}"
   end
 
   def self.recent

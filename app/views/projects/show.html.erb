@@ -130,7 +130,7 @@
  
   </div></div>
 <div class='col-sm-6 col-xs-8 col-md-3'>
-<h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, @user %> </h4>
+<h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, @project.user %> </h4>
 
 <%= profile_image_for @project.user, size: 250 %>
 

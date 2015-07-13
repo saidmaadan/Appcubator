@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
   paginates_per 20
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    "#{id}?/@#{username}"
+    # "#{id}-#{name.parameterize}"
   end
 
   def gravatar_id

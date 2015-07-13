@@ -9,11 +9,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @projects = @user.projects
     @abilities = @user.abilities
     @reviews = @user.reviews
     @checkins = @user.checkins
     @followed_projects = @user.followed_projects
     @voted_ideas = @user.voted_ideas
+    @project =Project.new
+    @idea =Idea.new
+
   end
 
   def new
