@@ -22,9 +22,10 @@
 
   <div class='row'>
     <div class="col-xs-12 col-md-12">
-      <div class="skill_line">
-        <h3>Skills:</h3>
-      </div><!-- </div> --><br>
+        <div class="skill_line">
+          <h3>Skills:</h3>
+        </div><!-- </div> --><br>
+
       <div class='row'><br>
         <div class="col-xs-12 col-md-12">
           <div class='row'>
@@ -44,12 +45,15 @@
         </div>
 
       <div class='row'>
+      <% if @user.github || @user.linkedin || @user.twitter || @user.dribbble %>
         <div class="col-xs-12 col-md-12">
+        
           <div class="skill_line">
             <h3>Social Activities:</h3>
           </div>
+       
         </div><br>
-
+         <% end %>
         <div class="col-xs-12 col-md-12">
           <aside class='well'>
 
@@ -91,14 +95,16 @@
       <ul class="nav nav-tabs" role="tablist">
         <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
         <% if current_user?(@user) %>
-        <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+          <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+          <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
         <% end %>
         <% if @user.about %>
         <li><a href="#about" role="tab" data-toggle="tab">About</a></li><% end %>
         <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
-        <li><a href="#addideas" role="tab" data-toggle="tab">Post a Startup Ideas</a></li>
+        <% if current_user?(@user) %>
+          <li><a href="#addideas" role="tab" data-toggle="tab">Post a Startup Ideas</a></li>
           <li><a href="#addproject" role="tab" data-toggle="tab">Add Project</a></li>
+         <% end %>
       </ul>
 
 <!-- Tab panes -->
@@ -515,15 +521,17 @@
 </div>
 </div>
 </div>
-<div class="tab-pane" id="addideas">
-<br><br>
-  <p><%= render 'ideas/form' %>
-</div>
-<div class="tab-pane" id="addproject">
- 
+<% if current_user?(@user) %>
+  <div class="tab-pane" id="addideas">
   <br><br>
- <p><%= render 'projects/form' %>
-</p>
+    <p><%= render 'ideas/form' %>
+  </div>
+  <div class="tab-pane" id="addproject">
+   
+    <br><br>
+   <p><%= render 'projects/form' %>
+  </p>
+<% end %>
 </div>
 </div>
 </div>
