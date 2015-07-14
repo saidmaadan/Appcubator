@@ -10,16 +10,7 @@
 		<div class='col-md-1'></div>
 		<div class='col-md-3 col-sm-4 hidden-xs'>
 			<div class='row recent-project'>
-				<h2>New Projects</h2>
-				<% @projects.each do |project| %>
-					<div class='col-sm-12'>
-						<div class="thumbnail project">
-							<%= link_to project do %>
-								<%= image_tag project.screenshot.url %>
-							<% end %>
-						</div>
-					</div>
-				<% end %>
+				
 			</div>	
 		</div>
 	</div>

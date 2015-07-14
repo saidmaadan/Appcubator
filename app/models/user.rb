@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
+
   validates :password, length: { minimum: 8, allow_blank: true }
 
   validates :name, presence: true
@@ -31,10 +35,15 @@ class User < ActiveRecord::Base
 
   paginates_per 20
 
-  def to_param
-    "#{id}?/@#{username}"
-    # "#{id}-#{name.parameterize}"
-  end
+  # def should_generate_new_friendly_id?
+  #   new_record?
+  # end
+
+  # def to_param
+  #   slug
+  #   # "#{id}?000/#{username}"
+  #   # "#{id}-#{name.parameterize}"
+  # end
 
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)

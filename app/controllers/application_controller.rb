@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user?
 
   def correct_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     unless current_user?(@user)
       redirect_to root_url
     end

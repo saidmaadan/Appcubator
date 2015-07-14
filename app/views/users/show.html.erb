@@ -12,8 +12,10 @@
             <h4><%= @user.specialization %></h4>
             <h4><%= mail_to@user.email, "Get in touch with me" %></h4>
             <% if @user.location %>
-              <p><span class="glyphicon glyphicon-map-marker" ></span> <%= @user.location %></p>
-            <% end %>
+              <p><span class="glyphicon glyphicon-map-marker" ></span>
+            <% end %> 
+              <%= @user.location %></p>
+            
             <div class='row'>
               <div class='col-sm-4 col-xs-5'>
                 <span>Joined</span>
@@ -24,7 +26,9 @@
             </div>
             <div class='row'>
               <div class='col-sm-4 col-xs-5'>
+              <%# if @user.school %>
                 <span>Education</span>
+              <%# end %>
               </div>
               <div class='col-sm-4 col-xs-7'>
                 <%= @user.school %>
@@ -529,7 +533,7 @@
                 <div class='col-sm-8'>
                    <h2><%= link_to project.name, project %></h2>
                    <p><%= truncate(project.description, length: 180, separator: ' ') %></p><br>
-                   <p><%= link_to project.web_url , project.web_url, :target => "_blank", class: ' fa fa-link ' %></p>
+                   <p><span class="glyphicon glyphicon-link " ></span> <%= link_to project.web_url , project.web_url, :target => "_blank" %></p>
                 </div>
               </div>
             <% end %>

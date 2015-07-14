@@ -143,6 +143,7 @@
   <% if current_user_admin? %>
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>
+
 <p>
     <h2><%= pluralize(@followers.count, 'Follower') %></h2>
   </p>

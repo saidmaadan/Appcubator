@@ -38,6 +38,7 @@ gem 'aws-sdk'
 gem 'figaro'
 gem 'social-share-button', '~> 0.1.6'
 gem 'kaminari'
+gem 'friendly_id', '~> 5.1.0'
 # gem 'will_paginate', '~> 3.0'
 
 # gem 'tinymce-rails'

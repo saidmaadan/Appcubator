@@ -1,6 +1,12 @@
 class Project < ActiveRecord::Base
   belongs_to :user
 
+  # has_secure_password
+  # include Dateable
+  extend ActionView::Helpers::DateHelper
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
   has_attached_file :screenshot, styles: {
     :small => "200x150>", :medium => "300x300>",
     :large => "500x500>", :thumb => "100x100>"
@@ -31,9 +37,30 @@ class Project < ActiveRecord::Base
   has_many :followers, through: :follows, source: :user
   paginates_per 6
 
-  def to_param
-    "#{id}?030/#{name.parameterize}"
+  # def to_param
+  #   # "#{id}"
+  #   "#{id}?030/#{name.parameterize}"
+  # end
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :teams],
+      [:name, :looking_for, :teams],
+      [:name, :looking_for, :teams, :web_url],
+      [:name, :looking_for, :teams, :web_url, :target_amount]
+    ]
   end
+
+   def has_friendly_id_slug?
+    slugs.where(slug: slug).exists?
+  end
+
+  def should_generate_new_friendly_id?
+    
+  end
+
+ 
 
   def self.recent
     order("created_at desc")

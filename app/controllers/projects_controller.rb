@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
     @followers = @project.followers
     if current_user
       @current_follow = current_user.follows.find_by(project_id: @project.id)
@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
     if @project.update(project_params)
       flash[:notice] = "Project successfully updated!"
       redirect_to @project
@@ -33,11 +33,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project =Project.new
+    @project = Project.new
     @projects = Project.recent.limit(3)
   end
 
   def create
+
     @project = current_user.projects.build(project_params)
     # @project = Project.new(project_params)
     if @project.save
@@ -48,7 +49,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
     @project.destroy
     redirect_to projects_url, alert: "Project successfully deleted!"
   end
@@ -57,6 +58,17 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :description, :looking_for, :teams, :target_amount, :github_link, :web_url, :screenshot, :user_id)
+  end
+
+  def respond_with_project_or_redirect
+    # If an old id or a numeric id was used to find the record, then
+    # the request path will not match the post_path, and we should do
+    # a 301 redirect that uses the current friendly id.
+    if request.path != project_path(@project)
+      return redirect_to @project, status: :moved_permanently
+    else
+      return respond_with @project
+    end
   end
 
   def correct_user

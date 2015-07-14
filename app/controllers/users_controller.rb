@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @abilities = @user.abilities
     @reviews = @user.reviews
     @checkins = @user.checkins
@@ -38,11 +38,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     if @user.update(user_params)
       redirect_to @user#, notice: "Account successfully updated!"
     else
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @user.destroy
     session[:user_id] = nil
     redirect_to root_url, alert: "Account successfully deleted!"

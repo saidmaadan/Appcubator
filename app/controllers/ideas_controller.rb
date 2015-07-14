@@ -54,4 +54,9 @@ private
   def idea_params
     params.require(:idea).permit(:title, :description, :goal, :category, :market)
   end
+  def correct_user
+    unless @idea= current_user.ideas.find_by(id: params[:id])
+    redirect_to ideas_url, alert: "Unauthorized access!"
+  end
+  end
 end
