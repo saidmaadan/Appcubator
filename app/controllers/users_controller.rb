@@ -9,15 +9,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @projects = @user.projects
     @abilities = @user.abilities
     @reviews = @user.reviews
     @checkins = @user.checkins
     @followed_projects = @user.followed_projects
     @voted_ideas = @user.voted_ideas
     @project =Project.new
+    @projects = Project.all.order('created_at DESC').limit(1)
     @idea =Idea.new
-
+    @ideas = Idea.all.order('created_at DESC').limit(2)
+    @jobs = Job.all.order('created_at DESC').limit(2)
+    @trends = Trend.all.order('created_at DESC').limit(1)
+    @projects = @user.projects.order("created_at DESC").limit(4)
   end
 
   def new

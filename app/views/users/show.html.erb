@@ -1,98 +1,82 @@
-<div class='container'>
-  <div class='row user_main'>
-<br><br>
-
-    <div class="col-xs-12 col-md-4 user_main_right">
-
-  <p><%= profile_image_for@user, size: 300 %></p>
-  <div class="well">
-    <h3><%= @user.name %></h3>
-    <h4><%= @user.specialization %></h4>
-    <h4><%= mail_to@user.email, "Get in touch with me" %></h4>
-    <h5><%= @user.location %></h5>
-    <div class='row'>
-      <div class="col-xs-6 col-sm-7">
-          <h4>Member Since</h4>
-      </div>
-      <div class="col-xs-6 col-sm-5">
-        <h4> <%= @user.created_at.strftime("%B %Y") %></h4>
+<div class='row user-top'>
+  <div class='container'>
+  
+    <div class='user-top-content'>
+      <div class='col-sm-12'>
+        <div class='row'>
+          <div class='col-sm-4 col-xs-5 img-profile'>
+             <p><%= profile_image_for@user, size: 200 %></p>
+          </div>
+          <div class='col-sm-4 col-xs-7'>
+            <h3><%= @user.name %></h3>
+            <h4><%= @user.specialization %></h4>
+            <h4><%= mail_to@user.email, "Get in touch with me" %></h4>
+            <% if @user.location %>
+              <p><span class="glyphicon glyphicon-map-marker" ></span> <%= @user.location %></p>
+            <% end %>
+            <div class='row'>
+              <div class='col-sm-4 col-xs-5'>
+                <span>Joined</span>
+              </div>
+              <div class='col-sm-4 col-xs-7'>
+                <%= @user.created_at.strftime("%B %Y") %>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-sm-4 col-xs-5'>
+                <span>Education</span>
+              </div>
+              <div class='col-sm-4 col-xs-7'>
+                <%= @user.school %>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-sm-4 col-xs-5'>
+                <% if @user.github || @user.linkedin || @user.twitter || @user.dribbble %>
+                  <span>Social</span>
+                <% end %>
+              </div>
+              <div class='col-sm-4 col-xs-7'>
+                 <% if @user.github %>
+                  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github' %><% else %>
+                <% end %>
+              
+                <% if @user.linkedin %>
+                  <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin' %>
+                <% else %><% end %>
+              
+              <% if @user.twitter %>
+                 <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter' %><% else %><% end %>
+             
+                <% if @user.dribbble %>
+                   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble' %><% else %>
+                  <% end %>
+              </div>
+            </div>
+            
+          </div><br>
+          <div class='col-sm-4 col-xs-12 kbd'>
+            <% if @abilities.any? %>
+              <h2>Skills</h2>
+            <% end %>
+            <% @abilities.in_groups_of(2) do |group| %>
+              <% group.each do |ability| %>
+                <% if ability %>
+                 <kbd class='kbd'><%= ability.strenght %></kbd>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class='row'>
-    <div class="col-xs-12 col-md-12">
-        <div class="skill_line">
-          <h3>Skills:</h3>
-        </div><!-- </div> --><br>
-
-      <div class='row'><br>
-        <div class="col-xs-12 col-md-12">
-          <div class='row'>
-            <% @abilities.in_groups_of(2) do |group| %>
-
-              <% group.each do |ability| %>
-              <% if ability %>
-              <div class='col-xs-6'>
-              <ul>
-              <li><%= ability.strenght %></li></ul>
-              </div>
-              <% end %>
-              <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-      <div class='row'>
-      <% if @user.github || @user.linkedin || @user.twitter || @user.dribbble %>
-        <div class="col-xs-12 col-md-12">
-        
-          <div class="skill_line">
-            <h3>Social Activities:</h3>
-          </div>
-       
-        </div><br>
-         <% end %>
-        <div class="col-xs-12 col-md-12">
-          <aside class='well'>
-
-            <div class='row'>
-              <div class="col-xs-3 col-sm-3">
-                <% if @user.github %>
-                  <%= link_to " ", @user.github, :target => "_blank", class: 'fa fa-github fa-4x' %><% else %>
-                <% end %>
-              </div>
-              <div class="col-xs-3 col-sm-3">
-                <% if @user.linkedin %>
-                  <%= link_to " ", @user.linkedin, :target => "_blank", class: 'fa fa-linkedin fa-4x' %>
-                <% else %><% end %>
-              </div>
-              <div class="col-xs-3 col-sm-3">
-              <% if @user.twitter %>
-                 <%= link_to " ", @user.twitter, :target => "_blank", class: 'fa fa-twitter fa-4x' %><% else %><% end %>
-              </div>
-              <div class="col-xs-3 col-sm-3">
-                <% if @user.dribbble %>
-                   <%= link_to " ", @user.dribbble, :target => "_blank", class: 'fa fa-dribbble fa-4x' %><% else %>
-                  <% end %>
-              </div>
-             </div>
-          </aside>
-        </div>
-        <%#if current_user_admin? %>
-        <%#= link_to ' Delete Account', @user, 
-                        method: :delete,
-                        data: { confirm: 'Are you sure you want to permanently delete your account?' } %><%# end %> 
-       </div>
-
 </div>
-</div>
-</div>
-
-    <div class="col-xs-12 col-md-8 user_main_left">
-    
-      <ul class="nav nav-tabs" role="tablist">
+<div class='container'>
+  <div class='row user_main'>
+    <br><br>
+    <div class='text-center'>
+      <ul class="nav nav-tabs text-center" role="tablist">
         <li class="active"><a href="#dash" role="tab" data-toggle="tab">Dashboard</a></li>
         <% if current_user?(@user) %>
           <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
@@ -101,445 +85,501 @@
         <% if @user.about %>
         <li><a href="#about" role="tab" data-toggle="tab">About</a></li><% end %>
         <li><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
+        <li><a href="#project" role="tab" data-toggle="tab">My Project</a></li> 
         <% if current_user?(@user) %>
           <li><a href="#addideas" role="tab" data-toggle="tab">Post a Startup Ideas</a></li>
           <li><a href="#addproject" role="tab" data-toggle="tab">Add Project</a></li>
-         <% end %>
+        <% end %>
+        
       </ul>
-
+    </div>
+    <br><br>
+    <div class="col-md-9 col-sm-8 col-xs-12 user_main_left">
 <!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="dash"><br><br>
-    <table class="table table-hover">
-  
-       <% if @user.about %> 
-      <tr>
-      <div class='col-md-4'>
-      <th>
-      <h4>About Me</h4> 
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
-      </td>
-      </div>
-      </tr>
-    <% end %>
-    <% if @user.school %>
-     <tr>
-      <div class='col-md-4'>
-      <th>
-      <h4>School</h4>
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= @user.school %>
-      </td>
-      </div>
-      </tr>
-      <% end %>
-      <% if @user.degree %>
-       <tr>
-      <div class='col-md-4'>
-      <th>
-      <h4>Studied/Qualification</h4>
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= @user.degree %>
-      </div>
-      </tr>
-      </div>
-      <% end %>
-      <% if @user.work %> 
-       <tr>
-      <div class='col-md-4'>
-      <th>
-      <h4>Professional</h4>
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= @user.work %>
-      </td>
-      </div>
-      </tr>
-      <% end %>
-    <% if @user.specialization %> 
-       <tr>
-      <div class='col-md-4'>
-      <th>
-     <h4>Specialization</h4>
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= @user.specialization %>
-      </td>
-      </div>
-      </tr>
-      <% end %>
-      <% if @user.powerpoint %>
-      </div>
-      <tr>
-      <div class='col-md-4'>
-      <th>
-      <h4>Powerpoint</h4>
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= @user.powerpoint %>
-      </td>
-      </div>
-      </tr>
-      <% end %>
-      <% if @user.phone %>
-      <tr>
-      <div class='col-md-4'>
-      <th>
-      <h4>Phone</h4>
-      </th>
-      </div>
-      <div class='col-md-8'>
-      <td>
-      <%= @user.phone %>
-      </td>
-      </div>
-      </tr>
-      <% end %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="dash">
+        <table class="table table-hover">
       
-    </table><br><br>
+           <% if @user.about %> 
+          <tr>
+          <div class='col-md-4'>
+          <th>
+          <h4>About Me</h4> 
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
+          </td>
+          </div>
+          </tr>
+        <% end %>
+        <% if @user.school %>
+         <tr>
+          <div class='col-md-4'>
+          <th>
+          <h4>School</h4>
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= @user.school %>
+          </td>
+          </div>
+          </tr>
+          <% end %>
+          <% if @user.degree %>
+           <tr>
+          <div class='col-md-4'>
+          <th>
+          <h4>Studied/Qualification</h4>
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= @user.degree %>
+          </div>
+          </tr>
+          </div>
+          <% end %>
+          <% if @user.work %> 
+           <tr>
+          <div class='col-md-4'>
+          <th>
+          <h4>Professional</h4>
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= @user.work %>
+          </td>
+          </div>
+          </tr>
+          <% end %>
+        <% if @user.specialization %> 
+           <tr>
+          <div class='col-md-4'>
+          <th>
+         <h4>Specialization</h4>
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= @user.specialization %>
+          </td>
+          </div>
+          </tr>
+          <% end %>
+          <% if @user.powerpoint %>
+          </div>
+          <tr>
+          <div class='col-md-4'>
+          <th>
+          <h4>Powerpoint</h4>
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= @user.powerpoint %>
+          </td>
+          </div>
+          </tr>
+          <% end %>
+          <% if @user.phone %>
+          <tr>
+          <div class='col-md-4'>
+          <th>
+          <h4>Phone</h4>
+          </th>
+          </div>
+          <div class='col-md-8'>
+          <td>
+          <%= @user.phone %>
+          </td>
+          </div>
+          </tr>
+          <% end %>
+          
+        </table><br><br>
 
-  </div>
-  <div class="tab-pane" id="profile">
- <% if current_user?(@user) %>
-     <p><%= form_for(@user) do |f| %>
-   <fieldset>
+      </div>
+      <div class="tab-pane" id="profile">
+     <% if current_user?(@user) %>
+         <p><%= form_for(@user) do |f| %>
+       <fieldset>
 
-  <div class='form-horizontal' role='form'>
-  <div class="form-group profiles">
-  <div class='row'>
-  <div class='col-md-3'>
-        <%= f.label :sex, class: 'control-label' %></div>
-        <div class='col-md-9'>
-         <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
-      </div></div>
-     <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :marital, class: 'control-label' %></div>
-        <div class='col-md-9'>
-        <%= f.select :marital, User::MARITAL, prompt: "Select One", class: 'form-control' %>
-      </div></div>
-     <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :phone, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number: 234-9999-0000' %>
-      </div></div><br>
+      <div class='form-horizontal' role='form'>
+      <div class="form-group profiles">
       <div class='row'>
       <div class='col-md-3'>
-        <%= f.label :location, class: 'control-label' %></div>
-      <div class="col-md-9">
-        <%= f.text_field :location, class: 'form-control', placeholder: 'Your Address' %>
-      </div></div><br/>
-      
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :school, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <div class='row'>
-        <div class="col-md-12">
-        <%= f.text_field :school, class: 'form-control', placeholder: "School*" %></div>
-        </div>
-        <div class='row'>
-        <div class="col-md-6">
-        <%= f.text_field :degree, class: 'form-control', placeholder: "Degree(eg BSC)" %></div>
-        <div class="col-md-3">
-        <%= f.text_field :start_year, class: 'form-control', placeholder: "Start Year" %></div>
-        <div class="col-md-3">
-        <%= f.text_field :grad_year, class: 'form-control', placeholder: "Grad Year" %></div>
-
-     </div></div></div><br>
-     <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :work, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_field :work, class: 'form-control', placeholder: "Job Title" %>
-     </div></div><br>
-     <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :about, 'Describe Yourself', cols: 50, rows: 8, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_area :about, class: 'form-control', placeholder: 'Tell us about yourself. What you are working on or your dream startup project' %>
-      </div></div><br>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :achievements, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_field :achievements, class: 'form-control', placeholder: 'Show off what you have accomplished in the past' %>
-      </div></div><br>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :specialization, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_field :specialization, class: 'form-control', placeholder: 'Backend, FrontEnd, Ruby on Rails, Javascript Developer' %>
-      </div></div><br>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :powerpoint, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_field :powerpoint, size: 40, class: 'form-control', placeholder: 'What is your inspiration' %>
-      </div></div><br>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :github, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <div class="input-group">
-      <div class="input-group-addon">https://github.com/username</div>
-        <%= f.text_field :github, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
-      </div></div></div>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :linkedin, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <div class="input-group">
-      <div class="input-group-addon">https://linkedin.com/in/username</div>
-        <%= f.text_field :linkedin, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
-      </div></div></div>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :twitter, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <div class="input-group">
-      <div class="input-group-addon">https://twitter.com/username</div>
-        <%= f.text_field :twitter, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
-      </div></div></div>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :dribbble, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <div class="input-group">
-      <div class="input-group-addon">https://dribbble.com/username</div>
-        <%= f.text_field :dribbble, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
-      </div></div></div>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :codeeval, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <div class="input-group">
-      <div class="input-group-addon">https://codeeval.com/public/username</div>
-        <%= f.text_field :codeeval, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
-      </div></div></div><br>
-      <div class='row'>
-      <div class='col-md-3'>
-        <%= f.label :video, class: 'control-label' %></div>
-        <div class="col-md-9">
-        <%= f.text_field :video, size: 40, placeholder: 'Enter Youtube video id e.g "BxRQNO8vg2Y"', class: 'form-control' %>
-      </div></div><br>
-      <div class='row'>
-      <div class='col-md-1'>Skills:</div>
-      <div class='col-md-11'>
-      <%= f.collection_check_boxes(:ability_ids, Ability.all, :id, :strenght) %>
-      </div></div>
-      <p>
-      <div class='row'>
-      <div class='col-md-4'></div>
-      <div class='col-md-5'>
-        <%= f.submit "Update Profile", class: 'btn btn-default' %></div></div></p>
-  </fieldset>
-<% end %></p><% end %>
-  </div>
-  <div class="tab-pane" id="settings">
-  <br>
-  <% if current_user?(@user) %>
-    <%= form_for(@user) do |f| %>
-  <fieldset>
-  <div class='form-horizontal' role='form'>
-  <div class="form-group">
-  <div class='row'>
-  <div class='col-md-1'></div>
-  <div class='col-md-3'>
-      <%= f.label :name, 'Full Name', class: 'control-label' %></div>
-      <div class="col-md-7">   
-        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name", class: 'form-control' %></div></div>
-
-     <div class='row'>
-     <div class='col-md-1'></div>
-      <div class='col-md-3'>
-      <%= f.label :username, class: 'control-label' %></div>
-       <div class="col-md-7">   
-          <%= f.text_field :username, size: 50,
-                    placeholder: "Username Alphanumeric characters only!", class: 'form-control' %>
-                    </div></div>
-
-      <div class='row'>
-      <div class='col-md-1'></div>
-      <div class='col-md-3'>
-      <%= f.label :email, class: 'control-label' %></div>
-       <div class="col-md-7">   
-        <%= f.email_field :email, size: 50, placeholder: "Email Address", class: 'form-control' %>
-        </div></div>
-      
-      <div class='row'>
-      <div class='col-md-1'></div>
-      <div class='col-md-3'>
-      <%= f.label :password, 'Password', class: 'control-label' %></div>
-       <div class="col-sm-7">   
-        <%= f.password_field :password, size: 50, placeholder: "Minimum of 8 characters", class: 'form-control' %>
-        </div></div>
-
-       <div class='row'>
-       <div class='col-md-1'></div>
-      <div class='col-md-3'>
-      <%= f.label :password_confirmation, class: 'control-label' %></div>
-       <div class="col-md-7">   
-        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: 'form-control' %>
-        </div></div>
-
-    <p>
-    <div class='row'>
-      <div class='col-md-4'></div>
-    <div class="col-md-7"> 
-      <% if @user.new_record? %>
-        <%= f.submit "Create Account", class: "btn btn-info" %>
-      <% else %>
-        <%= f.submit "Update Account", class: 'btn btn-info' %>
-      <% end %></div></div>
-    </p></div></div>
-  </fieldset>
-<% end %>
-<% end %>
-  </div>
-  <div class="tab-pane" id="about"><br>
-  <% if @user.about %>
-<div class='row'>
-<div class='col-sm-1'></div>
-<div class='col-sm-10 well'>
- <p> <%= @user.about %></p>
-
-</div>
- 
-<div class='col-sm-1'></div>
-</div>
-<% end %>
-<% if @user.video %>
-  <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen class="img-responsive text-center" style="width:100%;height:500px;"></iframe>
-</p>
-<% end %>
-  </div>
-
-<div class="tab-pane" id="activity">
-<br>
-<div class='row'>
-<% if @projects.any? %>
-  <% @projects.each do |p| %>
-    <% if p %>
-      <%= p.name %>
-    <% end %>
-  <% end %>
-<% end %>
-<div class='col-md-5 well'>
- <% if @reviews.any? %>
-    <h4 class="btn btn-default">My Reviews on Startup Project</h4><br><br>
-    <% @reviews.in_groups_of(2) do |group| %>
-    <div class="row">
-        <% group.each do |review| %>
-          <% if review %>
+            <%= f.label :sex, class: 'control-label' %></div>
+            <div class='col-md-9'>
+             <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
+          </div></div>
+         <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :marital, class: 'control-label' %></div>
+            <div class='col-md-9'>
+            <%= f.select :marital, User::MARITAL, prompt: "Select One", class: 'form-control' %>
+          </div></div>
+         <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :phone, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number: 234-9999-0000' %>
+          </div></div><br>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :location, class: 'control-label' %></div>
+          <div class="col-md-9">
+            <%= f.text_field :location, class: 'form-control', placeholder: 'Your Address' %>
+          </div></div><br/>
+          
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :school, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <div class='row'>
             <div class="col-md-12">
+            <%= f.text_field :school, class: 'form-control', placeholder: "School*" %></div>
+            </div>
+            <div class='row'>
+            <div class="col-md-6">
+            <%= f.text_field :degree, class: 'form-control', placeholder: "Degree(eg BSC)" %></div>
+            <div class="col-md-3">
+            <%= f.text_field :start_year, class: 'form-control', placeholder: "Start Year" %></div>
+            <div class="col-md-3">
+            <%= f.text_field :grad_year, class: 'form-control', placeholder: "Grad Year" %></div>
 
-            <%= link_to review.project.name, review.project %>
-            <p>
-         &quot;<%= review.remark %>&quot;
-       </p></div>
-       <div class='row'>
-       <div class="col-md-4">
-       <%= pluralize(review.stars, 'star') %></div>
-       <div class="col-md-3"></div>
-       <div class="col-md-5">
-       <%= time_ago_in_words(review.created_at) %> ago</div>
-       </div>
-       <% end %>
-       <% end %>
-       </div>
+         </div></div></div><br>
+         <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :work, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_field :work, class: 'form-control', placeholder: "Job Title" %>
+         </div></div><br>
+         <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :about, 'Describe Yourself', cols: 50, rows: 8, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_area :about, class: 'form-control', placeholder: 'Tell us about yourself. What you are working on or your dream startup project' %>
+          </div></div><br>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :achievements, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_field :achievements, class: 'form-control', placeholder: 'Show off what you have accomplished in the past' %>
+          </div></div><br>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :specialization, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_field :specialization, class: 'form-control', placeholder: 'Backend, FrontEnd, Ruby on Rails, Javascript Developer' %>
+          </div></div><br>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :powerpoint, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_field :powerpoint, size: 40, class: 'form-control', placeholder: 'What is your inspiration' %>
+          </div></div><br>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :github, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <div class="input-group">
+          <div class="input-group-addon">https://github.com/username</div>
+            <%= f.text_field :github, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
+          </div></div></div>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :linkedin, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <div class="input-group">
+          <div class="input-group-addon">https://linkedin.com/in/username</div>
+            <%= f.text_field :linkedin, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
+          </div></div></div>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :twitter, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <div class="input-group">
+          <div class="input-group-addon">https://twitter.com/username</div>
+            <%= f.text_field :twitter, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
+          </div></div></div>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :dribbble, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <div class="input-group">
+          <div class="input-group-addon">https://dribbble.com/username</div>
+            <%= f.text_field :dribbble, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
+          </div></div></div>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :codeeval, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <div class="input-group">
+          <div class="input-group-addon">https://codeeval.com/public/username</div>
+            <%= f.text_field :codeeval, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
+          </div></div></div><br>
+          <div class='row'>
+          <div class='col-md-3'>
+            <%= f.label :video, class: 'control-label' %></div>
+            <div class="col-md-9">
+            <%= f.text_field :video, size: 40, placeholder: 'Enter Youtube video id e.g "BxRQNO8vg2Y"', class: 'form-control' %>
+          </div></div><br>
+          <div class='row'>
+          <div class='col-md-1'>Skills:</div>
+          <div class='col-md-11'>
+          <%= f.collection_check_boxes(:ability_ids, Ability.all, :id, :strenght) %>
+          </div></div>
+          <p>
+          <div class='row'>
+          <div class='col-md-4'></div>
+          <div class='col-md-5'>
+            <%= f.submit "Update Profile", class: 'btn btn-default' %></div></div></p>
+      </fieldset>
+    <% end %></p><% end %>
+      </div>
+      <div class="tab-pane" id="settings">
+      <br>
+      <% if current_user?(@user) %>
+        <%= form_for(@user) do |f| %>
+      <fieldset>
+      <div class='form-horizontal' role='form'>
+      <div class="form-group">
+      <div class='row'>
+      <div class='col-md-1'></div>
+      <div class='col-md-3'>
+          <%= f.label :name, 'Full Name', class: 'control-label' %></div>
+          <div class="col-md-7">   
+            <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name", class: 'form-control' %></div></div>
+
+         <div class='row'>
+         <div class='col-md-1'></div>
+          <div class='col-md-3'>
+          <%= f.label :username, class: 'control-label' %></div>
+           <div class="col-md-7">   
+              <%= f.text_field :username, size: 50,
+                        placeholder: "Username Alphanumeric characters only!", class: 'form-control' %>
+                        </div></div>
+
+          <div class='row'>
+          <div class='col-md-1'></div>
+          <div class='col-md-3'>
+          <%= f.label :email, class: 'control-label' %></div>
+           <div class="col-md-7">   
+            <%= f.email_field :email, size: 50, placeholder: "Email Address", class: 'form-control' %>
+            </div></div>
+          
+          <div class='row'>
+          <div class='col-md-1'></div>
+          <div class='col-md-3'>
+          <%= f.label :password, 'Password', class: 'control-label' %></div>
+           <div class="col-sm-7">   
+            <%= f.password_field :password, size: 50, placeholder: "Minimum of 8 characters", class: 'form-control' %>
+            </div></div>
+
+           <div class='row'>
+           <div class='col-md-1'></div>
+          <div class='col-md-3'>
+          <%= f.label :password_confirmation, class: 'control-label' %></div>
+           <div class="col-md-7">   
+            <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: 'form-control' %>
+            </div></div>
+
+        <p>
+        <div class='row'>
+          <div class='col-md-4'></div>
+        <div class="col-md-7"> 
+          <% if @user.new_record? %>
+            <%= f.submit "Create Account", class: "btn btn-info" %>
+          <% else %>
+            <%= f.submit "Update Account", class: 'btn btn-info' %>
+          <% end %></div></div>
+        </p></div></div>
+      </fieldset>
+    <% end %>
+    <% end %>
+      </div>
+      <div class="tab-pane" id="about"><br>
+      <% if @user.about %>
+    <div class='row'>
+    <div class='col-sm-1'></div>
+    <div class='col-sm-10 well'>
+     <p> <%= @user.about %></p>
+
+    </div>
+     
+    <div class='col-sm-1'></div>
+    </div>
+    <% end %>
+    <% if @user.video %>
+      <p><iframe width="750" height="650" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen class="img-responsive text-center" style="width:100%;height:500px;"></iframe>
+    </p>
+    <% end %>
+      </div>
+
+    <div class="tab-pane" id="activity">
+    <br>
+    <div class='row'>
+   
+    <div class='col-md-5 well'>
+     <% if @reviews.any? %>
+        <h4 class="btn btn-default">My Reviews on Startup Project</h4><br><br>
+        <% @reviews.in_groups_of(2) do |group| %>
+        <div class="row">
+            <% group.each do |review| %>
+              <% if review %>
+                <div class="col-md-12">
+
+                <%= link_to review.project.name, review.project %>
+                <p>
+             &quot;<%= review.remark %>&quot;
+           </p></div>
+           <div class='row'>
+           <div class="col-md-4">
+           <%= pluralize(review.stars, 'star') %></div>
+           <div class="col-md-3"></div>
+           <div class="col-md-5">
+           <%= time_ago_in_words(review.created_at) %> ago</div>
+           </div>
+           <% end %>
+           <% end %>
+           </div>
+           <% end %>
+           <% else %>
+           <h4>You have not reviewed any project</h4>
+           <% end %>
+
+           <p>
+             <% if @voted_ideas.any? %>
+             <h4 class="btn btn-default">Voted Ideas</h4>
+             <% @voted_ideas.each do |idea| %>
+             <p><%= link_to idea.title, idea %></p>
+             <% end %>
+             <% end %>
+
+           </p>
+           </div>
+
+    <div class='col-md-1'></div>
+    <div class='col-md-6'>
+      <div class='row'>
+      <div class='col-md-11 well'>
+      <% if @checkins.any? %>
+      <h3>Checkins for</h3>
+      <ol id="reviews">
+       <% @checkins.each do |checkin| %>
+         <li>
+           <%= link_to checkin.idea.title, checkin.idea %><br>
+           <span class="date"><%= time_ago_in_words(checkin.created_at) %> ago</span>
+
+         </li>
        <% end %>
        <% else %>
-       <h4>You have not reviewed any project</h4>
-       <% end %>
+       <h5>You have not check into any project</h5>
+      </ol>
+    <% end %>
+     </div>
+     
 
-       <p>
-         <% if @voted_ideas.any? %>
-         <h4 class="btn btn-default">Voted Ideas</h4>
-         <% @voted_ideas.each do |idea| %>
-         <p><%= link_to idea.title, idea %></p>
-         <% end %>
-         <% end %>
+     
+     <div class='col-md-11 well'>
+           <p>
+    <% if @followed_projects.any? %>
+    <h3>Followed Projects</h3>
+    <ul>
+      <% @followed_projects.each do |project| %>
+      <li>
+        <%= link_to project.name, project %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <% if current_user?(@user) %>
+      <div class="tab-pane" id="addideas">
+      <br><br>
+        <p><%= render 'ideas/form' %>
+      </div>
+      <div class="tab-pane" id="addproject">
+       
+        <br><br>
+       <p><%= render 'projects/form' %>
+      </p>
+    </div>
+    <% end %>
+    <div class="tab-pane" id="project">
+      <br><br>
+        
+        <% if @user.projects.any? %>
+          <% @projects.each do |project| %>
+            <% if project %>
+              <div class='row'>
+                <div class='col-sm-4'>
+                <%= image_tag project.screenshot.url, class: 'img-responsive', style: "width:100%;height:200px" %><br>
+                 
+                </div>
+                <div class='col-sm-8'>
+                   <h2><%= link_to project.name, project %></h2>
+                   <p><%= truncate(project.description, length: 180, separator: ' ') %></p><br>
+                   <p><%= link_to project.web_url , project.web_url, :target => "_blank", class: ' fa fa-link ' %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        
+      </div>
+    
+    </div>
+    </div>
 
-       </p>
-       </div>
 
-<div class='col-md-1'></div>
-<div class='col-md-6'>
-  <div class='row'>
-  <div class='col-md-11 well'>
-  <% if @checkins.any? %>
-  <h3>Checkins for</h3>
-  <ol id="reviews">
-   <% @checkins.each do |checkin| %>
-     <li>
-       <%= link_to checkin.idea.title, checkin.idea %><br>
-       <span class="date"><%= time_ago_in_words(checkin.created_at) %> ago</span>
 
-     </li>
-   <% end %>
-   <% else %>
-   <h5>You have not check into any project</h5>
-  </ol>
-<% end %>
- </div>
- 
+    <div class="col-md-3 col-sm-4 user_main_right">
+    <% Project.all.order('created_at DESC').limit(1).each do |project| %>
+      <% if project %>
+        <h3>Latest Project</h3>
+        <%= image_tag project.screenshot.url, class: 'img-responsive', style: "width:100%;height:200px" %>
+        <% end %>
+    <% end %>
+    <hr>
+    <% if @jobs.any? %>
+      <h3>Tech Job</h3>
+    <% end %>
+    <% @jobs.each do |job| %>
+      <p><%= link_to job.job_title, job %></p>
+    <% end %>
+    <hr>
+     <% if @ideas.any? %>
+      <h3>Startup Ideas</h3>
+    <% end %>
+    <% @ideas.each do |idea| %>
+      <p><%= link_to idea.title, idea %></p>
+    <% end %>
+    <hr>
+     <% if @trends.any? %>
+      <h3>Latest Insight</h3>
+    <% end %>
+    <% @trends.each do |trend| %>
+      <% if trend.upload %>
+        <%= link_to trend do %>
+          <%= image_tag trend.upload.url, class: 'img-responsive' %>
+        <% end %>
+      <% else %>
+        <p><%= link_to trend.title, trend %></p>
+      <% end %>
+    <% end %>
+    
+    </div>
 
- 
- <div class='col-md-11 well'>
-       <p>
-<% if @followed_projects.any? %>
-<h3>Followed Projects</h3>
-<ul>
-  <% @followed_projects.each do |project| %>
-  <li>
-    <%= link_to project.name, project %>
-  </li>
-  <% end %>
-</ul>
-<% end %>
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<% if current_user?(@user) %>
-  <div class="tab-pane" id="addideas">
-  <br><br>
-    <p><%= render 'ideas/form' %>
   </div>
-  <div class="tab-pane" id="addproject">
-   
-    <br><br>
-   <p><%= render 'projects/form' %>
-  </p>
-<% end %>
-</div>
-</div>
-</div>
-
-
-
-
-
-</div>
 </div>
 

@@ -172,6 +172,25 @@ article{
 
 // USERS
 
+.user-top{
+	background: #46b8da;
+	margin: 30px auto 0;
+	.user-top-content{
+		width: 90%;
+		margin: 30px auto;
+	}
+	.img-profile img{
+		border-radius: 50%;
+		padding: 20px 0;
+	}
+	kbd{
+		margin: 10px 2px;
+		padding: 4px;
+		background-color: #d9534f;
+		color: white;
+	}
+}
+
 .tophead{
   text-align: center;
   font-weight: bolder;
@@ -184,6 +203,7 @@ article{
   }
  }
 .user_main{
+	margin-bottom: 0;
 	background: #f2f9fd;
 	border: 4px solid #f2f9fd;
 	.nav-tabs > li > a {
@@ -245,9 +265,7 @@ article{
 .user_main_right{
 	background: #f2f9fd;
 	border: 4px solid #f2f9fd;
-	img{
-		border-radius: 50%;
-	}
+	
 }
 
 .profiles{
