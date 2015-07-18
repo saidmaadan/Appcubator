@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
   #validates :marital_status, inclusion: { in: MARITAL_STATUS }
-  #before_create {generate_token(:auth_token)}
+  before_create {generate_token(:auth_token)}
 
   has_many :projects, dependent: :destroy
   has_many :reviews, dependent: :destroy
