@@ -1,6 +1,7 @@
 <div class='container'>
-  <div class='row'>
+  <div class='row'><br><br>
     <div class='col-sm-4 col-sm-offset-4'>
+      <h1>Enter your new Password</h1>
       <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
         <% if @user.errors.any? %>
           <div class="error_messages">
