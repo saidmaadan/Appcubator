@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   MARITAL = ['Single', 'Married', 'Divorced', "I'll rather not say"]
   #validates :marital_status, inclusion: { in: MARITAL_STATUS }
+  #before_create {generate_token(:auth_token)}
 
   has_many :projects, dependent: :destroy
   has_many :reviews, dependent: :destroy
@@ -44,6 +45,12 @@ class User < ActiveRecord::Base
   #   # "#{id}?000/#{username}"
   #   # "#{id}-#{name.parameterize}"
   # end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
 
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)

@@ -5,7 +5,12 @@ class SessionsController < ApplicationController
 
   def create
      if user = User.authenticate(params[:email], params[:password])
-      session[:user_id] = user.id
+      #session[:user_id] = user.id
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = user.auth_token
+      else
+        cookies[:auth_token] = user.auth_token
+      end
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to (session[:intended_url] || user)
       session[:intended_url] = nil
@@ -16,7 +21,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.delete(:auth_token)
+    # session[:user_id] = nil
     redirect_to root_url, notice: "You're now signed out!"
   end
 end

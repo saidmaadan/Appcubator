@@ -46,9 +46,9 @@ class Project < ActiveRecord::Base
     [
       :name,
       [:name, :teams],
-      [:name, :looking_for, :teams],
-      [:name, :looking_for, :teams, :web_url],
-      [:name, :looking_for, :teams, :web_url, :target_amount]
+      [:name, :teams, :looking_for,],
+      [:name, :teams, :looking_for, :web_url],
+      [:name, :teams, :looking_for, :web_url, :target_amount]
     ]
   end
 
