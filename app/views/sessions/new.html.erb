@@ -17,6 +17,7 @@
 
                   <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password", class: "form-control" %>
                 </div>
+                <p><%= link_to "forgotten_password?", new_password_reset_path %></p>
 
                 <div class="form-group">
                   <%= check_box_tag :remember_me, 1, params[:remember_me] %>

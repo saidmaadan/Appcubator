@@ -65,11 +65,12 @@
  Share: <%= social_share_button_tag truncate(@idea.description, length: 60)%>
        </p>  
 
-    <% if current_user %>
+    <%# if correct_user? %>
      
-      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
-  <% end %>
+      <%#= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
+  <%# end %>
      <% if current_user_admin? %>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
       <%= link_to 'Delete', @idea,
                   class: 'btn btn-danger',
                  method: :delete, data: { confirm: 'Are you sure?' } %>

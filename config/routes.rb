@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  # get 'password_resets/new'
+
   resources :abilities
   get '/contact' => 'contacts#new'
   resources :contacts
@@ -31,6 +33,8 @@ Rails.application.routes.draw do
     resources :checkins
     resources :votes
   end
+
+  resources :password_resets
 
 
 
