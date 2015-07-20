@@ -60,6 +60,14 @@ class Project < ActiveRecord::Base
     new_record?
   end
 
+   def self.search(search)
+    if search
+      where(["name LIKE ?", "%#{params[:search]}%"])
+    else
+      recent
+    end
+  end
+
  
 
   def self.recent

@@ -59,6 +59,14 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  def self.search(search)
+    if search
+      where(["name LIKE ?", "%#{search}%"])
+    else
+      all
+    end
+  end
+
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end

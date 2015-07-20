@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_action :require_admin, only: [:delete]
 
   def index
-    @projects = Project.recent.page params[:page]
+    @projects = Project.search(params[:search]).recent.page params[:page]
     # .paginate(page: params[:page], per_page: 4)
   end
 

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :require_admin, only: [:delete]
 
   def index
-    @users = User.all.page params[:page]
+    @users = User.search(params[:search]).page params[:page]
   end
 
   def show
