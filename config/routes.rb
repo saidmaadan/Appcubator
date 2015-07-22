@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   resource :session
   get "signin" => "sessions#new"
   # get 'auth/:provider/callback', to: 'sessions#create'
-
+  
   resources :users
   get 'signup' => 'users#new'
+  
 
   # root "users#new"
   root 'pages#home'

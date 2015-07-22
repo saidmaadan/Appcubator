@@ -17,7 +17,7 @@
     </div>
     <div class="collapse navbar-collapse">
      <% if current_user %>
-    <form class="navbar-form navbar-left" role="search">
+    <form class="navbar-form navbar-right" role="search">
         <div class="form-group has-success">
          <%= form_tag users_path || projects_path || ideas_path || jobs_path || trends_path, :method => 'get' do %>
           <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, projects, startup ideas, tips, jobs and more...", size: 50 %>
@@ -29,7 +29,7 @@
         
       </form><% else %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 "> 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
       <li class="dropdown">
     <a href="#" class="dropdown-toggle " data-toggle="dropdown" style="font-size:24px;color:#46b8da;padding-top: 20px;">Browse<span class="caret"></span></a>
     <ul class="nav navbar-nav dropdown-menu" role="menu">

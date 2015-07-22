@@ -17,6 +17,9 @@
  */
 
  @import "bootstrap";
+ @import "lightbox";
+ @import "pages";
+ @import "custom";
 
  * {
   margin: 0;
@@ -194,6 +197,9 @@ section .nav > li > a {
         display: table-cell;
     }
 }
+
+
+
 
 // @media(max-width:1030px) {
 

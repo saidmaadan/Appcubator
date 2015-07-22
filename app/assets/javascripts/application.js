@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require social-share-button
+//= require lightbox
 //= require_tree .
 
 

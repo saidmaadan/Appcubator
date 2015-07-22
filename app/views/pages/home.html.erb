@@ -72,18 +72,29 @@
 		</div>
 	</div>
 </div>
+
 <div class='home-projects'>
 	<div class='container'>
 		<div class='row projects'>
 			<h1 class='text-center'><%= link_to "Recent Projects", projects_path %></h1><br>
 			<% @projects.each do |project| %>
-				<div class="col-md-3 col-sm-6">
-					<div class="thumbnail project">
-						<%= image_tag project.screenshot.url %>
-					</div>
+				<div class="col-md-3 col-sm-6 img-responsive">
+					<!-- <div class="thumbnail project img-responsive"> -->
+						<div class="photo photo-type-line">
+	            <a href="<%= project.screenshot.url %>" class="photo-hover" data-lightbox="my-images" data-title="<%= project.name %>">
+	              <div class="photo-info">
+	                <div class="headline"><%= project.name %></div>
+	                <div class="line"></div>
+	                <div class="desc"><%= truncate(project.description, length: 180, separator: ' ') %></div>
+	              </div>
+	              <div class="mask"></div>
+	            </a>
+	            <div class="photo-img"><%= image_tag project.screenshot.url %></div>
+	          </div>
+          <!-- </div> -->
 				</div>
-	<% end %>	
-</div>
+			<% end %>	
+		</div>
 	</div>
 </div>
 
@@ -160,3 +171,6 @@
 </div>
 
 
+<script>
+    
+</script>
