@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+  searchkick
+  
   extend FriendlyId
   friendly_id :username, use: :slugged
 

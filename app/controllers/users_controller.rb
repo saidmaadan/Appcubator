@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :require_admin, only: [:delete]
 
+  def search
+    if params[:search].present?
+      @users = User.search(params[:search])
+    else
+      @users = User.all.page params[:page]
+    end
+  end
+
   def index
     @users = User.search(params[:search]).page params[:page]
   end

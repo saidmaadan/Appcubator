@@ -111,6 +111,17 @@
 	border-bottom: 3px solid #eee;
 	border-radius: 5px;
 }
+.home-projects h3 a{
+	color: #ddd;
+	font-size: 25px;
+	font-weight: 900;
+	font-family: "Shift", sans-serif;
+	text-align: center;
+	padding-bottom: 20px;
+	:hover{
+		text-decoration: none;
+	}
+}
 article{
 	width: 100%;
 	border-bottom: 2px solid #eee;

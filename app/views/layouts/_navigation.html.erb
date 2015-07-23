@@ -17,17 +17,26 @@
     </div>
     <div class="collapse navbar-collapse">
      <% if current_user %>
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group has-success">
-         <%= form_tag users_path || projects_path || ideas_path || jobs_path || trends_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, projects, startup ideas, tips, jobs and more...", size: 50 %>
-          <%= submit_tag 'Search', class: "btn btn-danger "%>
+    <!-- <form class="navbar-form" role="search">
+        <div class="form-group has-success"> -->
+         <%#= form_tag users_path || projects_path || ideas_path || jobs_path || trends_path, :method => 'get' do %>
+          <%#= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, projects, startup ideas, tips, jobs and more...", size: 50 %>
+          <%#= submit_tag 'Search', class: "btn btn-danger "%>
+        <%# end %>
+
+        <%= form_tag search_users_path, :method => :get, class: "navbar-form navbar-left" do %>
+          <p>
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, projects, startup ideas, tips, jobs and more...", size: 50 %>
+            <%= submit_tag 'Search', name: nil, class: "btn btn-danger" %>
+          </p>
         <% end %>
+          
          <!--  <input type="text" class="form-control" placeholder="Search for jobs, projects, startup ideas, tips, people and more..." size= 60> -->
-        </div>
+        <!-- </div> -->
        <!--  <button type="submit" class="btn btn-danger"><i class="fa fa-search "></i></button> -->
         
-      </form><% else %>
+      <!-- </form> -->
+      <% else %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 "> 
       <ul class="nav navbar-nav">
       <li class="dropdown">

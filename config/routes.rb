@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get "signin" => "sessions#new"
   # get 'auth/:provider/callback', to: 'sessions#create'
   
-  resources :users
+  resources :users do
+    collection do
+      get 'search'
+    end
+  end
   get 'signup' => 'users#new'
   
 

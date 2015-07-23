@@ -76,24 +76,29 @@
 <div class='home-projects'>
 	<div class='container'>
 		<div class='row projects'>
-			<h1 class='text-center'><%= link_to "Recent Projects", projects_path %></h1><br>
-			<% @projects.each do |project| %>
-				<div class="col-md-3 col-sm-6 img-responsive">
-					<!-- <div class="thumbnail project img-responsive"> -->
-						<div class="photo photo-type-line">
-	            <a href="<%= project.screenshot.url %>" class="photo-hover" data-lightbox="my-images" data-title="<%= project.name %>">
-	              <div class="photo-info">
-	                <div class="headline"><%= project.name %></div>
-	                <div class="line"></div>
-	                <div class="desc"><%= truncate(project.description, length: 180, separator: ' ') %></div>
-	              </div>
-	              <div class="mask"></div>
-	            </a>
-	            <div class="photo-img"><%= image_tag project.screenshot.url %></div>
-	          </div>
-          <!-- </div> -->
-				</div>
-			<% end %>	
+			<h1 class='text-center hidden-xs'><%= link_to "Recent Projects", projects_path %></h1><br>
+			 <% @projects.each_slice(4) do |project| %>
+				<% project.each do |project| %>
+					<div class="col-md-3 col-sm-6 hidden-xs">
+						<h3 class='text-center'><%= link_to project.name, project %></h3>
+							<div class="photo photo-type-line">
+
+		            <a href="<%= project.screenshot.url(:large) %>" class="photo-hover" data-lightbox="my-images" data-title="<%= project.name %>" >
+		              <div class="photo-info">
+		                <div class="headline"><%= project.name %></div>
+		                <div class="line"></div>
+		                <div class="desc"><%= truncate(project.description, length: 180, separator: ' ') %></div>
+		              </div>
+		              <div class="mask"></div>
+		            </a><%= link_to project.name, project %>
+		            <div class="photo-img">
+
+		            <%= image_tag project.screenshot.url, class: 'img-responsive', style: "width:96%;height:220px;margin:auto;" %>
+		            </div>
+		          </div>
+					</div>
+				<% end %>	
+			<% end %>
 		</div>
 	</div>
 </div>
