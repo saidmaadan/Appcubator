@@ -24,9 +24,9 @@
           <%#= submit_tag 'Search', class: "btn btn-danger "%>
         <%# end %>
 
-        <%= form_tag search_users_path, :method => :get, class: "navbar-form navbar-left" do %>
+        <%= form_tag search_users_path, method: :get, class: "navbar-form navbar-left" do %>
           <p>
-            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, projects, startup ideas, tips, jobs and more...", size: 50 %>
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, developer by name...", size: 50 %>
             <%= submit_tag 'Search', name: nil, class: "btn btn-danger" %>
           </p>
         <% end %>
