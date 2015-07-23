@@ -31,5 +31,9 @@
 				</div>
 			<% end %>
 		<% end %>
+	<div class='paginate'>
+    <%= paginate @users, :outer_window => 3 %>
+	</div>
+
 	</div>
 </div>
