@@ -1,6 +1,6 @@
 /* Preload images */
 body:after {
-  content: url(https://s3.amazonaws.com/inventtive/lightbox/close.png) url(https://s3.amazonaws.com/inventtive/lightbox/loading.gif) url(https://s3.amazonaws.com/inventtive/lightbox/prev.png) url(assets/img/lightbox/next.png);
+  content: url(https://s3.amazonaws.com/inventtive/lightbox/close.png) url(https://s3.amazonaws.com/inventtive/lightbox/loading.gif) url(https://s3.amazonaws.com/inventtive/lightbox/prev.png) url(https://s3.amazonaws.com/inventtive/lightbox/next.png);
   display: none;
 }
 
