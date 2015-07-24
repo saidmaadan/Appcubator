@@ -26,7 +26,7 @@
 
         <%= form_tag search_users_path, method: :get, class: "navbar-form navbar-left" do %>
           <p>
-            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, developer by name...", size: 50 %>
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for people, developer by name, email, job title...", size: 50 %>
             <%= submit_tag 'Search', name: nil, class: "btn btn-danger" %>
           </p>
         <% end %>
