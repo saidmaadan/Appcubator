@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   has_secure_password
-  searchkick
   
   extend FriendlyId
   friendly_id :username, use: :slugged
 
-
+  searchkick
+  
   validates :password, length: { minimum: 8, allow_blank: true }
 
   validates :name, presence: true
