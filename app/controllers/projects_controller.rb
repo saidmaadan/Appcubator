@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   #before_action :correct_user, except: [:index, :show]
   before_action :require_admin, only: [:delete]
+  
 
   def index
     @projects = Project.search(params[:search]).recent.page params[:page]
@@ -19,7 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
   end
 
   def update
@@ -72,9 +73,9 @@ class ProjectsController < ApplicationController
   end
 
   def correct_user
-    unless @project = current_user.projects.find_by(id: params[:id])
+    unless @project = current_user.projects.friendly.find_by(id: params[:id])
     redirect_to projects_url, alert: "Unauthorized access!"
-  end
+    end
   end
 
 end

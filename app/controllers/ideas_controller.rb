@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   before_action :require_signin, except: [:index, :show]
-   before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   #before_action :correct_user, except: [:index, :show]
   before_action :require_admin, only: [:delete]
 
@@ -35,7 +35,8 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(idea_params)
+    @idea = current_user.ideas.new(idea_params)
+    # @idea = Idea.new(idea_params)
     if @idea.save
       redirect_to @idea, notice: "Idea post successfully created!"
     else
@@ -54,9 +55,9 @@ private
   def idea_params
     params.require(:idea).permit(:title, :description, :goal, :category, :market)
   end
-  # def correct_user
-  #   unless @idea= current_user.ideas.find_by(id: params[:id])
-  #   redirect_to ideas_url, alert: "Unauthorized access!"
-  # end
-  # end
+  def correct_user
+    unless @idea = current_user.ideas.find_by(id: params[:id])
+    redirect_to ideas_url, alert: "Unauthorized access!"
+    end
+  end
 end

@@ -136,23 +136,23 @@
 
   <h4><%= link_to "Write your Review", new_project_review_path(@project), class: 'button ok review' %></h4>
 
-<%# if correct_user? %>
-<% if current_user %>
+<% if correct_user? || current_user_admin? %>
   <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %>
-  <% end %>
-  <% if current_user_admin? %>
   <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>
+
 
 <p>
     <h2><%= pluralize(@followers.count, 'Follower') %></h2>
   </p>
 
 <% if current_user %>
+  
    <% if @current_follow %>
    <%= button_to "Unfollow", project_follow_path(@project, @current_follow), class: 'btn btn-default btn-lg', method: :delete %>
       <% else %>
   <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-info btn-lg' %>
+  
   <% end %>
   <% end %>
   <% if @followers.any? %>

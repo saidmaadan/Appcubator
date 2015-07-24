@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   #validates :marital_status, inclusion: { in: MARITAL_STATUS }
   before_create {generate_token(:auth_token)}
 
+  has_many :ideas, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :checkins, dependent: :destroy
@@ -59,14 +60,6 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
-  end
-
-  def self.search(search)
-    if search
-      where(["name LIKE ?", "%#{search}%"])
-    else
-      all
-    end
   end
 
   def gravatar_id

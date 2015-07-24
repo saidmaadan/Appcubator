@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_user?
-    # current_user == correct_user
-     @correct_user == @user
+     #current_user == correct_user
+     correct_user == @user
   end
   helper_method :correct_user?
 

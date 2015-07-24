@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def search
     if params[:search].present?
-      @users = User.search(params[:search].capitalize).page params[:page]
+      @users = User.search(params[:search]).page params[:page]
     else
       @users = User.all.page params[:page]
     end
