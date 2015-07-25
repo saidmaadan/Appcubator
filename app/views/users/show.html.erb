@@ -102,109 +102,111 @@
 <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane active" id="dash">
-        <table class="table table-hover">
-      
+        <div class='row'>
            <% if @user.about %> 
-          <tr>
-          <div class='col-md-4'>
-          <th>
-          <h4>About Me</h4> 
-          </th>
-          </div>
-          <div class='col-md-8'>
-          <td>
-          <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
-          </td>
-          </div>
-          </tr>
-        <% end %>
-        <% if @user.school %>
-         <tr>
-          <div class='col-md-4'>
-          <th>
-          <h4>School</h4>
-          </th>
-          </div>
-          <div class='col-md-8'>
-          <td>
-          <%= @user.school %>
-          </td>
-          </div>
-          </tr>
+            <div class='col-md-4'>
+              <h4>About Me</h4> 
+            </div>
+            <div class='col-md-8'>
+              <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
+          </div>     
           <% end %>
-          <% if @user.degree %>
-           <tr>
+        </div>
+        <div class='row'>
+          <% if @user.school %>
           <div class='col-md-4'>
-          <th>
-          <h4>Studied/Qualification</h4>
-          </th>
+            <h4>School</h4>
+          </div>
+          <div class='col-md-8'>   
+            <%= @user.school %>        
+          </div>
+          <% end %>
+        </div>
+        <div class='row'>
+          <% if @user.degree %>
+          <div class='col-md-4'>
+            <h4>Studied/Qualification</h4>
+         
           </div>
           <div class='col-md-8'>
-          <td>
+          
           <%= @user.degree %>
           </div>
-          </tr>
-          </div>
           <% end %>
+        </div>
+        <div class='row'>
           <% if @user.work %> 
-           <tr>
-          <div class='col-md-4'>
-          <th>
-          <h4>Professional</h4>
-          </th>
-          </div>
-          <div class='col-md-8'>
-          <td>
-          <%= @user.work %>
-          </td>
-          </div>
-          </tr>
-          <% end %>
-        <% if @user.specialization %> 
-           <tr>
-          <div class='col-md-4'>
-          <th>
-         <h4>Specialization</h4>
-          </th>
-          </div>
-          <div class='col-md-8'>
-          <td>
-          <%= @user.specialization %>
-          </td>
-          </div>
-          </tr>
-          <% end %>
-          <% if @user.powerpoint %>
-          </div>
-          <tr>
-          <div class='col-md-4'>
-          <th>
-          <h4>Powerpoint</h4>
-          </th>
-          </div>
-          <div class='col-md-8'>
-          <td>
-          <%= @user.powerpoint %>
-          </td>
-          </div>
-          </tr>
-          <% end %>
-          <% if @user.phone %>
-          <tr>
-          <div class='col-md-4'>
-          <th>
-          <h4>Phone</h4>
-          </th>
-          </div>
-          <div class='col-md-8'>
-          <td>
-          <%= @user.phone %>
-          </td>
-          </div>
-          </tr>
-          <% end %>
           
-        </table><br><br>
+          <div class='col-md-4'>
+        
+          <h4>Professional</h4>
+         
+          </div>
+          <div class='col-md-8'>
+          
+          <%= @user.work %>
+         
+          </div>
+        
+          <% end %>
+        </div>
+        <div class='row'>
+           <% if @user.specialization %> 
+          
+          <div class='col-md-4'>
+        
+         <h4>Specialization</h4>
+         
+          </div>
+          <div class='col-md-8'>
+          
+          <%= @user.specialization %>
+         
+          </div>
+        
+          <% end %>
+        </div>
+        <div class='row'>
+          
+          <% if @user.powerpoint %>
+    
+         
+          <div class='col-md-4'>
+        
+          <h4>Powerpoint</h4>
+         
+          </div>
+          <div class='col-md-8'>
+          
+          <%= @user.powerpoint %>
+         
+          </div>
+        
+          <% end %>
+        </div>
+        <div class='row'>
+           <% if @user.phone %>
+        
+          <div class='col-md-4'>
+        
+          <h4>Phone</h4>
+         
+          </div>
+          <div class='col-md-8'>
+          
+          <%= @user.phone %>
+         
+          </div>
+        
+          <% end %>
+        </div>
+        <div class='row'>
+          
+        </div>
+        <div class='row'>
+          
+        </div>
+         <br><br>
 
       </div>
       <div class="tab-pane" id="profile">
