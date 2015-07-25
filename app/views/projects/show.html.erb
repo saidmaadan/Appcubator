@@ -32,15 +32,17 @@
         <% end %><br>
         <% if @followers.any? %>
           <div class='project-followers'>
-           <% @followers.each do |f| %>
-            <div class='row'>
-              <div class="col-sm-3 col-xs-2">
+           
+          <div class='row'>
+            <% @followers.each do |f| %>
+              <div class="col-sm-3 col-xs-2 follower-img">
                 <%= link_to f do %>
-                  <%= profile_image_for f, class: 'img-responsive', style: 'width:100%;height:100px;' %>
+                  <%= profile_image_for f, class: 'img-responsive' %>
                 <% end %>
               </div>
-            </div>
-          <% end %>   
+            <% end %> 
+          </div>
+            
         </div>
       <% end %><br>
     </div>
@@ -133,7 +135,7 @@
          <%= render partial: 'reviews/form' %>
         </div>
         <% else %>
-        <div><%= link_to 'Signin to Write a Review', new_user_session_path, class: 'btn btn-info' %></div>
+        <div><%= link_to 'Signin to Write a Review', new_session_path, class: 'btn btn-info' %></div>
     <% end %>
     <% if @reviews.blank? %>
       <h3>No reviews yet. Be the first to post your review</h3>
