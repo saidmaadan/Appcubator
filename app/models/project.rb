@@ -39,7 +39,7 @@ class Project < ActiveRecord::Base
 
   def to_param
     # "#{id}"
-    "#{id}-#{name.parameterize}"
+     "#{id}-#{name.parameterize}"
   end
 
   # def slug_candidates

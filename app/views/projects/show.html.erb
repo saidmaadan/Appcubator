@@ -1,180 +1,182 @@
 <div class="container">
-<div class="row">
-
+  <div class="row">
     <h1><%= @project.name %></h1>
 
-<div class='col-md-9 well project_show'><br><br>
-<div class="row">
-<div class='col-sm-12 col-xs-12 col-md-4'>
+  <div class='col-sm-9 well project_show'><br><br>
+    <div class="row">
+      <div class='col-sm-4 col-xs-12 project-left'>
+        <div class='project-user-img'>
+          <%= profile_image_for @project.user, class: 'img-responsive' %>
+        </div>
+        <h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, @project.user %> </h4>
 
-<%= image_tag @project.screenshot.url(:medium) %>
-<p>
-
-<% if @project.reviews.any? %>
-<h4>Average Review</h4>
-  <h4>
-    <%= format_average_stars(@project) %>
-  </h4>
-<h3><%= pluralize(@project.reviews.size, "Review") %></h3>
-<%= link_to "Read More Review...",
-            project_reviews_path(@project) %>
- 
-  <% else %>
-  <h4>Got no Review</h4>
-  <h5>Be the first to <%= link_to "Review this Project", new_project_review_path(@project) %></h5>
-
-<% end %>
-
- <% if @project.reviews.any? %>
-    <div class='review_comment'>
-      <% @project.recent_reviews.each do |review| %>
-      </span>
-      <div class='col-md-12'>
-            &quot;<%= review.remark %>&quot;</div>
         
-        <div class='col-md-4'>
-          <span class="review"><%= pluralize(review.stars, 'star') %></span></div>
-          
-          <div class='col-md-7'>
 
-          <span class="date">
-            <%= time_ago_in_words(review.created_at) %> ago
-          </span></div>
+      <% if (@project.user == current_user || current_user_admin?) %>
+          <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %>
+           <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <% end %>
+  
+      <p>
+          <h2><%= pluralize(@followers.count, 'Follower') %></h2>
+        </p>
 
-          <% end %> </div>
-    
+      <% if current_user != @project.user %>
+        
+         <% if @current_follow %>
+         <%= button_to "Unfollow", project_follow_path(@project, @current_follow), class: 'btn btn-default btn-lg', method: :delete %>
+            <% else %>
+        <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-info btn-lg' %>
+        
+        <% end %>
+        <% end %><br>
+        <% if @followers.any? %>
+          <div class='project-followers'>
+           <% @followers.each do |f| %>
+            <div class='row'>
+              <div class="col-sm-3 col-xs-2">
+                <%= link_to f do %>
+                  <%= profile_image_for f, class: 'img-responsive', style: 'width:100%;height:100px;' %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>   
+        </div>
+      <% end %><br>
+    </div>
+
+      <div class='col-sm-8 col-xs-12'>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <%= image_tag @project.screenshot.url, class: "img-responsive", style: "width:100%;height:300px;" %>
+          </div>
+        </div><br><br>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+             <h5>Summary</h5>
+          </div>
+          <div class='col-sm-9'>
+              <%= @project.description %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+             <h5>Project Teams</h5>
+          </div>
+          <div class='col-sm-9'>
+             <%= @project.teams %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+            <h5>Looking For</h5>
+          </div>
+          <div class='col-sm-9'>
+            <%= @project.looking_for %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+             <h5>GitHub</h5>
+          </div>
+          <div class='col-sm-9'>
+             <% if @project.github_link %>
+        <%= link_to "Source Code", @project.github_link, :target => "_blank", class: 'fa fa-github' %><% end %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+             <h5>WebSite URL</h5>
+          </div>
+          <div class='col-sm-9'>
+            <% if @project.web_url %>
+              <%= link_to "Project Url", @project.web_url, :target => "_blank", class: 'fa fa-tablet' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+              <h5>Target Amount</h5>
+          </div>
+          <div class='col-sm-9'>
+             <%= number_to_currency(@project.target_amount) %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-sm-3'>
+          </div>
+          <div class='col-sm-9'>
+            <p>Share: 
+              <%= social_share_button_tag truncate(@project.description, length: 60)%>
+           </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+     
+  </div>
+  <div class='col-sm-3'>
+   <!--  <h4><%#= link_to "Write your Review", new_project_review_path(@project), class: 'button ok review' %></h4> -->
+
+    <% if current_user %>
+        <div class='write-review btn btn-info'>Write a Review about <%= @project.name %></div>
+        <br><br>
+        <div class='review-form'>
+         <%= render partial: 'reviews/form' %>
+        </div>
+        <% else %>
+        <div><%= link_to 'Signin to Write a Review', new_user_session_path, class: 'btn btn-info' %></div>
     <% end %>
+    <% if @reviews.blank? %>
+      <h3>No reviews yet. Be the first to post your review</h3>
+    <% else %>
+      <h3><%= @project.name %> Reviews</h3><hr>
+      <div class='project-review-user'>
+          <% @reviews.each do |r| %>
+            <div class="row">
+                <div class='col-xs-4'>
+                  <% if profile_image_for(r.user) %>
+                    <%= profile_image_for r.user, class: 'img-responsive', style: 'width:100%;height:100px;border-radius:50px;' %>
+                    <% else %>
+                    <i class="fa fa-user fa-4x" ></i>
+                    
+                    <% end %>
+                </div>
+                <div class='col-xs-8'>
+                   <div class="row">
+                      <div class='col-xs-12'>
+                        <%= link_to r.user.name, r.user %>
+                      </div>
+                      <div class='col-xs-12'>
+                        <%= r.stars %> Stars Given
+                      </div>
+                      <div class='col-xs-12'>
+                        <%= r.remark %>
+                      </div>
+                    </div>
+                </div>
 
-
+              </div>
+              <hr>            
+            <% end %>   
+          <% end %>  
+        </div>      
+  </div>
+  </div>
 </div>
 
-<div class='col-sm-12 col-xs-12 col-md-8'>
-<div class='row'>
-  <div class='col-sm-12 col-xs-12 col-md-4'>
-  
-  <h5>Summary</h5> 
-  
-  </div>
-  <div class='col-sm-12 col-xs-12 col-md-8'>
-  
-   <%= @project.description %>
-  
-  </div></div><hr>
-  <div class='row'>
-  <div class='col-sm-6 col-xs-6 col-md-4'>
-  
-   <h5>Project Teams</h5>
-  
-  </div>
-  <div class='col-sm-6 col-xs-6 col-md-8'>
-  
-   <%= @project.teams %>
-  </div></div><hr>
-  <div class='row'>
-  
-  <div class='col-sm-6 col-xs-6 col-md-4'>
-  
-  <h5>Looking For</h5>
-  
-  </div>
-  <div class='col-sm-6 col-xs-6 col-md-8'>
-  
-   <%= @project.looking_for %>
-  </div></div><hr>
-   <div class='row'>
-  <div class='col-sm-6 col-xs-6 col-md-4'>
-  
-   <h5>GitHub</h5>
-  
-  </div>
-  <div class='col-sm-6 col-xs-6 col-md-8'>
-  
-  <% if @project.github_link %>
-    <%= link_to "Source Code", @project.github_link, :target => "_blank", class: 'fa fa-github' %><% end %>
-  </div></div><hr>
- <div class='row'>
-  <div class='col-sm-6 col-xs-6 col-md-4'>
- 
-   <h5>WebSite URL</h5>
-  
-  </div>
-  <div class='col-sm-6 col-xs-6 col-md-8'>
- 
-  <% if @project.web_url %>
-   <%= link_to "Project Url", @project.web_url, :target => "_blank", class: 'fa fa-tablet' %>
-   <% else %>
-   <h4>Project url link not available</h4>
-   <% end %>
- </div></div><hr>
-<div class='row'>
-  <div class='col-sm-6 col-xs-6 col-md-4'>
- 
-   <h5>Target Amount</h5>
-  
-  </div>
-  <div class='col-sm-6 col-xs-6 col-md-8'>
-  
-  <%= number_to_currency(@project.target_amount) %>
-  </div>
-  </div>
-  <hr>
-  <br><br>
-  <div class='row'>
-  <div class='col-sm-8 col-xs-8 col-md-8'>
-   <p>Share: 
-<%= social_share_button_tag truncate(@project.description, length: 60)%>
-       </p></div></div>
-</div>
-
-  
- 
-  </div></div>
-<div class='col-sm-6 col-xs-8 col-md-3'>
-<h4>Project Team Member :: </h4><h4><%= link_to @project.user.name, @project.user %> </h4>
-
-<%= profile_image_for @project.user, size: 250 %>
-
-  <h4><%= link_to "Write your Review", new_project_review_path(@project), class: 'button ok review' %></h4>
-
-<% if correct_user? || current_user_admin? %>
-    <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-info' %>
-<% end %>
-<% if current_user_admin? %>
-  <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-
-<% end %>
-<p>
-    <h2><%= pluralize(@followers.count, 'Follower') %></h2>
-  </p>
-
-<% if current_user %>
-  
-   <% if @current_follow %>
-   <%= button_to "Unfollow", project_follow_path(@project, @current_follow), class: 'btn btn-default btn-lg', method: :delete %>
-      <% else %>
-  <%= button_to "Follow this Project", project_follows_path(@project), class: 'btn btn-info btn-lg' %>
-  
-  <% end %>
-  <% end %>
-  <% if @followers.any? %>
-  <h3>Followers</h3>
-  <div id='project_follower'><br>
-  
-    <% @followers.each do |user| %>
+<script>
+  $('.write-review').on('click', function(){
+    $('.review-form').toggle("slow");
+    });
     
-     <p> <%= link_to user.name, user %></p>
-    
-    <% end %>
- </div>
-  <% end %>
-
-
-
-</div>
-</div></div>
-
-
-
-
-
+</script>
 

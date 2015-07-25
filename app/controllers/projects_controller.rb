@@ -10,11 +10,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @project = Project.find(params[:id])
     @followers = @project.followers
     if current_user
       @current_follow = current_user.follows.find_by(project_id: @project.id)
     end
+    @review.project_id = @project_id
+    @reviews = Review.where(project_id: @project.id).order("created_at DESC")
 
   end
 

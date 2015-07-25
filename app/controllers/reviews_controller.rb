@@ -35,6 +35,6 @@ class ReviewsController < ApplicationController
   end
 
   def set_project
-    @project = Project.friendly.find(params[:project_id])
+    @project = Project.find(params[:project_id])
   end
 end

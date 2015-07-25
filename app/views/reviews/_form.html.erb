@@ -1,0 +1,20 @@
+<%= form_for([@project, @review]) do |f| %>
+  <%= render "shared/errors", object: @review %>
+  
+    <div class="form-group">
+        <%= f.label :stars, 'Rating:' %>
+          <% Review::STARS.each do |star| %>
+
+          <%= f.radio_button :stars, star %> <% star %>&nbsp
+
+          <% end %> 
+    </div>
+    <div class='form-group'>
+        <%= f.label :remark %>
+         <%= f.text_area :remark, cols: 30, rows: 4, placeholder: "Tell us your honest opinion about this project", class: "form-control" %>
+    </div>
+    <div class='form-group text-center'>
+       <%= f.submit 'Post Review', class: "btn btn-info" %>
+      <%= link_to "Cancel", @project, class: 'btn btn-default' %>
+    </div>
+<% end %> 
