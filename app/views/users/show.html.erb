@@ -98,37 +98,37 @@
       </ul>
     </div>
     <br><br>
-    <div class="col-md-9 col-sm-8 col-xs-12 user_main_left">
+    <div class="col-sm-9 col-sm-8 col-xs-12 user_main_left">
 <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane active" id="dash">
         <div class='row'>
            <% if @user.about %> 
-            <div class='col-md-4'>
+            <div class='col-sm-4'>
               <h4>About Me</h4> 
             </div>
-            <div class='col-md-8'>
+            <div class='col-sm-8'>
               <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
           </div>     
           <% end %>
         </div>
         <div class='row'>
           <% if @user.school %>
-          <div class='col-md-4'>
+          <div class='col-sm-4'>
             <h4>School</h4>
           </div>
-          <div class='col-md-8'>   
+          <div class='col-sm-8'>   
             <%= @user.school %>        
           </div>
           <% end %>
         </div>
         <div class='row'>
           <% if @user.degree %>
-          <div class='col-md-4'>
+          <div class='col-sm-4'>
             <h4>Studied/Qualification</h4>
          
           </div>
-          <div class='col-md-8'>
+          <div class='col-sm-8'>
           
           <%= @user.degree %>
           </div>
@@ -137,12 +137,12 @@
         <div class='row'>
           <% if @user.work %> 
           
-          <div class='col-md-4'>
+          <div class='col-sm-4'>
         
           <h4>Professional</h4>
          
           </div>
-          <div class='col-md-8'>
+          <div class='col-sm-8'>
           
           <%= @user.work %>
          
@@ -153,12 +153,12 @@
         <div class='row'>
            <% if @user.specialization %> 
           
-          <div class='col-md-4'>
+          <div class='col-sm-4'>
         
          <h4>Specialization</h4>
          
           </div>
-          <div class='col-md-8'>
+          <div class='col-sm-8'>
           
           <%= @user.specialization %>
          
@@ -171,12 +171,12 @@
           <% if @user.powerpoint %>
     
          
-          <div class='col-md-4'>
+          <div class='col-sm-4'>
         
           <h4>Powerpoint</h4>
          
           </div>
-          <div class='col-md-8'>
+          <div class='col-sm-8'>
           
           <%= @user.powerpoint %>
          
@@ -187,12 +187,12 @@
         <div class='row'>
            <% if @user.phone %>
         
-          <div class='col-md-4'>
+          <div class='col-sm-4'>
         
           <h4>Phone</h4>
          
           </div>
-          <div class='col-md-8'>
+          <div class='col-sm-8'>
           
           <%= @user.phone %>
          
@@ -217,132 +217,132 @@
       <div class='form-horizontal' role='form'>
       <div class="form-group profiles">
       <div class='row'>
-      <div class='col-md-3'>
+      <div class='col-sm-3'>
             <%= f.label :sex, class: 'control-label' %></div>
-            <div class='col-md-9'>
+            <div class='col-sm-9'>
              <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
           </div></div>
          <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :marital, class: 'control-label' %></div>
-            <div class='col-md-9'>
+            <div class='col-sm-9'>
             <%= f.select :marital, User::MARITAL, prompt: "Select One", class: 'form-control' %>
           </div></div>
          <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :phone, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number: 234-9999-0000' %>
           </div></div><br>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :location, class: 'control-label' %></div>
-          <div class="col-md-9">
+          <div class="col-sm-9">
             <%= f.text_field :location, class: 'form-control', placeholder: 'Your Address' %>
           </div></div><br/>
           
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :school, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <div class='row'>
-            <div class="col-md-12">
+            <div class="col-sm-12">
             <%= f.text_field :school, class: 'form-control', placeholder: "School*" %></div>
             </div>
             <div class='row'>
-            <div class="col-md-6">
+            <div class="col-sm-6">
             <%= f.text_field :degree, class: 'form-control', placeholder: "Degree(eg BSC)" %></div>
-            <div class="col-md-3">
+            <div class="col-sm-3">
             <%= f.text_field :start_year, class: 'form-control', placeholder: "Start Year" %></div>
-            <div class="col-md-3">
+            <div class="col-sm-3">
             <%= f.text_field :grad_year, class: 'form-control', placeholder: "Grad Year" %></div>
 
          </div></div></div><br>
          <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :work, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_field :work, class: 'form-control', placeholder: "Job Title" %>
          </div></div><br>
          <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :about, 'Describe Yourself', cols: 50, rows: 8, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_area :about, class: 'form-control', placeholder: 'Tell us about yourself. What you are working on or your dream startup project' %>
           </div></div><br>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :achievements, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_field :achievements, class: 'form-control', placeholder: 'Show off what you have accomplished in the past' %>
           </div></div><br>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :specialization, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_field :specialization, class: 'form-control', placeholder: 'Backend, FrontEnd, Ruby on Rails, Javascript Developer' %>
           </div></div><br>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :powerpoint, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_field :powerpoint, size: 40, class: 'form-control', placeholder: 'What is your inspiration' %>
           </div></div><br>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :github, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <div class="input-group">
           <div class="input-group-addon">https://github.com/username</div>
             <%= f.text_field :github, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
           </div></div></div>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :linkedin, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <div class="input-group">
           <div class="input-group-addon">https://linkedin.com/in/username</div>
             <%= f.text_field :linkedin, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
           </div></div></div>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :twitter, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <div class="input-group">
           <div class="input-group-addon">https://twitter.com/username</div>
             <%= f.text_field :twitter, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
           </div></div></div>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :dribbble, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <div class="input-group">
           <div class="input-group-addon">https://dribbble.com/username</div>
             <%= f.text_field :dribbble, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
           </div></div></div>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :codeeval, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <div class="input-group">
           <div class="input-group-addon">https://codeeval.com/public/username</div>
             <%= f.text_field :codeeval, size: 40, class: 'form-control', placeholder: 'Enter the full url' %>
           </div></div></div><br>
           <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-sm-3'>
             <%= f.label :video, class: 'control-label' %></div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
             <%= f.text_field :video, size: 40, placeholder: 'Enter Youtube video id e.g "BxRQNO8vg2Y"', class: 'form-control' %>
           </div></div><br>
           <div class='row'>
-          <div class='col-md-1'>Skills:</div>
-          <div class='col-md-11'>
+          <div class='col-sm-1'>Skills:</div>
+          <div class='col-sm-11'>
           <%= f.collection_check_boxes(:ability_ids, Ability.all, :id, :strenght) %>
           </div></div>
           <p>
           <div class='row'>
-          <div class='col-md-4'></div>
-          <div class='col-md-5'>
+          <div class='col-sm-4'></div>
+          <div class='col-sm-5'>
             <%= f.submit "Update Profile", class: 'btn btn-default' %></div></div></p>
       </fieldset>
     <% end %></p><% end %>
@@ -355,49 +355,49 @@
       <div class='form-horizontal' role='form'>
       <div class="form-group">
       <div class='row'>
-      <div class='col-md-1'></div>
-      <div class='col-md-3'>
+      <div class='col-sm-1'></div>
+      <div class='col-sm-3'>
           <%= f.label :name, 'Full Name', class: 'control-label' %></div>
-          <div class="col-md-7">   
+          <div class="col-sm-7">   
             <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Full name", class: 'form-control' %></div></div>
 
          <div class='row'>
-         <div class='col-md-1'></div>
-          <div class='col-md-3'>
+         <div class='col-sm-1'></div>
+          <div class='col-sm-3'>
           <%= f.label :username, class: 'control-label' %></div>
-           <div class="col-md-7">   
+           <div class="col-sm-7">   
               <%= f.text_field :username, size: 50,
                         placeholder: "Username Alphanumeric characters only!", class: 'form-control' %>
                         </div></div>
 
           <div class='row'>
-          <div class='col-md-1'></div>
-          <div class='col-md-3'>
+          <div class='col-sm-1'></div>
+          <div class='col-sm-3'>
           <%= f.label :email, class: 'control-label' %></div>
-           <div class="col-md-7">   
+           <div class="col-sm-7">   
             <%= f.email_field :email, size: 50, placeholder: "Email Address", class: 'form-control' %>
             </div></div>
           
           <div class='row'>
-          <div class='col-md-1'></div>
-          <div class='col-md-3'>
+          <div class='col-sm-1'></div>
+          <div class='col-sm-3'>
           <%= f.label :password, 'Password', class: 'control-label' %></div>
            <div class="col-sm-7">   
             <%= f.password_field :password, size: 50, placeholder: "Minimum of 8 characters", class: 'form-control' %>
             </div></div>
 
            <div class='row'>
-           <div class='col-md-1'></div>
-          <div class='col-md-3'>
+           <div class='col-sm-1'></div>
+          <div class='col-sm-3'>
           <%= f.label :password_confirmation, class: 'control-label' %></div>
-           <div class="col-md-7">   
+           <div class="col-sm-7">   
             <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: 'form-control' %>
             </div></div>
 
         <p>
         <div class='row'>
-          <div class='col-md-4'></div>
-        <div class="col-md-7"> 
+          <div class='col-sm-4'></div>
+        <div class="col-sm-7"> 
           <% if @user.new_record? %>
             <%= f.submit "Create Account", class: "btn btn-info" %>
           <% else %>
@@ -430,24 +430,24 @@
     <br>
     <div class='row'>
    
-    <div class='col-md-5 well'>
+    <div class='col-sm-5 well'>
      <% if @reviews.any? %>
         <h4 class="btn btn-default">My Reviews on Startup Project</h4><br><br>
         <% @reviews.in_groups_of(2) do |group| %>
         <div class="row">
             <% group.each do |review| %>
               <% if review %>
-                <div class="col-md-12">
+                <div class="col-sm-12">
 
                 <%= link_to review.project.name, review.project %>
                 <p>
              &quot;<%= review.remark %>&quot;
            </p></div>
            <div class='row'>
-           <div class="col-md-4">
+           <div class="col-sm-4">
            <%= pluralize(review.stars, 'star') %></div>
-           <div class="col-md-3"></div>
-           <div class="col-md-5">
+           <div class="col-sm-3"></div>
+           <div class="col-sm-5">
            <%= time_ago_in_words(review.created_at) %> ago</div>
            </div>
            <% end %>
@@ -469,10 +469,10 @@
            </p>
            </div>
 
-    <div class='col-md-1'></div>
-    <div class='col-md-6'>
+    <div class='col-sm-1'></div>
+    <div class='col-sm-6'>
       <div class='row'>
-      <div class='col-md-11 well'>
+      <div class='col-sm-11 well'>
       <% if @checkins.any? %>
       <h3>Checkins for</h3>
       <ol id="reviews">
@@ -491,7 +491,7 @@
      
 
      
-     <div class='col-md-11 well'>
+     <div class='col-sm-11 well'>
            <p>
     <% if @followed_projects.any? %>
     <h3>Followed Projects</h3>
@@ -549,7 +549,7 @@
 
 
 
-    <div class="col-md-3 col-sm-4 user_main_right">
+    <div class="col-sm-3 col-sm-4 user_main_right">
     <% Project.all.order('created_at DESC').limit(1).each do |project| %>
       <% if project %>
         <h3>Latest Project</h3>
