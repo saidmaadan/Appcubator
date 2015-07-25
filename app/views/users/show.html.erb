@@ -76,6 +76,9 @@
     </div>
   </div>
 </div>
+
+
+
 <div class='container'>
   <div class='row user_main'>
     <br><br>
@@ -98,126 +101,100 @@
       </ul>
     </div>
     <br><br>
-    <div class="col-sm-9 col-sm-8 col-xs-12 user_main_left">
+
+    <div class="col-md-9 col-sm-8 col-xs-12 user_main_left">
 <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane active" id="dash">
-        <div class='row'>
-           <% if @user.about %> 
+      <div class="tab-content">
+        <div class="tab-pane active" id="dash">
+          <div class='row'>
+             <% if @user.about %> 
+              <div class='col-sm-4'>
+                <h4>About Me</h4> 
+              </div>
+              <div class='col-sm-8'>
+                <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
+            </div>     
+            <% end %>
+          </div>
+
+          <div class='row'>
+            <% if @user.school %>
             <div class='col-sm-4'>
-              <h4>About Me</h4> 
+              <h4>School</h4>
             </div>
-            <div class='col-sm-8'>
-              <%= truncate(@user.about, length: 180, separator: 'Read more @about page') %>
-          </div>     
-          <% end %>
-        </div>
-        <div class='row'>
-          <% if @user.school %>
-          <div class='col-sm-4'>
-            <h4>School</h4>
+            <div class='col-sm-8'>   
+              <%= @user.school %>        
+            </div>
+            <% end %>
           </div>
-          <div class='col-sm-8'>   
-            <%= @user.school %>        
+
+          <div class='row'>
+            <% if @user.degree %>
+              <div class='col-sm-4'>
+                <h4>Studied/Qualification</h4>          
+              </div>
+              <div class='col-sm-8'>           
+                <%= @user.degree %>
+              </div>
+            <% end %>
           </div>
-          <% end %>
-        </div>
-        <div class='row'>
-          <% if @user.degree %>
-          <div class='col-sm-4'>
-            <h4>Studied/Qualification</h4>
-         
+
+          <div class='row'>
+            <% if @user.work %>  
+              <div class='col-sm-4'>
+                <h4>Professional</h4>
+              </div>
+              <div class='col-sm-8'>            
+                <%= @user.work %>           
+              </div>          
+            <% end %>
           </div>
-          <div class='col-sm-8'>
-          
-          <%= @user.degree %>
+
+          <div class='row'>
+            <% if @user.specialization %>            
+              <div class='col-sm-4'>          
+                <h4>Specialization</h4>           
+              </div>
+              <div class='col-sm-8'>            
+                <%= @user.specialization %>          
+              </div>         
+            <% end %>
           </div>
-          <% end %>
-        </div>
-        <div class='row'>
-          <% if @user.work %> 
-          
-          <div class='col-sm-4'>
-        
-          <h4>Professional</h4>
-         
+
+          <div class='row'>            
+            <% if @user.powerpoint %>           
+              <div class='col-sm-4'>         
+                <h4>Powerpoint</h4>           
+              </div>
+              <div class='col-sm-8'>           
+                <%= @user.powerpoint %>           
+              </div>          
+            <% end %>
           </div>
-          <div class='col-sm-8'>
-          
-          <%= @user.work %>
-         
+
+          <div class='row'>
+            <% if @user.phone %>          
+              <div class='col-sm-4'>          
+                <h4>Phone</h4>           
+              </div>
+              <div class='col-sm-8'>           
+                <%= @user.phone %>          
+              </div>          
+            <% end %>
           </div>
-        
-          <% end %>
-        </div>
-        <div class='row'>
-           <% if @user.specialization %> 
-          
-          <div class='col-sm-4'>
-        
-         <h4>Specialization</h4>
-         
-          </div>
-          <div class='col-sm-8'>
-          
-          <%= @user.specialization %>
-         
-          </div>
-        
-          <% end %>
-        </div>
-        <div class='row'>
-          
-          <% if @user.powerpoint %>
-    
-         
-          <div class='col-sm-4'>
-        
-          <h4>Powerpoint</h4>
-         
-          </div>
-          <div class='col-sm-8'>
-          
-          <%= @user.powerpoint %>
-         
-          </div>
-        
-          <% end %>
-        </div>
-        <div class='row'>
-           <% if @user.phone %>
-        
-          <div class='col-sm-4'>
-        
-          <h4>Phone</h4>
-         
-          </div>
-          <div class='col-sm-8'>
-          
-          <%= @user.phone %>
-         
-          </div>
-        
-          <% end %>
-        </div>
-        <div class='row'>
-          
-        </div>
-        <div class='row'>
-          
         </div>
          <br><br>
 
-      </div>
-      <div class="tab-pane" id="profile">
-     <% if current_user?(@user) %>
-         <p><%= form_for(@user) do |f| %>
-       <fieldset>
+        
+         <div class="tab-pane" id="profile">
+          <% if current_user?(@user) %>
+          <p><%= form_for(@user) do |f| %>
+          <fieldset>
 
-      <div class='form-horizontal' role='form'>
-      <div class="form-group profiles">
-      <div class='row'>
-      <div class='col-sm-3'>
+          <div class='form-horizontal' role='form'>
+          <div class="form-group profiles">
+          <div class='row'>
+          <div class='col-sm-3'>
             <%= f.label :sex, class: 'control-label' %></div>
             <div class='col-sm-9'>
              <%= f.select :sex, User::SEX, prompt: "Select One", class: 'col-sm-10 form-control' %>
@@ -545,45 +522,44 @@
       </div>
     
     </div>
-    </div>
+   </div>
 
 
-
-    <div class="col-sm-3 col-sm-4 user_main_right">
-    <% Project.all.order('created_at DESC').limit(1).each do |project| %>
-      <% if project %>
-        <h3>Latest Project</h3>
-        <%= image_tag project.screenshot.url, class: 'img-responsive', style: "width:100%;height:200px" %>
-        <% end %>
-    <% end %>
-    <hr>
-    <% if @jobs.any? %>
-      <h3>Tech Job</h3>
-    <% end %>
-    <% @jobs.each do |job| %>
-      <p><%= link_to job.job_title, job %></p>
-    <% end %>
-    <hr>
-     <% if @ideas.any? %>
-      <h3>Startup Ideas</h3>
-    <% end %>
-    <% @ideas.each do |idea| %>
-      <p><%= link_to idea.title, idea %></p>
-    <% end %>
-    <hr>
-     <% if @trends.any? %>
-      <h3>Latest Insight</h3>
-    <% end %>
-    <% @trends.each do |trend| %>
-      <% if trend.upload %>
-        <%= link_to trend do %>
-          <%= image_tag trend.upload.url, class: 'img-responsive' %>
-        <% end %>
-      <% else %>
-        <p><%= link_to trend.title, trend %></p>
+    <div class="col-md-3 col-sm-4 hidden-xs user_main_right">
+      <% Project.all.order('created_at DESC').limit(1).each do |project| %>
+        <% if project %>
+          <h3>Latest Project</h3>
+          <%= image_tag project.screenshot.url, class: 'img-responsive', style: "width:100%;height:200px" %>
+          <% end %>
       <% end %>
-    <% end %>
-    
+      <hr>
+      <% if @jobs.any? %>
+        <h3>Tech Job</h3>
+      <% end %>
+      <% @jobs.each do |job| %>
+        <p><%= link_to job.job_title, job %></p>
+      <% end %>
+      <hr>
+       <% if @ideas.any? %>
+        <h3>Startup Ideas</h3>
+      <% end %>
+      <% @ideas.each do |idea| %>
+        <p><%= link_to idea.title, idea %></p>
+      <% end %>
+      <hr>
+       <% if @trends.any? %>
+        <h3>Latest Insight</h3>
+      <% end %>
+      <% @trends.each do |trend| %>
+        <% if trend.upload %>
+          <%= link_to trend do %>
+            <%= image_tag trend.upload.url, class: 'img-responsive' %>
+          <% end %>
+        <% else %>
+          <p><%= link_to trend.title, trend %></p>
+        <% end %>
+      <% end %>
+      
     </div>
 
   </div>
