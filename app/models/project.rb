@@ -4,8 +4,8 @@ class Project < ActiveRecord::Base
   # has_secure_password
   # include Dateable
   extend ActionView::Helpers::DateHelper
-  extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
+  # extend FriendlyId
+  # friendly_id :slug_candidates, use: :slugged
 
   has_attached_file :screenshot, styles: {
     :small => "200x150>", :medium => "300x300>",
@@ -37,36 +37,36 @@ class Project < ActiveRecord::Base
   has_many :followers, through: :follows, source: :user
   paginates_per 6
 
-  # def to_param
-  #   # "#{id}"
-  #   "#{id}?030/#{name.parameterize}"
+  def to_param
+    # "#{id}"
+    "#{id}-#{name.parameterize}"
+  end
+
+  # def slug_candidates
+  #   [
+  #     :name,
+  #     [:name, :teams],
+  #     [:name, :teams, :looking_for,],
+  #     [:name, :teams, :looking_for, :web_url],
+  #     [:name, :teams, :looking_for, :web_url, :target_amount]
+  #   ]
   # end
 
-  def slug_candidates
-    [
-      :name,
-      [:name, :teams],
-      [:name, :teams, :looking_for,],
-      [:name, :teams, :looking_for, :web_url],
-      [:name, :teams, :looking_for, :web_url, :target_amount]
-    ]
-  end
+  #  def has_friendly_id_slug?
+  #   slugs.where(slug: slug).exists?
+  # end
 
-   def has_friendly_id_slug?
-    slugs.where(slug: slug).exists?
-  end
+  # def should_generate_new_friendly_id?
+  #   new_record?
+  # end
 
-  def should_generate_new_friendly_id?
-    new_record?
-  end
-
-   def self.search(search)
-    if search
-      where(["name LIKE ?", "%#{params[:search]}%"])
-    else
-      recent
-    end
-  end
+  #  def self.search(search)
+  #   if search
+  #     where(["name LIKE ?", "%#{params[:search]}%"])
+  #   else
+  #     recent
+  #   end
+  # end
 
  
 

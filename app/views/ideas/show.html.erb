@@ -68,8 +68,11 @@
     <% if correct_user? || current_user_admin? %>
      
       <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
-      <%= link_to 'Delete', @idea, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
 
+     <% if urrent_user_admin? %>
+       <%= link_to 'Delete', @idea, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    
     <% end %>
 
   

@@ -1,17 +1,16 @@
 class ProjectsController < ApplicationController
   before_action :require_signin, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :delete]
   #before_action :correct_user, except: [:index, :show]
   before_action :require_admin, only: [:delete]
-  
 
   def index
-    @projects = Project.search(params[:search]).recent.page params[:page]
+    @projects = Project.recent.page params[:page]
     # .paginate(page: params[:page], per_page: 4)
   end
 
   def show
-    @project = Project.friendly.find(params[:id])
+    @project = Project.find(params[:id])
     @followers = @project.followers
     if current_user
       @current_follow = current_user.follows.find_by(project_id: @project.id)
@@ -20,11 +19,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.friendly.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.friendly.find(params[:id])
+    @project = Project.find(params[:id])
     if @project.update(project_params)
       flash[:notice] = "Project successfully updated!"
       redirect_to @project
@@ -50,7 +49,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.friendly.find(params[:id])
+    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_url, alert: "Project successfully deleted!"
   end
@@ -73,8 +72,8 @@ class ProjectsController < ApplicationController
   end
 
   def correct_user
-    unless @project = current_user.projects.friendly.find_by(id: params[:id])
-    redirect_to projects_url, alert: "Unauthorized access!"
+    unless @project = current_user.projects.find_by(id: params[:id])
+    redirect_to projects_url, alert: "Unauthorized access!!!!"
     end
   end
 
