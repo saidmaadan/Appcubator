@@ -4,13 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="msvalidate.01" content="DA89893F2AE9176311128B79AC667BCD" />
     <title><%= content_for?(:title) ? yield(:title) : "DKonnect | Developers Business Network" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Appcubator" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "App Development Business Network. Connect with thousand of developers and entrepreneurs" %>">
+    <meta name="author" content="Said Maadan">
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'https://s3.amazonaws.com/inventivelabs/jobinbox/logos/favicon4.ico' %>
 
   </head>
   <body>
